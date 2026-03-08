@@ -21,10 +21,48 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Brotox Official | Men's Botox Education & Provider Matching",
-  description: "Education first. Trusted local recommendations. Learn about Botox for men and get matched with vetted providers in your area.",
-  keywords: ["men's botox", "male aesthetics", "anti-aging for men", "botox treatments", "brotox", "botox for men"],
+  title: {
+    default: "Brotox Official | Botox for Men — Education & Provider Matching",
+    template: "%s | Brotox Official",
+  },
+  description:
+    "The #1 resource for men's Botox. Learn what to expect, compare costs, and get matched with vetted providers near you. Education-first approach to male aesthetics — no pressure, just results.",
+  keywords: [
+    "botox for men",
+    "brotox",
+    "men's botox",
+    "male botox",
+    "male aesthetics",
+    "anti-aging for men",
+    "botox treatments for men",
+    "men's cosmetic treatments",
+    "botox cost for men",
+    "botox near me men",
+    "men's wrinkle treatment",
+    "preventative botox men",
+    "forehead botox men",
+    "crow's feet treatment men",
+    "frown lines men",
+    "botox provider",
+    "botox education",
+    "men's grooming",
+    "men's self care",
+  ],
   metadataBase: new URL("https://brotoxofficial.com"),
+  alternates: {
+    canonical: "https://brotoxofficial.com",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -34,8 +72,9 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Brotox Official | Botox for Men. Done Right.",
-    description: "Education first. Trusted local recommendations. Join the waitlist and get matched with vetted providers in your area.",
+    title: "Brotox Official — Botox for Men. Done Right.",
+    description:
+      "The #1 resource for men's Botox. Education first, no pressure. Learn what to expect, compare costs, and get matched with vetted providers near you.",
     url: "https://brotoxofficial.com",
     siteName: "Brotox Official",
     images: [
@@ -43,7 +82,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Brotox Official - Botox for Men. Done Right.",
+        alt: "Brotox Official — Botox for Men. Done Right.",
       },
     ],
     locale: "en_US",
@@ -51,10 +90,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Brotox Official | Botox for Men. Done Right.",
-    description: "Education first. Trusted local recommendations. Join the waitlist and get matched with vetted providers.",
+    title: "Brotox Official — Botox for Men. Done Right.",
+    description:
+      "The #1 resource for men's Botox. Education first, no pressure. Get matched with vetted providers near you.",
+    site: "@brotoxofficial",
     images: ["/og-image.png"],
   },
+  category: "Health & Wellness",
 };
 
 export default function RootLayout({
@@ -64,6 +106,46 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Brotox Official",
+              url: "https://brotoxofficial.com",
+              logo: "https://brotoxofficial.com/og-image.png",
+              description:
+                "The #1 resource for men's Botox. Education-first approach to male aesthetics with vetted provider matching.",
+              sameAs: [
+                "https://x.com/brotoxofficial",
+              ],
+              contactPoint: {
+                "@type": "ContactPoint",
+                contactType: "customer service",
+                url: "https://brotoxofficial.com",
+              },
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Brotox Official",
+              url: "https://brotoxofficial.com",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: "https://brotoxofficial.com/?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground`}
       >
