@@ -170,17 +170,6 @@ export default async function ProviderPage({ params }: PageProps) {
                     Request a Consultation
                   </Link>
 
-                  {provider.website && (
-                    <a
-                      href={provider.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full text-center py-4 px-8 rounded-full border border-white/20 text-white font-semibold hover:bg-white/5 transition-all"
-                    >
-                      Visit Website →
-                    </a>
-                  )}
-
                   <div className="mt-6 pt-6 border-t border-white/10">
                     <div className="grid grid-cols-2 gap-4 text-center">
                       <div>
