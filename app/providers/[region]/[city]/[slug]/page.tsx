@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const description = `${provider.name} (${provider.credentials}) at ${provider.practiceName} in ${provider.city}. ${provider.specialties.slice(0, 3).join(", ")}. Book a consultation for men's Botox today.`;
 
   return {
+    robots: { index: false, follow: false },
     title,
     description,
     keywords: [

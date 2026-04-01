@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const regionName = cityProviders[0].region;
 
   return {
+    robots: { index: false, follow: false },
     title: `Best Botox for Men in ${cityName} — Top Providers & MedSpas`,
     description: `Find the best Botox providers for men in ${cityName}, ${regionName}. ${cityProviders.length} board-certified doctors and medspas vetted for natural-looking male results.`,
     keywords: [

@@ -4,6 +4,7 @@ import { getAllRegions, providers } from "@/app/data/providers";
 import Breadcrumbs from "@/app/components/Breadcrumbs";
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: false },
   title: "Find a Botox Provider for Men — Vetted Doctors & MedSpas",
   description:
     "Browse our directory of vetted Botox providers for men across New York, New Jersey, Connecticut, and South Florida. Board-certified doctors who specialize in natural-looking results for men.",
