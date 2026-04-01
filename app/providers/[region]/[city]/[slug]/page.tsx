@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { providers, getProviderBySlug } from "@/app/data/providers";
 import Breadcrumbs from "@/app/components/Breadcrumbs";
+import ConsultationForm from "@/app/components/ConsultationForm";
 
 interface PageProps {
   params: Promise<{ region: string; city: string; slug: string }>;
@@ -127,11 +128,19 @@ export default async function ProviderPage({ params }: PageProps) {
                   </span>
                 </div>
 
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-3 leading-tight">
-                  {provider.name}
-                  <span className="text-blue-400">,</span>{" "}
-                  <span className="text-gray-400 text-3xl md:text-4xl">{provider.credentials}</span>
-                </h1>
+                <div className="flex items-center gap-5 mb-4">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl md:text-3xl font-black text-white">
+                      {provider.name.split(" ").filter(n => n !== "Dr.").map(n => n[0]).join("")}
+                    </span>
+                  </div>
+                  <div>
+                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight">
+                      {provider.name}
+                    </h1>
+                    <p className="text-lg md:text-xl text-blue-300 font-semibold">{provider.credentials}</p>
+                  </div>
+                </div>
 
                 <p className="text-xl md:text-2xl text-amber-400 font-semibold mb-2">
                   {provider.practiceName}
@@ -172,13 +181,23 @@ export default async function ProviderPage({ params }: PageProps) {
 
                   <div className="mt-6 pt-6 border-t border-white/10">
                     <div className="grid grid-cols-2 gap-4 text-center">
-                      <div>
-                        <p className="text-2xl font-bold text-gradient">30+</p>
-                        <p className="text-xs text-gray-400">Years Experience</p>
-                      </div>
+                      {provider.yearsExperience && (
+                        <div>
+                          <p className="text-2xl font-bold text-gradient">{provider.yearsExperience}</p>
+                          <p className="text-xs text-gray-300">Years Exp.</p>
+                        </div>
+                      )}
                       <div>
                         <p className="text-2xl font-bold text-gradient-gold">Board</p>
-                        <p className="text-xs text-gray-400">Certified</p>
+                        <p className="text-xs text-gray-300">Certified</p>
+                      </div>
+                      <div>
+                        <p className="text-2xl font-bold text-white">{provider.treatments.length}</p>
+                        <p className="text-xs text-gray-300">Treatments</p>
+                      </div>
+                      <div>
+                        <p className="text-2xl font-bold text-green-400">✓</p>
+                        <p className="text-xs text-gray-300">Male Patients</p>
                       </div>
                     </div>
                   </div>
@@ -335,44 +354,13 @@ export default async function ProviderPage({ params }: PageProps) {
               Fill out the form and we&apos;ll help you schedule a consultation.
             </p>
 
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8 md:p-12 text-left">
-              <div className="grid md:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label className="block text-sm text-gray-400 mb-2">First Name</label>
-                  <input type="text" placeholder="John" className="w-full" />
-                </div>
-                <div>
-                  <label className="block text-sm text-gray-400 mb-2">Last Name</label>
-                  <input type="text" placeholder="Smith" className="w-full" />
-                </div>
-              </div>
-              <div className="grid md:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label className="block text-sm text-gray-400 mb-2">Email</label>
-                  <input type="email" placeholder="john@email.com" className="w-full" />
-                </div>
-                <div>
-                  <label className="block text-sm text-gray-400 mb-2">Phone</label>
-                  <input type="tel" placeholder="(555) 123-4567" className="w-full" />
-                </div>
-              </div>
-              <div className="mb-6">
-                <label className="block text-sm text-gray-400 mb-2">What are you interested in?</label>
-                <select className="w-full">
-                  <option value="">Select a treatment...</option>
-                  {provider.treatments.map((t) => (
-                    <option key={t.name} value={t.name}>{t.name}</option>
-                  ))}
-                  <option value="other">Other / Not Sure</option>
-                </select>
-              </div>
-              <button className="btn-primary w-full text-center">
-                Request Consultation
-              </button>
-              <p className="text-xs text-gray-500 mt-4 text-center">
-                By submitting, you agree to our privacy policy. We&apos;ll connect you with {provider.practiceName} — no spam, ever.
-              </p>
-            </div>
+            <ConsultationForm
+              providerName={provider.name}
+              practiceName={provider.practiceName}
+              city={provider.city}
+              region={provider.region}
+              treatments={provider.treatments}
+            />
           </div>
         </section>
       </main>

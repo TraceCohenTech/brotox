@@ -11,6 +11,7 @@ export interface Provider {
   address?: string;
   phone?: string;
   website?: string;
+  yearsExperience?: string;
   specialties: string[];
   bio: string;
   whyMenChoose: string;
@@ -39,6 +40,7 @@ export const providers: Provider[] = [
     citySlug: "boca-raton",
     neighborhood: "East Boca Raton",
     website: "https://stevenfagien.com",
+    yearsExperience: "30+",
     specialties: [
       "Botox & Dysport",
       "Dermal Fillers",
@@ -115,6 +117,7 @@ export const providers: Provider[] = [
     city: "West Palm Beach",
     citySlug: "west-palm-beach",
     website: "https://beerderm.com",
+    yearsExperience: "20+",
     specialties: [
       "Botox & Dysport",
       "Dermal Fillers",
@@ -192,6 +195,7 @@ export const providers: Provider[] = [
     citySlug: "miami",
     neighborhood: "Coconut Grove",
     website: "https://maercksinstitute.com",
+    yearsExperience: "15+",
     specialties: [
       "Cold Sculpting (Non-Surgical Facelifts)",
       "Facial Sculpting with Fillers",
@@ -269,6 +273,7 @@ export const providers: Provider[] = [
     citySlug: "manhattan",
     neighborhood: "Upper East Side",
     website: "https://pfrankmd.com",
+    yearsExperience: "20+",
     specialties: [
       "Botox & Dysport",
       "Dermal Fillers",
@@ -346,6 +351,7 @@ export const providers: Provider[] = [
     citySlug: "manhattan",
     neighborhood: "Upper East Side",
     website: "https://laradevganmd.com",
+    yearsExperience: "15+",
     specialties: [
       "Botox & Dysport",
       "Dermal Fillers",
@@ -422,6 +428,7 @@ export const providers: Provider[] = [
     city: "Boca Raton",
     citySlug: "boca-raton",
     website: "https://sanctuaryplasticsurgery.com",
+    yearsExperience: "25+",
     specialties: [
       "Botox & Dysport",
       "Laser Treatments",
@@ -499,6 +506,7 @@ export const providers: Provider[] = [
     citySlug: "manhattan",
     neighborhood: "Union Square",
     website: "https://shereeneidrissmd.com",
+    yearsExperience: "10+",
     specialties: [
       "Botox & Dysport",
       "Dermal Fillers",

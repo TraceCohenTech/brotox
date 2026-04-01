@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { providers, getProvidersByCity } from "@/app/data/providers";
 import Breadcrumbs from "@/app/components/Breadcrumbs";
+import MatchForm from "@/app/components/MatchForm";
 
 interface PageProps {
   params: Promise<{ region: string; city: string }>;
@@ -178,6 +179,13 @@ export default async function CityPage({ params }: PageProps) {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* Match Form */}
+      <section className="pb-6">
+        <div className="container-main">
+          <MatchForm city={cityName} region={regionName} />
         </div>
       </section>
 

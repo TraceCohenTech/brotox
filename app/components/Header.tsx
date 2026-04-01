@@ -38,19 +38,25 @@ export default function Header() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             <Link
-              href="#why"
+              href="/#why"
               className="text-gray-300 hover:text-white transition-colors text-sm font-medium"
             >
               Why Botox
             </Link>
             <Link
-              href="#treatments"
+              href="/#treatments"
               className="text-gray-300 hover:text-white transition-colors text-sm font-medium"
             >
               Treatments
             </Link>
             <Link
-              href="#top"
+              href="/providers"
+              className="text-gray-300 hover:text-white transition-colors text-sm font-medium"
+            >
+              Find a Provider
+            </Link>
+            <Link
+              href="/providers"
               className="btn-primary py-3 px-6 text-sm"
             >
               Get Matched
@@ -82,21 +88,28 @@ export default function Header() {
           >
             <div className="flex flex-col gap-4">
               <Link
-                href="#why"
+                href="/#why"
                 className="text-gray-300 hover:text-white transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Why Botox
               </Link>
               <Link
-                href="#treatments"
+                href="/#treatments"
                 className="text-gray-300 hover:text-white transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Treatments
               </Link>
               <Link
-                href="#top"
+                href="/providers"
+                className="text-gray-300 hover:text-white transition-colors py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Find a Provider
+              </Link>
+              <Link
+                href="/providers"
                 className="btn-primary text-center"
                 onClick={() => setIsMenuOpen(false)}
               >
