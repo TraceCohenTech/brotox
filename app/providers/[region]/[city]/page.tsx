@@ -40,6 +40,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+const cardAccents = [
+  { bg: "bg-blue-500/10", border: "border-blue-500/25", accent: "text-blue-400", tag: "bg-blue-500/15 text-blue-300 border-blue-500/20" },
+  { bg: "bg-amber-500/10", border: "border-amber-500/25", accent: "text-amber-400", tag: "bg-amber-500/15 text-amber-300 border-amber-500/20" },
+  { bg: "bg-emerald-500/10", border: "border-emerald-500/25", accent: "text-emerald-400", tag: "bg-emerald-500/15 text-emerald-300 border-emerald-500/20" },
+  { bg: "bg-cyan-500/10", border: "border-cyan-500/25", accent: "text-cyan-400", tag: "bg-cyan-500/15 text-cyan-300 border-cyan-500/20" },
+  { bg: "bg-pink-500/10", border: "border-pink-500/25", accent: "text-pink-400", tag: "bg-pink-500/15 text-pink-300 border-pink-500/20" },
+  { bg: "bg-orange-500/10", border: "border-orange-500/25", accent: "text-orange-400", tag: "bg-orange-500/15 text-orange-300 border-orange-500/20" },
+];
+
 export default async function CityPage({ params }: PageProps) {
   const { region, city } = await params;
   const cityProviders = getProvidersByCity(region, city);
@@ -50,7 +59,7 @@ export default async function CityPage({ params }: PageProps) {
 
   return (
     <main className="min-h-screen bg-[var(--background)]">
-      <section className="bg-gradient-to-b from-[#0f1219] via-[#1a1f2e] to-[var(--background)] pt-32 pb-16">
+      <section className="bg-gradient-to-b from-[#0f1219] via-[#1a1f2e] to-[var(--background)] pt-32 pb-10">
         <div className="container-main">
           <Breadcrumbs
             items={[
@@ -61,70 +70,98 @@ export default async function CityPage({ params }: PageProps) {
             ]}
           />
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4">
-            Best Botox for Men in{" "}
-            <span className="text-gradient-gold">{cityName}</span>
-          </h1>
-          <p className="text-xl text-gray-300 max-w-2xl">
-            {cityProviders.length} vetted provider{cityProviders.length !== 1 ? "s" : ""} in {cityName} who specialize in
-            natural-looking Botox results for men.
-          </p>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-black text-white mb-3">
+                Best Botox for Men in{" "}
+                <span className="text-gradient-gold">{cityName}</span>
+              </h1>
+              <p className="text-lg text-gray-200 max-w-xl">
+                {cityProviders.length} vetted provider{cityProviders.length !== 1 ? "s" : ""} who specialize in
+                natural-looking results for men.
+              </p>
+            </div>
+            <div className="flex gap-3">
+              <div className="bg-green-500/10 border border-green-500/20 rounded-xl px-5 py-3 text-center">
+                <p className="text-2xl font-black text-green-400">{cityProviders.length}</p>
+                <p className="text-xs text-green-300 font-semibold">Providers</p>
+              </div>
+              <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl px-5 py-3 text-center">
+                <p className="text-2xl font-black text-blue-400">100%</p>
+                <p className="text-xs text-blue-300 font-semibold">Vetted</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="section-padding">
+      {/* Provider Cards — Square grid */}
+      <section className="py-12">
         <div className="container-main">
-          <div className="grid gap-6">
-            {cityProviders.map((provider) => (
-              <Link
-                key={provider.slug}
-                href={`/providers/${region}/${city}/${provider.slug}`}
-                className="card p-8 group grid md:grid-cols-3 gap-6 items-center"
-              >
-                <div className="md:col-span-2">
-                  <div className="flex items-center gap-3 mb-2">
-                    <h2 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            {cityProviders.map((provider, i) => {
+              const color = cardAccents[i % cardAccents.length];
+              return (
+                <Link
+                  key={provider.slug}
+                  href={`/providers/${region}/${city}/${provider.slug}`}
+                  className={`${color.bg} border ${color.border} rounded-2xl p-5 md:p-6 group hover:scale-[1.03] transition-all duration-200 flex flex-col justify-between aspect-square`}
+                >
+                  <div>
+                    <span className={`inline-block px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${color.tag} mb-3`}>
+                      Vetted Provider
+                    </span>
+                    <h2 className={`text-lg md:text-xl font-black ${color.accent} group-hover:brightness-125 transition-all mb-1`}>
                       {provider.name}
                     </h2>
-                    <span className="text-gray-500">{provider.credentials}</span>
+                    <p className="text-white text-xs md:text-sm font-semibold mb-1">
+                      {provider.credentials}
+                    </p>
+                    <p className="text-white/70 text-xs md:text-sm">
+                      {provider.practiceName}
+                    </p>
                   </div>
-                  <p className="text-amber-400 font-medium mb-3">
-                    {provider.practiceName}
-                  </p>
-                  <p className="text-gray-400 text-sm line-clamp-2">
-                    {provider.bio}
-                  </p>
-                </div>
 
-                <div className="flex flex-wrap gap-2 justify-end">
-                  {provider.specialties.slice(0, 4).map((s) => (
-                    <span
-                      key={s}
-                      className="text-xs px-3 py-1.5 rounded-full bg-white/5 text-gray-400 border border-white/10"
-                    >
-                      {s}
-                    </span>
-                  ))}
-                </div>
-              </Link>
-            ))}
+                  <div>
+                    <div className="flex flex-wrap gap-1.5 mb-3">
+                      {provider.specialties.slice(0, 2).map((s) => (
+                        <span
+                          key={s}
+                          className={`text-[10px] md:text-xs px-2 py-1 rounded-full border ${color.tag} font-medium`}
+                        >
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                    <div className={`flex items-center gap-1.5 ${color.accent} text-xs font-bold`}>
+                      View Profile
+                      <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
+        </div>
+      </section>
 
-          {/* City SEO content */}
-          <div className="mt-16 max-w-3xl">
-            <h2 className="text-2xl font-bold text-white mb-4">
-              About Botox for Men in {cityName}
-            </h2>
-            <p className="text-gray-400 leading-relaxed">
-              {cityName} is home to some of the most sought-after aesthetic
-              providers in {regionName}. Whether you&apos;re looking to smooth
-              forehead lines, reduce crow&apos;s feet, or refresh your overall
-              appearance, these board-certified professionals understand the
-              unique needs of male patients. Men&apos;s facial anatomy — thicker
-              skin, stronger muscles, and different aesthetic goals — requires
-              specialized expertise that these vetted providers deliver.
-            </p>
-          </div>
+      {/* City SEO content */}
+      <section className="py-12">
+        <div className="container-main max-w-3xl">
+          <h2 className="text-2xl font-bold text-white mb-4">
+            About Botox for Men in {cityName}
+          </h2>
+          <p className="text-gray-300 leading-relaxed">
+            {cityName} is home to some of the most sought-after aesthetic
+            providers in {regionName}. Whether you&apos;re looking to smooth
+            forehead lines, reduce crow&apos;s feet, or refresh your overall
+            appearance, these board-certified professionals understand the
+            unique needs of male patients. Men&apos;s facial anatomy — thicker
+            skin, stronger muscles, and different aesthetic goals — requires
+            specialized expertise that these vetted providers deliver.
+          </p>
         </div>
       </section>
     </main>
