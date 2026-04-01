@@ -98,33 +98,60 @@ export default async function CityPage({ params }: PageProps) {
       {/* Provider Cards — Square grid */}
       <section className="py-12">
         <div className="container-main">
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {cityProviders.map((provider, i) => {
               const color = cardAccents[i % cardAccents.length];
+              // Grab the first notable item as a highlight
+              const topCredential = provider.notable[0] || "";
+              // Price range from first treatment
+              const startingPrice = provider.treatments[0]?.priceRange?.split("-")[0] || "";
               return (
                 <Link
                   key={provider.slug}
                   href={`/providers/${region}/${city}/${provider.slug}`}
-                  className={`${color.bg} border ${color.border} rounded-2xl p-5 md:p-6 group hover:scale-[1.03] transition-all duration-200 flex flex-col justify-between aspect-square`}
+                  className={`${color.bg} border ${color.border} rounded-2xl p-5 md:p-6 group hover:scale-[1.03] transition-all duration-200 flex flex-col justify-between`}
                 >
+                  {/* Top section */}
                   <div>
-                    <span className={`inline-block px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${color.tag} mb-3`}>
-                      Vetted Provider
-                    </span>
-                    <h2 className={`text-lg md:text-xl font-black ${color.accent} group-hover:brightness-125 transition-all mb-1`}>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className={`inline-block px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${color.tag}`}>
+                        Vetted Provider
+                      </span>
+                      {startingPrice && (
+                        <span className="text-white text-xs font-bold">
+                          From {startingPrice}
+                        </span>
+                      )}
+                    </div>
+                    <h2 className={`text-lg md:text-xl font-black ${color.accent} group-hover:brightness-125 transition-all mb-0.5`}>
                       {provider.name}
                     </h2>
-                    <p className="text-white text-xs md:text-sm font-semibold mb-1">
+                    <p className="text-white text-xs md:text-sm font-semibold">
                       {provider.credentials}
                     </p>
-                    <p className="text-white/70 text-xs md:text-sm">
+                    <p className="text-white/80 text-xs md:text-sm mb-3">
                       {provider.practiceName}
+                    </p>
+
+                    {/* Key credential callout */}
+                    <div className={`flex items-start gap-2 mb-3 px-3 py-2 rounded-lg bg-black/20`}>
+                      <svg className={`w-4 h-4 ${color.accent} flex-shrink-0 mt-0.5`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                      <p className="text-white/90 text-xs leading-relaxed">{topCredential}</p>
+                    </div>
+
+                    {/* Why men choose — one-liner teaser */}
+                    <p className="text-white/70 text-xs leading-relaxed line-clamp-2 mb-4">
+                      {provider.whyMenChoose.split(".").slice(0, 2).join(".")}.
                     </p>
                   </div>
 
+                  {/* Bottom section */}
                   <div>
+                    {/* Specialties */}
                     <div className="flex flex-wrap gap-1.5 mb-3">
-                      {provider.specialties.slice(0, 2).map((s) => (
+                      {provider.specialties.slice(0, 3).map((s) => (
                         <span
                           key={s}
                           className={`text-[10px] md:text-xs px-2 py-1 rounded-full border ${color.tag} font-medium`}
@@ -133,11 +160,18 @@ export default async function CityPage({ params }: PageProps) {
                         </span>
                       ))}
                     </div>
-                    <div className={`flex items-center gap-1.5 ${color.accent} text-xs font-bold`}>
-                      View Profile
-                      <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
+
+                    {/* Treatments count + CTA */}
+                    <div className="flex items-center justify-between">
+                      <span className="text-white/60 text-xs">
+                        {provider.treatments.length} treatments available
+                      </span>
+                      <div className={`flex items-center gap-1.5 ${color.accent} text-xs font-bold`}>
+                        View Profile
+                        <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </div>
                     </div>
                   </div>
                 </Link>
