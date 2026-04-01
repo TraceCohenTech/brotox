@@ -28,6 +28,8 @@ export interface Provider {
   }[];
 }
 
+import { batch2Providers } from "./providers-batch2";
+
 export const providers: Provider[] = [
   {
     slug: "dr-steven-fagien",
@@ -1446,6 +1448,7 @@ export const providers: Provider[] = [
       { question: "What is PRP and why should men consider it?", answer: "PRP (platelet-rich plasma) uses growth factors from your own blood to stimulate healing and rejuvenation. It's a natural approach for both skin rejuvenation and hair restoration that many men prefer over synthetic products." },
     ],
   },
+  ...batch2Providers,
 ];
 
 // Helper functions
