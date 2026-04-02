@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { zipCodes } from "@/app/data/zipcodes";
+import { zipCodes, getAllLocationSlugs } from "@/app/data/zipcodes";
 import { articles } from "@/app/blog/data/articles";
 import { guides } from "@/app/guide/data/guides";
 
@@ -12,8 +12,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
   ];
 
+  // Zip code pages
   const zipPages: MetadataRoute.Sitemap = zipCodes.map((z) => ({
     url: `${baseUrl}/find/${z.zip}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
+  // City/neighborhood slug pages (e.g., /find/chelsea-new-york-ny)
+  const locationPages: MetadataRoute.Sitemap = getAllLocationSlugs().map((l) => ({
+    url: `${baseUrl}/find/${l.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.8,
@@ -33,5 +42,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...zipPages, ...blogPages, ...guidePages];
+  // SEO blog routes (/botox-for-men/*)
+  const seoBlogSlugs = ["is-it-worth-it", "first-appointment-guide", "vs-fillers", "cost-guide"];
+  const seoBlogPages: MetadataRoute.Sitemap = seoBlogSlugs.map((s) => ({
+    url: `${baseUrl}/botox-for-men/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...zipPages, ...locationPages, ...blogPages, ...seoBlogPages, ...guidePages];
 }

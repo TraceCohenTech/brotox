@@ -686,3 +686,63 @@ export function getZipsByCity(city: string): ZipCode[] {
 export function getZipsByRegion(region: string): ZipCode[] {
   return zipCodes.filter((z) => z.region === region);
 }
+
+// City/neighborhood slug generation
+function slugify(text: string): string {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
+export interface LocationSlug {
+  slug: string;
+  city: string;
+  neighborhood?: string;
+  state: string;
+  region: string;
+  zips: string[];
+}
+
+export function getAllLocationSlugs(): LocationSlug[] {
+  // Generate city-level slugs (e.g., "boca-raton-fl")
+  const cityMap = new Map<string, LocationSlug>();
+  for (const z of zipCodes) {
+    const cityKey = `${z.city}-${z.state}`;
+    const citySlug = slugify(`${z.city}-${z.state}`);
+    if (!cityMap.has(cityKey)) {
+      cityMap.set(cityKey, {
+        slug: citySlug,
+        city: z.city,
+        state: z.state,
+        region: z.region,
+        zips: [],
+      });
+    }
+    cityMap.get(cityKey)!.zips.push(z.zip);
+  }
+
+  // Generate neighborhood-level slugs (e.g., "chelsea-new-york-ny")
+  const neighborhoodMap = new Map<string, LocationSlug>();
+  for (const z of zipCodes) {
+    if (!z.neighborhood) continue;
+    // Use first part of neighborhood name (before any / or &)
+    const cleanNeighborhood = z.neighborhood.split("/")[0].split("&")[0].trim();
+    const nKey = `${cleanNeighborhood}-${z.city}-${z.state}`;
+    const nSlug = slugify(`${cleanNeighborhood}-${z.city}-${z.state}`);
+    if (!neighborhoodMap.has(nKey)) {
+      neighborhoodMap.set(nKey, {
+        slug: nSlug,
+        city: z.city,
+        neighborhood: cleanNeighborhood,
+        state: z.state,
+        region: z.region,
+        zips: [],
+      });
+    }
+    neighborhoodMap.get(nKey)!.zips.push(z.zip);
+  }
+
+  return [...Array.from(cityMap.values()), ...Array.from(neighborhoodMap.values())];
+}
+
+export function getLocationBySlug(slug: string): LocationSlug | undefined {
+  return getAllLocationSlugs().find((l) => l.slug === slug);
+}
