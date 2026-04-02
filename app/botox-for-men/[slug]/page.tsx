@@ -131,7 +131,7 @@ export default async function SeoArticlePage({ params }: PageProps) {
                     {showCta && (
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-6 my-8 text-center">
                         <p className="text-white font-bold mb-2">Ready to find a provider near you?</p>
-                        <Link href="/find" className="btn-primary inline-block py-3 px-6 text-sm">Search by Zip Code →</Link>
+                        <Link href="/find-botox-near-me" className="btn-primary inline-block py-3 px-6 text-sm">Search by Zip Code →</Link>
                       </div>
                     )}
                   </div>
@@ -161,7 +161,7 @@ export default async function SeoArticlePage({ params }: PageProps) {
             <div className="mt-16 bg-gradient-to-r from-blue-500/10 via-blue-600/10 to-blue-500/10 border border-blue-500/20 rounded-3xl p-10 text-center">
               <h2 className="text-3xl font-black text-white mb-3">Find a Provider Near You</h2>
               <p className="text-lg text-blue-200 mb-6">Enter your zip code and get matched with a vetted Botox provider for men.</p>
-              <Link href="/find" className="btn-primary inline-block text-lg">Get Matched Free</Link>
+              <Link href="/find-botox-near-me" className="btn-primary inline-block text-lg">Get Matched Free</Link>
             </div>
           </div>
         </section>

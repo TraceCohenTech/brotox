@@ -71,7 +71,7 @@ export default function BlogIndex() {
             <div className="bg-gradient-to-r from-blue-500/10 via-blue-600/10 to-blue-500/10 border border-blue-500/20 rounded-3xl p-10">
               <h2 className="text-3xl font-black text-white mb-3">Ready to Find a Provider?</h2>
               <p className="text-lg text-blue-200 mb-6">Enter your zip code and get matched with a vetted provider near you.</p>
-              <Link href="/find" className="btn-primary inline-block">Find Botox Near Me</Link>
+              <Link href="/find-botox-near-me" className="btn-primary inline-block">Find Botox Near Me</Link>
             </div>
           </div>
         </div>

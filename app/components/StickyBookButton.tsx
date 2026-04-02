@@ -9,7 +9,7 @@ export default function StickyBookButton() {
   const [isVisible, setIsVisible] = useState(false);
   const [isPulsing, setIsPulsing] = useState(true);
   const pathname = usePathname();
-  const isZipPage = /^\/find\/\d{5}$/.test(pathname);
+  const isZipPage = /^\/find-botox-near-me\/.+$/.test(pathname);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,7 +91,7 @@ export default function StickyBookButton() {
                 Get Matched
               </motion.button>
             ) : (
-              <Link href="/find">
+              <Link href="/find-botox-near-me">
                 <motion.div
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}

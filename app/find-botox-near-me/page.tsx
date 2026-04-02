@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "male botox South Florida",
   ],
   alternates: {
-    canonical: "https://brotoxofficial.com/find",
+    canonical: "https://brotoxofficial.com/find-botox-near-me",
   },
 };
 
@@ -87,10 +87,10 @@ export default function FindPage() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Brotox Official — Find Botox for Men",
-    url: "https://brotoxofficial.com/find",
+    url: "https://brotoxofficial.com/find-botox-near-me",
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://brotoxofficial.com/find/{zip_code}",
+      target: "https://brotoxofficial.com/find-botox-near-me/{zip_code}",
       "query-input": "required name=zip_code",
     },
   };
@@ -121,7 +121,7 @@ export default function FindPage() {
           {/* Zip Code Search */}
           <div className="max-w-lg mx-auto mb-8">
             <form
-              action="/find"
+              action="/find-botox-near-me"
               method="GET"
               className="flex gap-3"
               onSubmit={undefined}
@@ -186,7 +186,7 @@ export default function FindPage() {
                     {r.cities.map((city) => (
                       <Link
                         key={city.name}
-                        href={`/find/${city.zips[0]}`}
+                        href={`/find-botox-near-me/${city.zips[0]}`}
                         className={`${color.bg} border ${color.border} rounded-xl px-4 py-3 group hover:scale-[1.03] transition-all`}
                       >
                         <h4 className={`text-white text-sm font-bold group-hover:${color.text} transition-colors`}>

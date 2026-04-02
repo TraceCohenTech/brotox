@@ -15,7 +15,7 @@ export default function ExitIntentPopup() {
 
   // Auto-fill zip from URL if on a /find/[zip] page
   useEffect(() => {
-    const match = pathname.match(/^\/find\/(\d{5})$/);
+    const match = pathname.match(/^\/find-botox-near-me\/(\d{5})$/);
     if (match) setZip(match[1]);
   }, [pathname]);
 

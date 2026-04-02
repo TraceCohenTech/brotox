@@ -50,7 +50,7 @@ export default function Header() {
               Treatments
             </Link>
             <Link
-              href="/find"
+              href="/find-botox-near-me"
               className="text-gray-300 hover:text-white transition-colors text-sm font-medium"
             >
               Find Botox Near Me
@@ -62,7 +62,7 @@ export default function Header() {
               Blog
             </Link>
             <Link
-              href="/find"
+              href="/find-botox-near-me"
               className="btn-primary py-3 px-6 text-sm"
             >
               Get Matched
@@ -108,7 +108,7 @@ export default function Header() {
                 Treatments
               </Link>
               <Link
-                href="/find"
+                href="/find-botox-near-me"
                 className="text-gray-300 hover:text-white transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -122,7 +122,7 @@ export default function Header() {
                 Blog
               </Link>
               <Link
-                href="/find"
+                href="/find-botox-near-me"
                 className="btn-primary text-center"
                 onClick={() => setIsMenuOpen(false)}
               >

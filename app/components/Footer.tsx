@@ -57,7 +57,7 @@ export default function Footer() {
             <p className="text-gray-400 text-sm mb-4">
               Get matched with a vetted provider near you — free.
             </p>
-            <Link href="/find" className="btn-primary py-3 px-6 text-sm inline-block">
+            <Link href="/find-botox-near-me" className="btn-primary py-3 px-6 text-sm inline-block">
               Get Matched Free
             </Link>
           </div>

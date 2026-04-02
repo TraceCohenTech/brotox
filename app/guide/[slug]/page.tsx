@@ -67,7 +67,7 @@ export default async function GuidePage({ params }: PageProps) {
           <div className="container-main max-w-4xl">
             <Breadcrumbs items={[
               { label: "Home", href: "/" },
-              { label: "Guides", href: "/find" },
+              { label: "Guides", href: "/find-botox-near-me" },
               { label: `${guide.city}, ${guide.state}` },
             ]} />
             <div className="flex items-center gap-3 mb-4">
@@ -132,7 +132,7 @@ export default async function GuidePage({ params }: PageProps) {
             {/* Inline CTA */}
             <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-6 text-center">
               <p className="text-white font-bold mb-2">Find a vetted provider in {guide.city}</p>
-              <Link href="/find" className="btn-primary inline-block py-3 px-6 text-sm">Search by Zip Code →</Link>
+              <Link href="/find-botox-near-me" className="btn-primary inline-block py-3 px-6 text-sm">Search by Zip Code →</Link>
             </div>
 
             {/* What to look for */}
@@ -161,7 +161,7 @@ export default async function GuidePage({ params }: PageProps) {
                   {relatedZips.map((z) => (
                     <Link
                       key={z.zip}
-                      href={`/find/${z.zip}`}
+                      href={`/find-botox-near-me/${z.zip}`}
                       className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 group hover:border-blue-500/30 hover:bg-blue-500/5 transition-all"
                     >
                       <span className="text-white font-bold text-sm group-hover:text-blue-400 transition-colors">{z.zip}</span>
@@ -196,7 +196,7 @@ export default async function GuidePage({ params }: PageProps) {
             <div className="bg-gradient-to-r from-amber-500/10 via-amber-600/10 to-amber-500/10 border border-amber-500/20 rounded-3xl p-10 text-center">
               <h2 className="text-3xl font-black text-white mb-3">Ready to Get Matched in {guide.city}?</h2>
               <p className="text-lg text-amber-200 mb-6">Enter your zip code and we&apos;ll connect you with a vetted provider near you. Free, no obligation.</p>
-              <Link href="/find" className="btn-accent inline-block text-lg">Find Botox Near Me</Link>
+              <Link href="/find-botox-near-me" className="btn-accent inline-block text-lg">Find Botox Near Me</Link>
             </div>
           </div>
         </section>

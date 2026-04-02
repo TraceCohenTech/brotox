@@ -90,8 +90,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title,
     description,
     keywords,
-    alternates: { canonical: `https://brotoxofficial.com/find/${param}` },
-    openGraph: { title, description, url: `https://brotoxofficial.com/find/${param}`, siteName: "Brotox Official", type: "article" },
+    alternates: { canonical: `https://brotoxofficial.com/find-botox-near-me/${param}` },
+    openGraph: { title, description, url: `https://brotoxofficial.com/find-botox-near-me/${param}`, siteName: "Brotox Official", type: "article" },
   };
 }
 
@@ -135,7 +135,7 @@ export default async function LocationPage({ params }: PageProps) {
           <div className="container-main">
             <Breadcrumbs items={[
               { label: "Home", href: "/" },
-              { label: "Find", href: "/find" },
+              { label: "Find Botox Near Me", href: "/find-botox-near-me" },
               { label: breadcrumbLabel },
             ]} />
 
@@ -186,7 +186,7 @@ export default async function LocationPage({ params }: PageProps) {
                     <p className="text-sm text-gray-400 mb-2">Also serving zip codes:</p>
                     <div className="flex flex-wrap gap-2">
                       {loc.allZips.slice(0, 8).map((z) => (
-                        <Link key={z} href={`/find/${z}`} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-blue-300 hover:border-blue-500/30 transition-all">
+                        <Link key={z} href={`/find-botox-near-me/${z}`} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-blue-300 hover:border-blue-500/30 transition-all">
                           {z}
                         </Link>
                       ))}

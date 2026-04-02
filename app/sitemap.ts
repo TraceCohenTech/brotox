@@ -8,21 +8,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified: new Date(), changeFrequency: "weekly", priority: 1.0 },
-    { url: `${baseUrl}/find`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+    { url: `${baseUrl}/find-botox-near-me`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
     { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
   ];
 
   // Zip code pages
   const zipPages: MetadataRoute.Sitemap = zipCodes.map((z) => ({
-    url: `${baseUrl}/find/${z.zip}`,
+    url: `${baseUrl}/find-botox-near-me/${z.zip}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
 
-  // City/neighborhood slug pages (e.g., /find/chelsea-new-york-ny)
+  // City/neighborhood slug pages (e.g., /find-botox-near-me/chelsea-new-york-ny)
   const locationPages: MetadataRoute.Sitemap = getAllLocationSlugs().map((l) => ({
-    url: `${baseUrl}/find/${l.slug}`,
+    url: `${baseUrl}/find-botox-near-me/${l.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.8,
