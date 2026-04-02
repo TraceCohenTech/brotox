@@ -46,6 +46,21 @@ const regionColors: Record<string, { bg: string; border: string; text: string }>
   "Portland": { bg: "bg-emerald-500/10", border: "border-emerald-500/20", text: "text-emerald-400" },
   "Charlotte": { bg: "bg-sky-500/10", border: "border-sky-500/20", text: "text-sky-400" },
   "Orlando": { bg: "bg-pink-500/10", border: "border-pink-500/20", text: "text-pink-400" },
+  "Raleigh-Durham": { bg: "bg-blue-500/10", border: "border-blue-500/20", text: "text-blue-400" },
+  "Salt Lake City": { bg: "bg-sky-500/10", border: "border-sky-500/20", text: "text-sky-400" },
+  "New Orleans": { bg: "bg-amber-500/10", border: "border-amber-500/20", text: "text-amber-400" },
+  "Pittsburgh": { bg: "bg-yellow-500/10", border: "border-yellow-500/20", text: "text-yellow-400" },
+  "Kansas City": { bg: "bg-red-500/10", border: "border-red-500/20", text: "text-red-400" },
+  "Detroit": { bg: "bg-blue-500/10", border: "border-blue-500/20", text: "text-blue-400" },
+  "Ohio": { bg: "bg-rose-500/10", border: "border-rose-500/20", text: "text-rose-400" },
+  "Indianapolis": { bg: "bg-cyan-500/10", border: "border-cyan-500/20", text: "text-cyan-400" },
+  "Honolulu": { bg: "bg-teal-500/10", border: "border-teal-500/20", text: "text-teal-400" },
+  "Sacramento": { bg: "bg-orange-500/10", border: "border-orange-500/20", text: "text-orange-400" },
+  "Milwaukee": { bg: "bg-emerald-500/10", border: "border-emerald-500/20", text: "text-emerald-400" },
+  "Louisville": { bg: "bg-indigo-500/10", border: "border-indigo-500/20", text: "text-indigo-400" },
+  "Richmond": { bg: "bg-violet-500/10", border: "border-violet-500/20", text: "text-violet-400" },
+  "San Antonio": { bg: "bg-pink-500/10", border: "border-pink-500/20", text: "text-pink-400" },
+  "Baltimore": { bg: "bg-amber-500/10", border: "border-amber-500/20", text: "text-amber-400" },
 };
 
 const defaultRegionColor = { bg: "bg-blue-500/10", border: "border-blue-500/20", text: "text-blue-400" };
