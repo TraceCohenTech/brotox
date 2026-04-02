@@ -149,8 +149,8 @@ export default function Hero() {
 
             <p className="text-xl text-gray-300 mb-8 max-w-lg leading-relaxed">
               Education first. Discreet guidance.
-              <span className="text-white font-semibold"> Trusted local recommendations</span> coming soon.
-              Join the early access list.
+              <span className="text-white font-semibold"> Get matched with vetted, board-certified providers</span> near you.
+              Free consultation matching.
             </p>
 
             {/* Industry Stats row */}
@@ -185,7 +185,7 @@ export default function Hero() {
             >
               <span className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20">
                 <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                <span className="text-green-400">Provider Network Coming Soon</span>
+                <span className="text-green-400">Provider Network Live — 20+ Cities</span>
               </span>
             </motion.div>
           </motion.div>

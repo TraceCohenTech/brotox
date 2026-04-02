@@ -3,64 +3,56 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-const primaryConcerns = [
-  "Forehead Lines",
-  "Frown Lines (11s)",
-  "Crow's Feet",
-  "Jawline Definition",
-  "Full Face Refresh",
-  "Not Sure Yet - Just Exploring",
-];
-
-const ageRanges = ["25-34", "35-44", "45-54", "55+"];
-
 export default function SignUpForm() {
-  const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    zip: "",
-    ageRange: "",
-    primaryConcern: "",
+    firstName: "",
+    lastName: "",
     email: "",
     phone: "",
+    treatment: "",
+    zip: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [copied, setCopied] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setStatus("submitting");
 
     try {
-      await fetch(
-        "https://script.google.com/macros/s/AKfycbzb6bydsWsiF49amvYPJ0FC2_TuL3AbwaoLeIscNHNALisfGkZzDbqbAVZXGwmJKy22tA/exec",
-        {
-          method: "POST",
-          mode: "no-cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
-      setIsSubmitted(true);
-    } catch (error) {
-      console.error("Form submission error:", error);
-      // Still show success since no-cors mode won't return response
-      setIsSubmitted(true);
-    } finally {
-      setIsSubmitting(false);
+      const res = await fetch("/api/consultation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          provider: "Homepage",
+          city: "",
+          region: "",
+          sourceType: "homepage_form",
+        }),
+      });
+
+      if (res.ok) {
+        setStatus("success");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
     }
   };
 
-  const nextStep = () => setStep(step + 1);
-  const canProceed = () => {
-    if (step === 1) return formData.zip.length >= 5;
-    if (step === 2) return formData.ageRange !== "";
-    if (step === 3) return formData.primaryConcern !== "";
-    return true;
+  const shareUrl = formData.zip
+    ? `https://brotoxofficial.com/find/${formData.zip}?ref=friend`
+    : "https://brotoxofficial.com/find?ref=friend";
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(shareUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
-  if (isSubmitted) {
+  if (status === "success") {
     return (
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -72,12 +64,26 @@ export default function SignUpForm() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-2xl font-bold text-white mb-2">You&apos;re On The List!</h3>
-        <p className="text-gray-300 mb-4">
-          We&apos;ll notify you when vetted providers are available in your area.
+        <h3 className="text-2xl font-bold text-white mb-2">Request Submitted!</h3>
+        <p className="text-green-300 mb-6">
+          We&apos;ll match you with a vetted provider shortly. Check your email for next steps.
         </p>
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20">
-          <span className="text-blue-400 text-sm">Zip: {formData.zip}</span>
+        <div className="border-t border-white/10 pt-5">
+          <p className="text-white font-semibold text-sm mb-3">Know someone who&apos;d be interested?</p>
+          <div className="flex gap-2">
+            <button
+              onClick={handleCopyLink}
+              className="flex-1 py-2.5 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-medium hover:bg-white/15 transition-all"
+            >
+              {copied ? "Copied!" : "Copy Link"}
+            </button>
+            <a
+              href={`sms:?body=${encodeURIComponent("Check out Brotox — free matching with vetted Botox providers for men. " + shareUrl)}`}
+              className="flex-1 py-2.5 px-3 rounded-full bg-green-500/20 border border-green-500/30 text-green-300 text-xs font-medium hover:bg-green-500/30 transition-all text-center"
+            >
+              Text a Friend
+            </a>
+          </div>
         </div>
       </motion.div>
     );
@@ -89,198 +95,119 @@ export default function SignUpForm() {
       animate={{ opacity: 1, y: 0 }}
       className="glass rounded-3xl p-8"
     >
-      <div className="text-center mb-6">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 mb-3">
-          <span className="text-amber-400 text-xs font-medium">EARLY ACCESS</span>
+      <div className="text-center mb-5">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 mb-3">
+          <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+          <span className="text-green-400 text-xs font-medium">NOW LIVE</span>
         </div>
-        <h3 className="text-2xl font-bold text-white mb-2">
-          Join The Waitlist
+        <h3 className="text-2xl font-bold text-white mb-1">
+          Get Matched Free
         </h3>
-        <p className="text-gray-400 text-sm">
-          Get notified when vetted providers launch in your area.
+        <p className="text-gray-300 text-sm">
+          Connect with a vetted Botox provider for men near you.
         </p>
       </div>
 
-      {/* Progress indicator */}
-      <div className="flex gap-2 mb-6">
-        {[1, 2, 3, 4].map((s) => (
-          <div
-            key={s}
-            className={`flex-1 h-1 rounded-full transition-all ${
-              s <= step ? "bg-blue-500" : "bg-white/10"
-            }`}
-          />
-        ))}
-      </div>
-
-      <form
-        onSubmit={handleSubmit}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" && step < 4) {
-            e.preventDefault();
-            if (canProceed()) nextStep();
-          }
-        }}
-        className="space-y-4"
-      >
-        {/* Step 1: Zip Code */}
-        {step === 1 && (
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-          >
-            <label className="block text-sm text-gray-400 mb-2">
-              What&apos;s your zip code?
-            </label>
+      <form onSubmit={handleSubmit} className="space-y-3">
+        <div className="grid grid-cols-2 gap-3">
+          <div>
+            <label className="block text-xs text-gray-400 mb-1.5">First Name *</label>
             <input
               type="text"
-              placeholder="Enter zip code"
               required
+              placeholder="John"
+              className="w-full text-sm"
+              value={formData.firstName}
+              onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+            />
+          </div>
+          <div>
+            <label className="block text-xs text-gray-400 mb-1.5">Last Name *</label>
+            <input
+              type="text"
+              required
+              placeholder="Smith"
+              className="w-full text-sm"
+              value={formData.lastName}
+              onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+            />
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-xs text-gray-400 mb-1.5">Email *</label>
+          <input
+            type="email"
+            required
+            placeholder="john@email.com"
+            className="w-full text-sm"
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          />
+        </div>
+
+        <div className="grid grid-cols-2 gap-3">
+          <div>
+            <label className="block text-xs text-gray-400 mb-1.5">Phone *</label>
+            <input
+              type="tel"
+              required
+              placeholder="(555) 123-4567"
+              className="w-full text-sm"
+              value={formData.phone}
+              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+            />
+          </div>
+          <div>
+            <label className="block text-xs text-gray-400 mb-1.5">Zip Code *</label>
+            <input
+              type="text"
+              required
+              placeholder="10001"
               maxLength={5}
+              className="w-full text-sm"
               value={formData.zip}
               onChange={(e) => setFormData({ ...formData, zip: e.target.value.replace(/\D/g, "") })}
-              className="w-full text-lg"
             />
-            <p className="text-xs text-gray-500 mt-2">
-              We&apos;ll match you with providers in your area
-            </p>
-          </motion.div>
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-xs text-gray-400 mb-1.5">What are you interested in? *</label>
+          <select
+            required
+            className="w-full text-sm"
+            value={formData.treatment}
+            onChange={(e) => setFormData({ ...formData, treatment: e.target.value })}
+          >
+            <option value="">Select...</option>
+            <option value="Forehead Lines">Forehead Lines</option>
+            <option value="Frown Lines">Frown Lines</option>
+            <option value="Crow's Feet">Crow&apos;s Feet</option>
+            <option value="Jawline & Chin">Jawline &amp; Chin</option>
+            <option value="Full Face Refresh">Full Face Refresh</option>
+            <option value="Not Sure Yet">Not Sure Yet</option>
+          </select>
+        </div>
+
+        {status === "error" && (
+          <div className="p-2.5 rounded-lg bg-red-500/10 border border-red-500/20 text-red-300 text-xs">
+            Something went wrong. Please try again.
+          </div>
         )}
 
-        {/* Step 2: Age Range */}
-        {step === 2 && (
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-          >
-            <label className="block text-sm text-gray-400 mb-3">
-              What&apos;s your age range?
-            </label>
-            <div className="grid grid-cols-2 gap-3">
-              {ageRanges.map((range) => (
-                <button
-                  key={range}
-                  type="button"
-                  onClick={() => setFormData({ ...formData, ageRange: range })}
-                  className={`py-3 rounded-xl border transition-all text-sm font-medium ${
-                    formData.ageRange === range
-                      ? "bg-blue-600 border-blue-500 text-white"
-                      : "border-white/20 text-gray-300 hover:border-white/40"
-                  }`}
-                >
-                  {range}
-                </button>
-              ))}
-            </div>
-          </motion.div>
-        )}
+        <motion.button
+          type="submit"
+          disabled={status === "submitting"}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="w-full btn-accent text-lg disabled:opacity-50"
+        >
+          {status === "submitting" ? "Submitting..." : "Get Matched Now"}
+        </motion.button>
 
-        {/* Step 3: Primary Concern */}
-        {step === 3 && (
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-          >
-            <label className="block text-sm text-gray-400 mb-3">
-              What&apos;s your primary concern?
-            </label>
-            <div className="space-y-2">
-              {primaryConcerns.map((concern) => (
-                <button
-                  key={concern}
-                  type="button"
-                  onClick={() => setFormData({ ...formData, primaryConcern: concern })}
-                  className={`w-full py-3 px-4 rounded-xl border transition-all text-sm font-medium text-left ${
-                    formData.primaryConcern === concern
-                      ? "bg-blue-600 border-blue-500 text-white"
-                      : "border-white/20 text-gray-300 hover:border-white/40"
-                  }`}
-                >
-                  {concern}
-                </button>
-              ))}
-            </div>
-          </motion.div>
-        )}
-
-        {/* Step 4: Contact Info */}
-        {step === 4 && (
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="space-y-4"
-          >
-            <div>
-              <label className="block text-sm text-gray-400 mb-2">
-                Email address
-              </label>
-              <input
-                type="email"
-                placeholder="your@email.com"
-                required
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full"
-              />
-            </div>
-            <div>
-              <label className="block text-sm text-gray-400 mb-2">
-                Phone <span className="text-gray-600">(optional)</span>
-              </label>
-              <input
-                type="tel"
-                placeholder="(555) 555-5555"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full"
-              />
-            </div>
-          </motion.div>
-        )}
-
-        {/* Navigation Buttons */}
-        {step < 4 ? (
-          <motion.button
-            type="button"
-            onClick={nextStep}
-            disabled={!canProceed()}
-            whileHover={{ scale: canProceed() ? 1.02 : 1 }}
-            whileTap={{ scale: canProceed() ? 0.98 : 1 }}
-            className={`w-full py-4 rounded-full font-semibold transition-all ${
-              canProceed()
-                ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white hover:from-blue-500 hover:to-blue-400"
-                : "bg-white/10 text-gray-500 cursor-not-allowed"
-            }`}
-          >
-            Continue
-          </motion.button>
-        ) : (
-          <motion.button
-            type="submit"
-            disabled={isSubmitting || !formData.email}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full btn-accent text-lg relative overflow-hidden"
-          >
-            {isSubmitting ? (
-              <span className="flex items-center justify-center gap-2">
-                <svg className="animate-spin w-5 h-5" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                </svg>
-                Processing...
-              </span>
-            ) : (
-              "Get Updates & Local Recommendations"
-            )}
-          </motion.button>
-        )}
-
-        <p className="text-center text-xs text-gray-500">
-          {step < 4
-            ? `Step ${step} of 4`
-            : "We respect your privacy. Unsubscribe anytime."
-          }
+        <p className="text-center text-[10px] text-gray-500">
+          Free, no obligation. We&apos;ll connect you with a vetted provider.
         </p>
       </form>
     </motion.div>

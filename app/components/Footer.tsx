@@ -55,10 +55,10 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-white mb-4">Get Started</h4>
             <p className="text-gray-400 text-sm mb-4">
-              Join the waitlist for vetted provider recommendations.
+              Get matched with a vetted provider near you — free.
             </p>
-            <Link href="#top" className="btn-primary py-3 px-6 text-sm inline-block">
-              Join Waitlist
+            <Link href="/find" className="btn-primary py-3 px-6 text-sm inline-block">
+              Get Matched Free
             </Link>
           </div>
         </div>
