@@ -84,7 +84,7 @@ export default function ConsultationForm({
           />
         </div>
         <div>
-          <label className="block text-sm text-gray-300 font-medium mb-2">Last Name</label>
+          <label className="block text-sm text-gray-300 font-medium mb-2">Last Name <span className="text-gray-500">(optional)</span></label>
           <input
             type="text"
             placeholder="Smith"
@@ -107,7 +107,7 @@ export default function ConsultationForm({
           />
         </div>
         <div>
-          <label className="block text-sm text-gray-300 font-medium mb-2">Phone</label>
+          <label className="block text-sm text-gray-300 font-medium mb-2">Phone <span className="text-gray-500">(optional)</span></label>
           <input
             type="tel"
             placeholder="(555) 123-4567"
@@ -118,7 +118,7 @@ export default function ConsultationForm({
         </div>
       </div>
       <div className="mb-6">
-        <label className="block text-sm text-gray-300 font-medium mb-2">What are you interested in?</label>
+        <label className="block text-sm text-gray-300 font-medium mb-2">What are you interested in? <span className="text-gray-500">(optional)</span></label>
         <select
           className="w-full"
           value={formData.treatment}

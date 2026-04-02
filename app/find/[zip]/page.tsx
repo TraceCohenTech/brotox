@@ -59,7 +59,7 @@ const treatmentInfo = [
     icon: "━━",
   },
   {
-    name: "Frown Lines (11s)",
+    name: "Frown Lines",
     description: "Those vertical lines between your eyebrows that make you look angry — even when you're not.",
     duration: "10 min",
     icon: "║",

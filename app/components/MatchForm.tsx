@@ -92,7 +92,7 @@ export default function MatchForm({ city, region }: MatchFormProps) {
           <option value="">Your goal...</option>
           <option value="forehead-lines">Forehead Lines</option>
           <option value="crows-feet">Crow&apos;s Feet</option>
-          <option value="frown-lines">Frown Lines (11s)</option>
+          <option value="frown-lines">Frown Lines</option>
           <option value="jawline">Jawline Definition</option>
           <option value="under-eyes">Under-Eye Rejuvenation</option>
           <option value="full-face">Full Face Refresh</option>
