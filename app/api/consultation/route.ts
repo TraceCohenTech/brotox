@@ -3,18 +3,21 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-    const { firstName, lastName, email, phone, treatment, provider, city, region } = data;
+    const { firstName, lastName, email, phone, treatment, provider, city, region, zip, sourceType } = data;
 
-    // Validate required fields
-    if (!firstName || !email) {
-      return NextResponse.json(
-        { error: "First name and email are required" },
-        { status: 400 }
-      );
+    // Validate: full form requires all fields, exit intent only requires email
+    if (sourceType === "exit_intent") {
+      if (!email) {
+        return NextResponse.json({ error: "Email is required" }, { status: 400 });
+      }
+    } else {
+      if (!firstName || !email) {
+        return NextResponse.json({ error: "First name and email are required" }, { status: 400 });
+      }
     }
 
     const lead = {
-      firstName,
+      firstName: firstName || "",
       lastName: lastName || "",
       email,
       phone: phone || "",
@@ -22,6 +25,8 @@ export async function POST(request: Request) {
       provider: provider || "",
       city: city || "",
       region: region || "",
+      zip: zip || "",
+      sourceType: sourceType || "consultation_form",
       timestamp: new Date().toISOString(),
       source: "brotoxofficial.com",
     };

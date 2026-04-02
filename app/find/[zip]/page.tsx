@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { zipCodes, getZipByCode } from "@/app/data/zipcodes";
+import { guides } from "@/app/guide/data/guides";
 import Breadcrumbs from "@/app/components/Breadcrumbs";
 import ConsultationForm from "@/app/components/ConsultationForm";
 
@@ -114,7 +115,7 @@ export default async function ZipPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main className="min-h-screen bg-[var(--background)]">
+      <main className="min-h-screen bg-[var(--background)] pb-20 md:pb-0">
         {/* Hero */}
         <section className="bg-gradient-to-b from-[#0f1219] via-[#1a1f2e] to-[var(--background)] pt-32 pb-16">
           <div className="container-main">
@@ -169,7 +170,7 @@ export default async function ZipPage({ params }: PageProps) {
               </div>
 
               {/* Right — Lead Capture */}
-              <div className="lg:col-span-2">
+              <div id="consultation-form" className="lg:col-span-2">
                 <div className="sticky top-28">
                   <div className="bg-gradient-to-b from-blue-500/10 to-blue-600/5 border border-blue-500/20 rounded-2xl p-6">
                     <h3 className="text-xl font-bold text-white mb-1">
@@ -183,6 +184,7 @@ export default async function ZipPage({ params }: PageProps) {
                       practiceName="a vetted local practice"
                       city={zipData.city}
                       region={zipData.region}
+                      zip={zip}
                       treatments={treatmentInfo.map((t) => ({ name: t.name }))}
                     />
                   </div>
@@ -316,6 +318,34 @@ export default async function ZipPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+
+        {/* City Guide Link */}
+        {(() => {
+          const cityGuide = guides.find((g) => g.region === zipData.region);
+          return cityGuide ? (
+            <section className="py-8">
+              <div className="container-main max-w-2xl">
+                <Link
+                  href={`/guide/${cityGuide.slug}`}
+                  className="block bg-amber-500/10 border border-amber-500/20 rounded-2xl p-6 group hover:bg-amber-500/15 transition-all"
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-amber-400 text-xs font-semibold uppercase tracking-wider">City Guide</span>
+                      <h3 className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">
+                        Complete Guide to Botox for Men in {cityGuide.city}
+                      </h3>
+                      <p className="text-gray-300 text-sm">Pricing, neighborhoods, what to look for, and insider tips.</p>
+                    </div>
+                    <svg className="w-6 h-6 text-amber-400 flex-shrink-0 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                </Link>
+              </div>
+            </section>
+          ) : null;
+        })()}
 
         {/* Bottom CTA */}
         <section className="py-16 bg-gradient-to-b from-[var(--background)] to-[#0f1219]">

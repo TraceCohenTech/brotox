@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ExitIntentPopup() {
@@ -9,9 +10,16 @@ export default function ExitIntentPopup() {
   const [email, setEmail] = useState("");
   const [zip, setZip] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const pathname = usePathname();
+
+  // Auto-fill zip from URL if on a /find/[zip] page
+  useEffect(() => {
+    const match = pathname.match(/^\/find\/(\d{5})$/);
+    if (match) setZip(match[1]);
+  }, [pathname]);
 
   useEffect(() => {
-    // Check if already shown this session
     if (sessionStorage.getItem("exitPopupShown")) {
       setHasShown(true);
       return;
@@ -29,11 +37,25 @@ export default function ExitIntentPopup() {
     return () => document.removeEventListener("mouseleave", handleMouseLeave);
   }, [hasShown]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you'd send to your email service
+    setIsSubmitting(true);
+    try {
+      await fetch("/api/consultation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          zip,
+          sourceType: "exit_intent",
+        }),
+      });
+    } catch {
+      // Silent fail for exit popups
+    }
     setIsSubmitted(true);
-    setTimeout(() => setIsOpen(false), 2000);
+    setIsSubmitting(false);
+    setTimeout(() => setIsOpen(false), 2500);
   };
 
   return (
@@ -65,7 +87,6 @@ export default function ExitIntentPopup() {
 
             {!isSubmitted ? (
               <>
-                {/* Offer badge */}
                 <div className="text-center mb-6">
                   <span className="inline-block px-4 py-2 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold mb-4">
                     EARLY ACCESS
@@ -73,12 +94,11 @@ export default function ExitIntentPopup() {
                   <h3 className="text-3xl font-black text-white mb-2">
                     DON&apos;T MISS OUT
                   </h3>
-                  <p className="text-gray-400">
+                  <p className="text-gray-300">
                     Be first to know when vetted providers launch in your area
                   </p>
                 </div>
 
-                {/* Form */}
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <input
                     type="text"
@@ -99,25 +119,25 @@ export default function ExitIntentPopup() {
                   />
                   <motion.button
                     type="submit"
+                    disabled={isSubmitting}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full btn-accent text-lg"
+                    className="w-full btn-accent text-lg disabled:opacity-50"
                   >
-                    Join the Waitlist
+                    {isSubmitting ? "Joining..." : "Join the Waitlist"}
                   </motion.button>
                 </form>
 
-                <p className="text-center text-gray-500 text-xs mt-4">
+                <p className="text-center text-gray-400 text-xs mt-4">
                   No spam. We&apos;ll only email you about providers in your area.
                 </p>
 
-                {/* Value prop */}
                 <div className="mt-6 p-4 rounded-xl bg-green-500/10 border border-green-500/20">
                   <div className="flex items-center gap-3">
                     <svg className="w-6 h-6 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                     </svg>
-                    <p className="text-green-400 text-sm">
+                    <p className="text-green-300 text-sm">
                       We only recommend licensed, vetted providers
                     </p>
                   </div>
@@ -131,7 +151,7 @@ export default function ExitIntentPopup() {
                   </svg>
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">You&apos;re On The List!</h3>
-                <p className="text-gray-400">We&apos;ll notify you when providers are available near {zip}.</p>
+                <p className="text-gray-300">We&apos;ll notify you when providers are available near {zip}.</p>
               </div>
             )}
           </motion.div>

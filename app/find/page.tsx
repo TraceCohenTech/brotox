@@ -83,7 +83,24 @@ function getRegionGroups() {
 export default function FindPage() {
   const regions = getRegionGroups();
 
+  const searchActionJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Brotox Official — Find Botox for Men",
+    url: "https://brotoxofficial.com/find",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://brotoxofficial.com/find/{zip_code}",
+      "query-input": "required name=zip_code",
+    },
+  };
+
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(searchActionJsonLd) }}
+    />
     <main className="min-h-screen bg-[var(--background)]">
       {/* Hero with zip search */}
       <section className="bg-gradient-to-b from-[#0f1219] via-[#1a1f2e] to-[var(--background)] pt-32 pb-20">
@@ -220,5 +237,6 @@ export default function FindPage() {
         </div>
       </section>
     </main>
+    </>
   );
 }

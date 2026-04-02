@@ -7,6 +7,7 @@ interface ConsultationFormProps {
   practiceName: string;
   city: string;
   region: string;
+  zip?: string;
   treatments: { name: string }[];
 }
 
@@ -15,6 +16,7 @@ export default function ConsultationForm({
   practiceName,
   city,
   region,
+  zip,
   treatments,
 }: ConsultationFormProps) {
   const [formData, setFormData] = useState({
@@ -39,6 +41,8 @@ export default function ConsultationForm({
           provider: providerName,
           city,
           region,
+          zip: zip || "",
+          sourceType: "consultation_form",
         }),
       });
 
@@ -53,6 +57,18 @@ export default function ConsultationForm({
     }
   };
 
+  const [copied, setCopied] = useState(false);
+  const shareUrl = zip
+    ? `https://brotoxofficial.com/find/${zip}?ref=friend`
+    : "https://brotoxofficial.com/find?ref=friend";
+  const shareText = `Check out Brotox — free matching with vetted Botox providers for men near you.`;
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(shareUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   if (status === "success") {
     return (
       <div className="bg-green-500/10 border border-green-500/20 rounded-2xl p-8 md:p-12 text-center">
@@ -62,9 +78,36 @@ export default function ConsultationForm({
           </svg>
         </div>
         <h3 className="text-2xl font-bold text-white mb-2">Request Submitted!</h3>
-        <p className="text-green-300">
+        <p className="text-green-300 mb-6">
           We&apos;ll connect you with {practiceName} shortly. Check your email for next steps.
         </p>
+
+        {/* Referral */}
+        <div className="border-t border-white/10 pt-6">
+          <p className="text-white font-semibold mb-3">Know someone who&apos;d be interested?</p>
+          <div className="flex flex-col sm:flex-row gap-2">
+            <button
+              onClick={handleCopyLink}
+              className="flex-1 py-3 px-4 rounded-full bg-white/10 border border-white/20 text-white text-sm font-medium hover:bg-white/15 transition-all"
+            >
+              {copied ? "Copied!" : "Copy Link"}
+            </button>
+            <a
+              href={`sms:?body=${encodeURIComponent(shareText + " " + shareUrl)}`}
+              className="flex-1 py-3 px-4 rounded-full bg-green-500/20 border border-green-500/30 text-green-300 text-sm font-medium hover:bg-green-500/30 transition-all text-center"
+            >
+              Share via Text
+            </a>
+            <a
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 py-3 px-4 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-300 text-sm font-medium hover:bg-blue-500/30 transition-all text-center"
+            >
+              Share on X
+            </a>
+          </div>
+        </div>
       </div>
     );
   }

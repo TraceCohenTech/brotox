@@ -56,6 +56,12 @@ export default function Header() {
               Find Botox Near Me
             </Link>
             <Link
+              href="/blog"
+              className="text-gray-300 hover:text-white transition-colors text-sm font-medium"
+            >
+              Blog
+            </Link>
+            <Link
               href="/find"
               className="btn-primary py-3 px-6 text-sm"
             >
@@ -107,6 +113,13 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Find Botox Near Me
+              </Link>
+              <Link
+                href="/blog"
+                className="text-gray-300 hover:text-white transition-colors py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Blog
               </Link>
               <Link
                 href="/find"

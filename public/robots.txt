@@ -1,5 +1,9 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
+Allow: /find/
+Allow: /blog/
+Allow: /guide/
+Disallow: /providers/
 
 Sitemap: https://brotoxofficial.com/sitemap.xml
