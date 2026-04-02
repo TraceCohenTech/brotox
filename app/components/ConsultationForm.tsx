@@ -84,9 +84,10 @@ export default function ConsultationForm({
           />
         </div>
         <div>
-          <label className="block text-sm text-gray-300 font-medium mb-2">Last Name <span className="text-gray-500">(optional)</span></label>
+          <label className="block text-sm text-gray-300 font-medium mb-2">Last Name *</label>
           <input
             type="text"
+            required
             placeholder="Smith"
             className="w-full"
             value={formData.lastName}
@@ -107,9 +108,10 @@ export default function ConsultationForm({
           />
         </div>
         <div>
-          <label className="block text-sm text-gray-300 font-medium mb-2">Phone <span className="text-gray-500">(optional)</span></label>
+          <label className="block text-sm text-gray-300 font-medium mb-2">Phone *</label>
           <input
             type="tel"
+            required
             placeholder="(555) 123-4567"
             className="w-full"
             value={formData.phone}
@@ -118,9 +120,10 @@ export default function ConsultationForm({
         </div>
       </div>
       <div className="mb-6">
-        <label className="block text-sm text-gray-300 font-medium mb-2">What are you interested in? <span className="text-gray-500">(optional)</span></label>
+        <label className="block text-sm text-gray-300 font-medium mb-2">What are you interested in? *</label>
         <select
           className="w-full"
+          required
           value={formData.treatment}
           onChange={(e) => setFormData({ ...formData, treatment: e.target.value })}
         >
