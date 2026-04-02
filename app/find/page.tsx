@@ -21,26 +21,52 @@ export const metadata: Metadata = {
   },
 };
 
-// Group zips by city for the browse section
-function getCityGroups() {
-  const cityMap = new Map<string, { state: string; region: string; zips: string[] }>();
+
+const regionColors: Record<string, { bg: string; border: string; text: string }> = {
+  "New York Tristate": { bg: "bg-blue-500/10", border: "border-blue-500/20", text: "text-blue-400" },
+  "South Florida": { bg: "bg-amber-500/10", border: "border-amber-500/20", text: "text-amber-400" },
+  "Los Angeles": { bg: "bg-pink-500/10", border: "border-pink-500/20", text: "text-pink-400" },
+  "San Francisco Bay Area": { bg: "bg-orange-500/10", border: "border-orange-500/20", text: "text-orange-400" },
+  "San Diego": { bg: "bg-cyan-500/10", border: "border-cyan-500/20", text: "text-cyan-400" },
+  "Chicago": { bg: "bg-red-500/10", border: "border-red-500/20", text: "text-red-400" },
+  "Boston": { bg: "bg-emerald-500/10", border: "border-emerald-500/20", text: "text-emerald-400" },
+  "Washington DC": { bg: "bg-indigo-500/10", border: "border-indigo-500/20", text: "text-indigo-400" },
+  "Dallas-Fort Worth": { bg: "bg-yellow-500/10", border: "border-yellow-500/20", text: "text-yellow-400" },
+  "Houston": { bg: "bg-teal-500/10", border: "border-teal-500/20", text: "text-teal-400" },
+  "Austin": { bg: "bg-lime-500/10", border: "border-lime-500/20", text: "text-lime-400" },
+  "Atlanta": { bg: "bg-rose-500/10", border: "border-rose-500/20", text: "text-rose-400" },
+  "Seattle": { bg: "bg-sky-500/10", border: "border-sky-500/20", text: "text-sky-400" },
+  "Denver": { bg: "bg-violet-500/10", border: "border-violet-500/20", text: "text-violet-400" },
+  "Phoenix-Scottsdale": { bg: "bg-orange-500/10", border: "border-orange-500/20", text: "text-orange-400" },
+  "Nashville": { bg: "bg-amber-500/10", border: "border-amber-500/20", text: "text-amber-400" },
+  "Philadelphia": { bg: "bg-blue-500/10", border: "border-blue-500/20", text: "text-blue-400" },
+  "Tampa Bay": { bg: "bg-teal-500/10", border: "border-teal-500/20", text: "text-teal-400" },
+  "Las Vegas": { bg: "bg-yellow-500/10", border: "border-yellow-500/20", text: "text-yellow-400" },
+  "Minneapolis": { bg: "bg-cyan-500/10", border: "border-cyan-500/20", text: "text-cyan-400" },
+  "Portland": { bg: "bg-emerald-500/10", border: "border-emerald-500/20", text: "text-emerald-400" },
+  "Charlotte": { bg: "bg-sky-500/10", border: "border-sky-500/20", text: "text-sky-400" },
+  "Orlando": { bg: "bg-pink-500/10", border: "border-pink-500/20", text: "text-pink-400" },
+};
+
+const defaultRegionColor = { bg: "bg-blue-500/10", border: "border-blue-500/20", text: "text-blue-400" };
+
+function getRegionGroups() {
+  const regionMap = new Map<string, Map<string, string[]>>();
   for (const z of zipCodes) {
-    const key = `${z.city}, ${z.state}`;
-    if (!cityMap.has(key)) {
-      cityMap.set(key, { state: z.state, region: z.region, zips: [] });
-    }
-    cityMap.get(key)!.zips.push(z.zip);
+    if (!regionMap.has(z.region)) regionMap.set(z.region, new Map());
+    const cities = regionMap.get(z.region)!;
+    const cityKey = `${z.city}, ${z.state}`;
+    if (!cities.has(cityKey)) cities.set(cityKey, []);
+    cities.get(cityKey)!.push(z.zip);
   }
-  return Array.from(cityMap.entries()).map(([name, data]) => ({
-    name,
-    ...data,
+  return Array.from(regionMap.entries()).map(([region, cities]) => ({
+    region,
+    cities: Array.from(cities.entries()).map(([name, zips]) => ({ name, zips })),
   }));
 }
 
 export default function FindPage() {
-  const cities = getCityGroups();
-  const sfCities = cities.filter((c) => c.region === "South Florida");
-  const nyCities = cities.filter((c) => c.region === "New York Tristate");
+  const regions = getRegionGroups();
 
   return (
     <main className="min-h-screen bg-[var(--background)]">
@@ -82,7 +108,7 @@ export default function FindPage() {
               </button>
             </form>
             <p className="text-gray-400 text-sm mt-3">
-              Currently serving NYC, tristate area, and South Florida
+              Serving 20+ major metros nationwide
             </p>
           </div>
 
@@ -93,8 +119,8 @@ export default function FindPage() {
               <p className="text-sm text-blue-300 font-medium">Zip Codes</p>
             </div>
             <div className="bg-amber-500/10 border border-amber-500/20 rounded-2xl px-6 py-4 text-center">
-              <p className="text-3xl font-black text-amber-400">2</p>
-              <p className="text-sm text-amber-300 font-medium">Regions</p>
+              <p className="text-3xl font-black text-amber-400">20+</p>
+              <p className="text-sm text-amber-300 font-medium">Cities</p>
             </div>
             <div className="bg-green-500/10 border border-green-500/20 rounded-2xl px-6 py-4 text-center">
               <p className="text-3xl font-black text-green-400">100%</p>
@@ -114,54 +140,35 @@ export default function FindPage() {
             Click any city to find Botox providers for men in your area
           </p>
 
-          <div className="grid gap-10">
-            {/* South Florida */}
-            <div>
-              <div className="flex items-center gap-4 mb-5">
-                <h3 className="text-2xl font-bold text-amber-400">South Florida</h3>
-                <div className="h-px flex-1 bg-white/10" />
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-                {sfCities.map((city) => (
-                  <Link
-                    key={city.name}
-                    href={`/find/${city.zips[0]}`}
-                    className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 group hover:scale-[1.03] transition-all"
-                  >
-                    <h4 className="text-white font-bold group-hover:text-amber-400 transition-colors">
-                      {city.name}
-                    </h4>
-                    <p className="text-amber-300 text-xs">
-                      {city.zips.length} zip code{city.zips.length !== 1 ? "s" : ""}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* NY Tristate */}
-            <div>
-              <div className="flex items-center gap-4 mb-5">
-                <h3 className="text-2xl font-bold text-blue-400">New York Tristate</h3>
-                <div className="h-px flex-1 bg-white/10" />
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-                {nyCities.map((city) => (
-                  <Link
-                    key={city.name}
-                    href={`/find/${city.zips[0]}`}
-                    className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 group hover:scale-[1.03] transition-all"
-                  >
-                    <h4 className="text-white font-bold group-hover:text-blue-400 transition-colors">
-                      {city.name}
-                    </h4>
-                    <p className="text-blue-300 text-xs">
-                      {city.zips.length} zip code{city.zips.length !== 1 ? "s" : ""}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </div>
+          <div className="grid gap-8">
+            {regions.map((r) => {
+              const color = regionColors[r.region] || defaultRegionColor;
+              return (
+                <div key={r.region}>
+                  <div className="flex items-center gap-4 mb-4">
+                    <h3 className={`text-xl font-bold ${color.text}`}>{r.region}</h3>
+                    <span className="text-xs text-gray-500">{r.cities.reduce((a, c) => a + c.zips.length, 0)} zips</span>
+                    <div className="h-px flex-1 bg-white/10" />
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
+                    {r.cities.map((city) => (
+                      <Link
+                        key={city.name}
+                        href={`/find/${city.zips[0]}`}
+                        className={`${color.bg} border ${color.border} rounded-xl px-4 py-3 group hover:scale-[1.03] transition-all`}
+                      >
+                        <h4 className={`text-white text-sm font-bold group-hover:${color.text} transition-colors`}>
+                          {city.name}
+                        </h4>
+                        <p className={`${color.text} text-[10px] opacity-80`}>
+                          {city.zips.length} zip{city.zips.length !== 1 ? "s" : ""}
+                        </p>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
