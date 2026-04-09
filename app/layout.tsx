@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import PageLoader from "./components/PageLoader";
 import StickyBookButton from "./components/StickyBookButton";
 import ExitIntentPopup from "./components/ExitIntentPopup";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = localFont({
