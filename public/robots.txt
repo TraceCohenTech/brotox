@@ -1,7 +1,7 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
-Allow: /find/
+Allow: /find-botox-near-me/
 Allow: /blog/
 Allow: /guide/
 Disallow: /providers/
