@@ -43,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // SEO blog routes (/botox-for-men/*)
-  const seoBlogSlugs = ["is-it-worth-it", "first-appointment-guide", "vs-fillers", "cost-guide"];
+  const seoBlogSlugs = ["is-it-worth-it", "first-appointment-guide", "vs-fillers", "cost-guide", "best-age-to-start", "forehead-lines-guide", "side-effects", "jawline-sculpting", "before-and-after", "crows-feet-treatment"];
   const seoBlogPages: MetadataRoute.Sitemap = seoBlogSlugs.map((s) => ({
     url: `${baseUrl}/botox-for-men/${s}`,
     lastModified: new Date(),

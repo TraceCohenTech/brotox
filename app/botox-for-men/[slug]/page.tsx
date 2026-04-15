@@ -10,6 +10,12 @@ const seoSlugs: Record<string, string> = {
   "first-appointment-guide": "what-to-expect-first-botox-appointment",
   "vs-fillers": "botox-vs-fillers-for-men",
   "cost-guide": "how-much-does-botox-cost-for-men",
+  "best-age-to-start": "best-age-to-start-botox-men",
+  "forehead-lines-guide": "botox-forehead-lines-men",
+  "side-effects": "botox-side-effects-men",
+  "jawline-sculpting": "jawline-botox-filler-men",
+  "before-and-after": "botox-before-after-men",
+  "crows-feet-treatment": "crows-feet-botox-men",
 };
 
 interface PageProps {
