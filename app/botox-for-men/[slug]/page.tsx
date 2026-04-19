@@ -16,6 +16,9 @@ const seoSlugs: Record<string, string> = {
   "jawline-sculpting": "jawline-botox-filler-men",
   "before-and-after": "botox-before-after-men",
   "crows-feet-treatment": "crows-feet-botox-men",
+  "hyperhidrosis-sweating-treatment": "botox-hyperhidrosis-men",
+  "aftercare-guide": "botox-aftercare-guide-men",
+  "myths-debunked": "botox-myths-men-believe",
 };
 
 interface PageProps {
