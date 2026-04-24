@@ -19,6 +19,9 @@ const seoSlugs: Record<string, string> = {
   "hyperhidrosis-sweating-treatment": "botox-hyperhidrosis-men",
   "aftercare-guide": "botox-aftercare-guide-men",
   "myths-debunked": "botox-myths-men-believe",
+  "athletes-workout-guide": "botox-athletes-workout-men",
+  "how-to-find-a-provider": "find-botox-provider-men",
+  "executives-professionals-guide": "botox-executives-professionals-men",
 };
 
 interface PageProps {
