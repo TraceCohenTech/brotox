@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import PageLoader from "./components/PageLoader";
 import StickyBookButton from "./components/StickyBookButton";
 import ExitIntentPopup from "./components/ExitIntentPopup";
 import { Analytics } from "@vercel/analytics/next";
@@ -117,15 +116,29 @@ export default function RootLayout({
               url: "https://brotoxofficial.com",
               logo: "https://brotoxofficial.com/og-image.png",
               description:
-                "The #1 resource for men's Botox. Education-first approach to male aesthetics with vetted provider matching.",
+                "The #1 resource for men's Botox. Education-first approach to male aesthetics with vetted provider matching across 38 US metros.",
+              foundingDate: "2026",
               sameAs: [
                 "https://x.com/brotoxofficial",
               ],
               contactPoint: {
                 "@type": "ContactPoint",
                 contactType: "customer service",
+                email: "contact@brotoxofficial.com",
                 url: "https://brotoxofficial.com",
               },
+              areaServed: {
+                "@type": "Country",
+                name: "United States",
+              },
+              knowsAbout: [
+                "Botox for men",
+                "Brotox",
+                "Male aesthetics",
+                "Men's Botox providers",
+                "Dermal fillers for men",
+                "Anti-aging for men",
+              ],
             }),
           }}
         />
@@ -137,10 +150,11 @@ export default function RootLayout({
               "@type": "WebSite",
               name: "Brotox Official",
               url: "https://brotoxofficial.com",
+              description: "The #1 resource for men's Botox. Find vetted providers, read guides, and get matched for free.",
               potentialAction: {
                 "@type": "SearchAction",
-                target: "https://brotoxofficial.com/?q={search_term_string}",
-                "query-input": "required name=search_term_string",
+                target: "https://brotoxofficial.com/find-botox-near-me/{zip_code}",
+                "query-input": "required name=zip_code",
               },
             }),
           }}
@@ -149,7 +163,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground`}
       >
-        <PageLoader />
         <Header />
         {children}
         <Footer />

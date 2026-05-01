@@ -69,9 +69,13 @@ export default async function SeoArticlePage({ params }: PageProps) {
     headline: article.title,
     description: article.description,
     datePublished: article.publishedDate,
-    author: { "@type": "Organization", name: "Brotox Official" },
-    publisher: { "@type": "Organization", name: "Brotox Official", url: "https://brotoxofficial.com" },
-    mainEntityOfPage: `https://brotoxofficial.com/botox-for-men/${slug}`,
+    dateModified: article.publishedDate,
+    image: "https://brotoxofficial.com/og-image.png",
+    author: { "@type": "Organization", name: "Brotox Official", url: "https://brotoxofficial.com" },
+    publisher: { "@type": "Organization", name: "Brotox Official", url: "https://brotoxofficial.com", logo: { "@type": "ImageObject", url: "https://brotoxofficial.com/og-image.png" } },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `https://brotoxofficial.com/botox-for-men/${slug}` },
+    articleSection: article.category,
+    about: { "@type": "Thing", name: "Botox for Men", sameAs: "https://en.wikipedia.org/wiki/Botulinum_toxin" },
   };
 
   const faqJsonLd = {
@@ -111,7 +115,17 @@ export default async function SeoArticlePage({ params }: PageProps) {
           </div>
         </section>
 
-        <section className="py-12">
+        {/* Quick Answer Block */}
+        <section className="pt-8 pb-4">
+          <div className="container-main max-w-3xl">
+            <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-5">
+              <p className="text-xs text-blue-400 font-semibold uppercase tracking-wider mb-2">Quick Answer</p>
+              <p className="text-white text-lg leading-relaxed">{article.description}</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-8">
           <div className="container-main max-w-3xl">
             <article className="space-y-6">
               {article.sections.map((section, i) => {

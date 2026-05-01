@@ -3,7 +3,29 @@ User-agent: *
 Allow: /
 Allow: /find-botox-near-me/
 Allow: /blog/
+Allow: /botox-for-men/
 Allow: /guide/
+Allow: /about
 Disallow: /providers/
+Disallow: /api/
+
+# AI Crawlers — welcome
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Anthropic-ai
+Allow: /
 
 Sitemap: https://brotoxofficial.com/sitemap.xml

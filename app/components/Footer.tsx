@@ -34,10 +34,12 @@ export default function Footer() {
             <h4 className="font-semibold text-white mb-4">Learn More</h4>
             <ul className="space-y-3">
               {[
-                { label: "Why Botox", href: "#why" },
-                { label: "Treatment Guide", href: "#treatments" },
-                { label: "Pricing Info", href: "#pricing" },
-                { label: "FAQ", href: "#faq" },
+                { label: "Blog", href: "/blog" },
+                { label: "Cost Guide", href: "/botox-for-men/cost-guide" },
+                { label: "First Appointment", href: "/botox-for-men/first-appointment-guide" },
+                { label: "Botox vs Fillers", href: "/botox-for-men/vs-fillers" },
+                { label: "Side Effects", href: "/botox-for-men/side-effects" },
+                { label: "About", href: "/about" },
               ].map((link) => (
                 <li key={link.label}>
                   <Link
@@ -86,10 +88,13 @@ export default function Footer() {
               © {new Date().getFullYear()} Brotox Official. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
-              <Link href="#" className="text-gray-500 hover:text-white transition-colors">
+              <Link href="/about" className="text-gray-500 hover:text-white transition-colors">
+                About
+              </Link>
+              <Link href="/privacy" className="text-gray-500 hover:text-white transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="#" className="text-gray-500 hover:text-white transition-colors">
+              <Link href="/terms" className="text-gray-500 hover:text-white transition-colors">
                 Terms of Service
               </Link>
               <Link href="mailto:contact@brotoxofficial.com" className="text-gray-500 hover:text-white transition-colors">
