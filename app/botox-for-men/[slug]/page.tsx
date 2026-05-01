@@ -22,6 +22,9 @@ const seoSlugs: Record<string, string> = {
   "athletes-workout-guide": "botox-athletes-workout-men",
   "how-to-find-a-provider": "find-botox-provider-men",
   "executives-professionals-guide": "botox-executives-professionals-men",
+  "beards-guide": "botox-men-with-beards",
+  "men-vs-women-differences": "botox-men-vs-women-differences",
+  "skincare-routine-guide": "botox-skincare-routine-men",
 };
 
 interface PageProps {
