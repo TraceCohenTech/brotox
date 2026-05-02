@@ -25,6 +25,16 @@ const seoSlugs: Record<string, string> = {
   "beards-guide": "botox-men-with-beards",
   "men-vs-women-differences": "botox-men-vs-women-differences",
   "skincare-routine-guide": "botox-skincare-routine-men",
+  "frown-lines-guide": "botox-frown-lines-men",
+  "neck-bands-guide": "botox-neck-bands-men",
+  "tmj-jaw-pain-guide": "botox-tmj-jaw-pain-men",
+  "men-in-their-30s": "botox-men-30s",
+  "men-over-50-guide": "botox-men-over-50",
+  "dysport-xeomin-comparison": "botox-vs-dysport-vs-xeomin-men",
+  "baby-botox-guide": "baby-botox-men",
+  "psychology-confidence-guide": "psychology-botox-men",
+  "maintenance-schedule-guide": "botox-maintenance-schedule-men",
+  "dating-apps-confidence-guide": "botox-men-dating-apps",
 };
 
 interface PageProps {

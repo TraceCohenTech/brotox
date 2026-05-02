@@ -46,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // SEO blog routes (/botox-for-men/*)
-  const seoBlogSlugs = ["is-it-worth-it", "first-appointment-guide", "vs-fillers", "cost-guide", "best-age-to-start", "forehead-lines-guide", "side-effects", "jawline-sculpting", "before-and-after", "crows-feet-treatment", "hyperhidrosis-sweating-treatment", "aftercare-guide", "myths-debunked", "athletes-workout-guide", "how-to-find-a-provider", "executives-professionals-guide", "beards-guide", "men-vs-women-differences", "skincare-routine-guide"];
+  const seoBlogSlugs = ["is-it-worth-it", "first-appointment-guide", "vs-fillers", "cost-guide", "best-age-to-start", "forehead-lines-guide", "side-effects", "jawline-sculpting", "before-and-after", "crows-feet-treatment", "hyperhidrosis-sweating-treatment", "aftercare-guide", "myths-debunked", "athletes-workout-guide", "how-to-find-a-provider", "executives-professionals-guide", "beards-guide", "men-vs-women-differences", "skincare-routine-guide", "frown-lines-guide", "neck-bands-guide", "tmj-jaw-pain-guide", "men-in-their-30s", "men-over-50-guide", "dysport-xeomin-comparison", "baby-botox-guide", "psychology-confidence-guide", "maintenance-schedule-guide", "dating-apps-confidence-guide"];
   const seoBlogPages: MetadataRoute.Sitemap = seoBlogSlugs.map((s) => ({
     url: `${baseUrl}/botox-for-men/${s}`,
     lastModified: new Date(),
