@@ -45,6 +45,16 @@ const seoSlugs: Record<string, string> = {
   "daxxify-guide": "daxxify-men-guide",
   "botox-vs-retinol-guide": "botox-vs-retinol-men",
   "botox-roi-guide": "botox-roi-men",
+  "chin-filler-guide": "chin-filler-men",
+  "kybella-double-chin-guide": "kybella-men-guide",
+  "micro-botox-natural-look-guide": "micro-botox-men",
+  "wedding-prep-botox-guide": "botox-men-wedding-prep",
+  "testosterone-trt-botox-guide": "botox-testosterone-trt-men",
+  "balding-forehead-botox-guide": "botox-men-balding-forehead",
+  "botox-men-nyc": "botox-men-nyc-guide",
+  "facelift-vs-botox-guide": "facelift-vs-botox-men",
+  "stop-botox-guide": "stop-botox-men-guide",
+  "botox-skeptics-guide": "botox-skeptics-guide-men",
 };
 
 interface PageProps {
