@@ -55,6 +55,16 @@ const seoSlugs: Record<string, string> = {
   "facelift-vs-botox-guide": "facelift-vs-botox-men",
   "stop-botox-guide": "stop-botox-men-guide",
   "botox-skeptics-guide": "botox-skeptics-guide-men",
+  "under-eye-filler-guide": "under-eye-filler-men",
+  "cheek-filler-guide": "cheek-filler-men",
+  "sculptra-collagen-guide": "sculptra-men-guide",
+  "divorce-confidence-botox-guide": "botox-men-divorce",
+  "stress-aging-botox-guide": "stress-aging-botox-men",
+  "celebrity-men-botox-guide": "celebrity-men-botox",
+  "botox-finance-men-guide": "botox-men-finance",
+  "thread-lift-vs-botox-guide": "thread-lift-vs-botox-men",
+  "botox-loyalty-programs-guide": "botox-loyalty-programs-men",
+  "bad-results-botox-guide": "botox-bad-results-men",
 };
 
 interface PageProps {
