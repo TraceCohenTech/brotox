@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { articles } from "./data/articles";
+import { articles } from "./data/articles-extra";
 import Breadcrumbs from "@/app/components/Breadcrumbs";
 
 export const metadata: Metadata = {
