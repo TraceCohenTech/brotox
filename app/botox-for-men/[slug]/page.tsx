@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getArticleBySlug } from "@/app/blog/data/articles";
+import { getArticleBySlug } from "@/app/blog/data/articles-extra";
 import Breadcrumbs from "@/app/components/Breadcrumbs";
 
 // SEO-friendly slug mapping: /botox-for-men/cost-guide → articles data
