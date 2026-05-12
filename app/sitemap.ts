@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 import { zipCodes, getAllLocationSlugs } from "@/app/data/zipcodes";
-import { articles } from "@/app/blog/data/articles-extra";
+import { articles } from "@/app/blog/data/articles-extra2";
 import { guides } from "@/app/guide/data/guides";
 
 export default function sitemap(): MetadataRoute.Sitemap {
