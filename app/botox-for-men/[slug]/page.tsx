@@ -95,6 +95,16 @@ const seoSlugs: Record<string, string> = {
   "botox-men-boston-guide": "botox-men-boston",
   "botox-men-seattle-guide": "botox-men-seattle",
   "botox-long-term-results-guide": "botox-long-term-results-men",
+  "botox-men-media-guide": "botox-men-media-camera",
+  "coolsculpting-vs-lipo-guide": "coolsculpting-vs-lipo-men",
+  "brow-lift-botox-guide": "brow-lift-botox-men",
+  "botox-men-denver-guide": "botox-men-denver",
+  "botox-men-scottsdale-guide": "botox-men-scottsdale",
+  "botox-touchups-guide": "botox-touchups-men",
+  "botox-glossary-guide": "botox-glossary-men",
+  "botox-men-dark-skin-guide": "botox-men-dark-skin",
+  "botox-men-nashville-guide": "botox-men-nashville",
+  "botox-men-san-diego-guide": "botox-men-san-diego",
 };
 
 interface PageProps {
