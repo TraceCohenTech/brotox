@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getArticleBySlug } from "@/app/blog/data/articles-extra2";
+import { getArticleBySlug } from "@/app/blog/data/articles-extra3";
 import Breadcrumbs from "@/app/components/Breadcrumbs";
 
 // SEO-friendly slug mapping: /botox-for-men/cost-guide → articles data
@@ -105,6 +105,16 @@ const seoSlugs: Record<string, string> = {
   "botox-men-dark-skin-guide": "botox-men-dark-skin",
   "botox-men-nashville-guide": "botox-men-nashville",
   "botox-men-san-diego-guide": "botox-men-san-diego",
+  "botox-men-rosacea-guide": "botox-men-rosacea",
+  "gummy-smile-botox-guide": "gummy-smile-botox-men",
+  "rf-microneedling-morpheus8-guide": "rf-microneedling-men-guide",
+  "botox-oily-skin-men-guide": "botox-oily-skin-men",
+  "botox-men-las-vegas-guide": "botox-men-las-vegas",
+  "botox-men-phoenix-guide": "botox-men-phoenix",
+  "filler-reversal-hyaluronidase-guide": "filler-reversal-men-guide",
+  "mens-aesthetics-decade-plan": "mens-aesthetics-by-decade",
+  "botox-skincare-timing-guide": "botox-skincare-timing-men",
+  "pdo-thread-lift-men-guide": "pdo-thread-lift-men",
 };
 
 interface PageProps {
