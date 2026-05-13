@@ -115,6 +115,16 @@ const seoSlugs: Record<string, string> = {
   "mens-aesthetics-decade-plan": "mens-aesthetics-by-decade",
   "botox-skincare-timing-guide": "botox-skincare-timing-men",
   "pdo-thread-lift-men-guide": "pdo-thread-lift-men",
+  "botox-units-dosing-guide": "botox-units-men-guide",
+  "is-botox-painful-for-men": "botox-painful-men",
+  "botox-masculine-results-guide": "botox-looks-masculine-men",
+  "how-long-botox-kicks-in": "botox-kick-in-timeline-men",
+  "botox-vs-jeuveau-guide": "botox-vs-jeuveau-men",
+  "med-spa-vs-dermatologist-guide": "med-spa-vs-dermatologist-men-botox",
+  "botox-migraines-guide": "botox-migraines-men",
+  "botox-lunch-break-guide": "botox-lunch-break-men",
+  "botox-deep-wrinkles-guide": "botox-deep-wrinkles-men",
+  "botox-resistance-immunity-guide": "botox-resistance-men",
 };
 
 interface PageProps {
