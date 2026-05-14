@@ -135,6 +135,16 @@ const seoSlugs: Record<string, string> = {
   "botox-smokers-men-guide": "botox-smokers-men",
   "botox-gym-fitness-men-guide": "botox-gym-fitness-men",
   "botox-personal-brand-men-guide": "botox-personal-brand-men",
+  "botox-hooded-eyes-guide": "botox-hooded-eyes-men",
+  "botox-hsa-fsa-guide": "botox-hsa-fsa-men",
+  "botox-one-time-guide": "botox-one-time-men",
+  "botox-sweaty-palms-guide": "botox-sweaty-palms-men",
+  "botox-trap-shoulder-guide": "botox-trap-shoulder-pain-men",
+  "botox-summer-guide": "botox-summer-guide-men",
+  "botox-antidepressants-guide": "botox-antidepressants-men",
+  "botox-groupon-deals-guide": "botox-groupon-deals-men",
+  "botox-younger-smoother-guide": "botox-younger-smoother-men",
+  "botox-calf-slimming-guide": "botox-calf-slimming-men",
 };
 
 interface PageProps {
