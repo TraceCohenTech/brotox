@@ -8,8 +8,11 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const revalidate = 3600; // Revalidate every hour
+
 export async function generateStaticParams() {
-  return articles.map((a) => ({ slug: a.slug }));
+  // Only pre-render the first 20 articles at build time; rest generated on-demand
+  return articles.slice(0, 20).map((a) => ({ slug: a.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

@@ -47,10 +47,14 @@ function resolveLocation(param: string) {
   return null;
 }
 
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
-  // Generate both zip and location slug params
-  const zipParams = zipCodes.map((z) => ({ location: z.zip }));
-  const locationParams = getAllLocationSlugs().map((l) => ({ location: l.slug }));
+  // Pre-render top 50 zips + top 30 city slugs at build time; rest on-demand via ISR
+  const zipParams = zipCodes.slice(0, 50).map((z) => ({ location: z.zip }));
+  const locationSlugs = getAllLocationSlugs();
+  const cityOnlySlugs = locationSlugs.filter((l) => !l.neighborhood).slice(0, 30);
+  const locationParams = cityOnlySlugs.map((l) => ({ location: l.slug }));
   return [...zipParams, ...locationParams];
 }
 

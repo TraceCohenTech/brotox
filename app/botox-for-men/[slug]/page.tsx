@@ -151,8 +151,11 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
-  return Object.keys(seoSlugs).map((slug) => ({ slug }));
+  // Pre-render first 20 SEO slugs; rest generated on-demand
+  return Object.keys(seoSlugs).slice(0, 20).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

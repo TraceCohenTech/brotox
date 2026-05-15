@@ -1,3 +1,4 @@
+import "server-only";
 import { Article, ArticleSection, articles as baseArticles } from "./articles-extra2";
 import { extraArticles4 } from "./articles-extra4";
 import { extraArticles5 } from "./articles-extra5";
