@@ -145,6 +145,16 @@ const seoSlugs: Record<string, string> = {
   "botox-groupon-deals-guide": "botox-groupon-deals-men",
   "botox-younger-smoother-guide": "botox-younger-smoother-men",
   "botox-calf-slimming-guide": "botox-calf-slimming-men",
+  "ozempic-face-fillers-guide": "ozempic-face-fillers-men",
+  "nefertiti-lift-men-guide": "nefertiti-lift-men-guide",
+  "botox-partner-perspective-guide": "botox-men-partner-perspective",
+  "botox-zoom-calls-guide": "botox-men-zoom-calls",
+  "collagen-banking-men-guide": "collagen-banking-men-guide",
+  "botox-resting-angry-face-guide": "botox-resting-angry-face-men",
+  "prp-hair-restoration-guide": "prp-hair-restoration-men",
+  "botox-first-year-guide": "botox-men-first-year",
+  "injectable-menu-men-guide": "injectable-menu-men",
+  "skinbooster-injections-guide": "skinbooster-injections-men",
 };
 
 interface PageProps {
