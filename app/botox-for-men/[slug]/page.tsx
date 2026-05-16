@@ -176,6 +176,16 @@ const seoSlugs: Record<string, string> = {
   "botox-supplements-avoid-guide": "botox-supplements-avoid-men",
   "botox-men-minneapolis-guide": "botox-men-minneapolis-guide",
   "botox-men-austin-guide": "botox-men-austin-guide",
+  "botox-headaches-side-effect-guide": "botox-headaches-men",
+  "botox-fathers-day-gift-guide": "fathers-day-botox-gift-men",
+  "botox-new-year-fresh-start-guide": "botox-new-year-men",
+  "expensive-botox-better-guide": "expensive-botox-worth-it-men",
+  "botox-pricing-per-unit-vs-area-guide": "botox-per-unit-vs-per-area-men",
+  "allergan-vs-galderma-botox-guide": "allergan-vs-galderma-botox-men",
+  "botox-vs-facial-men-guide": "botox-vs-facial-men",
+  "botox-tech-neck-guide": "botox-tech-neck-men",
+  "botox-cost-by-city-guide": "botox-city-cost-comparison-men",
+  "botox-aftercare-dont-guide": "what-not-to-do-after-botox-men",
 };
 
 interface PageProps {
