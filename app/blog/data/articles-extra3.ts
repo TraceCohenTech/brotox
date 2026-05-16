@@ -9,9 +9,10 @@ import { extraArticles9 } from "./articles-extra9";
 import { extraArticles10 } from "./articles-extra10";
 import { extraArticles11 } from "./articles-extra11";
 import { extraArticles12 } from "./articles-extra12";
+import { extraArticles13 } from "./articles-extra13";
 
 export type { Article, ArticleSection };
-export const articles: Article[] = [...baseArticles, ...extraArticles4, ...extraArticles5, ...extraArticles6, ...extraArticles7, ...extraArticles8, ...extraArticles9, ...extraArticles10, ...extraArticles11, ...extraArticles12];
+export const articles: Article[] = [...baseArticles, ...extraArticles4, ...extraArticles5, ...extraArticles6, ...extraArticles7, ...extraArticles8, ...extraArticles9, ...extraArticles10, ...extraArticles11, ...extraArticles12, ...extraArticles13];
 export function getArticleBySlug(slug: string): Article | undefined {
   return articles.find((a) => a.slug === slug);
 }
