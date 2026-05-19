@@ -196,6 +196,16 @@ const seoSlugs: Record<string, string> = {
   "botox-headaches-side-effects-guide": "botox-headaches-men",
   "wedding-guest-botox-guide": "botox-wedding-guest-men",
   "botox-vs-facial-men-guide": "botox-vs-facial-men",
+  "entrepreneurs-botox-guide": "botox-men-entrepreneurs",
+  "professional-headshots-botox-guide": "botox-men-professional-headshots",
+  "golfers-botox-guide": "botox-men-golfers",
+  "botox-men-tampa-guide": "botox-men-tampa",
+  "botox-men-charlotte-guide": "botox-men-charlotte",
+  "botox-men-salt-lake-city-guide": "botox-men-salt-lake-city",
+  "botox-men-new-orleans-guide": "botox-men-new-orleans",
+  "filler-migration-men-guide": "filler-migration-men",
+  "botox-men-turning-50-guide": "botox-men-turning-50",
+  "intermittent-fasting-botox-guide": "botox-men-intermittent-fasting",
 };
 
 interface PageProps {
