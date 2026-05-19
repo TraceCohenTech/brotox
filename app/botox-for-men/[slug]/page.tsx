@@ -206,6 +206,16 @@ const seoSlugs: Record<string, string> = {
   "filler-migration-men-guide": "filler-migration-men",
   "botox-men-turning-50-guide": "botox-men-turning-50",
   "intermittent-fasting-botox-guide": "botox-men-intermittent-fasting",
+  "botox-wearing-off-guide": "botox-wearing-off-signs-men",
+  "botox-men-need-more-units-guide": "botox-men-need-more-units",
+  "botox-migration-safety-guide": "botox-migration-spread-men",
+  "botox-bunny-lines-guide": "botox-bunny-lines-men",
+  "botox-chin-dimpling-guide": "botox-chin-dimpling-men",
+  "botox-necklace-lines-guide": "botox-necklace-lines-men",
+  "botox-perioral-lines-guide": "botox-perioral-lines-men",
+  "botox-holiday-party-guide": "botox-holiday-party-men",
+  "botox-thick-skin-men-guide": "botox-thick-skin-men",
+  "botox-facial-asymmetry-guide": "botox-facial-asymmetry-men",
 };
 
 interface PageProps {
