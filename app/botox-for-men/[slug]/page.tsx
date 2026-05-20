@@ -226,6 +226,16 @@ const seoSlugs: Record<string, string> = {
   "botox-andropause-guide": "botox-men-andropause",
   "botox-blue-collar-men-guide": "botox-men-blue-collar",
   "botox-post-covid-men-guide": "botox-men-post-covid",
+  "botox-hairline-men-guide": "botox-hairline-men",
+  "preventive-vs-corrective-botox-men": "botox-preventive-vs-corrective-men",
+  "botox-when-sick-men-guide": "botox-when-sick-men",
+  "botox-sleep-position-men-guide": "botox-sleep-position-men",
+  "botox-flying-travel-men-guide": "botox-flying-men",
+  "botox-dry-skin-men-guide": "botox-dry-skin-men",
+  "botox-what-not-to-do-men-guide": "botox-what-not-to-do-men",
+  "botox-mental-health-confidence-men": "botox-mental-health-men",
+  "botox-who-administers-men-guide": "botox-who-administers-men",
+  "botox-skin-types-men-guide": "botox-men-skin-types",
 };
 
 interface PageProps {
