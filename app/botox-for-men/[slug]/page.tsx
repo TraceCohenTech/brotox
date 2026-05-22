@@ -256,6 +256,16 @@ const seoSlugs: Record<string, string> = {
   "botox-men-facial-scars-guide": "botox-men-facial-scarring",
   "botox-men-music-industry-guide": "botox-men-music-industry",
   "botox-men-politics-guide": "botox-men-politics",
+  "botox-men-black-guide": "botox-men-black",
+  "botox-men-south-asian-guide": "botox-men-south-asian",
+  "botox-men-middle-eastern-guide": "botox-men-middle-eastern",
+  "botox-spring-guide-men": "botox-men-spring-guide",
+  "botox-fall-guide-men": "botox-men-fall-guide",
+  "botox-men-in-their-60s": "botox-men-60s-guide",
+  "botox-men-orlando-guide": "botox-men-orlando",
+  "botox-men-raleigh-guide": "botox-men-raleigh",
+  "botox-combination-skin-men-guide": "botox-men-combination-skin",
+  "botox-annual-cost-men-guide": "botox-men-annual-budget",
 };
 
 interface PageProps {
