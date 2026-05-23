@@ -276,6 +276,17 @@ const seoSlugs: Record<string, string> = {
   "mens-anti-aging-toolkit-guide": "mens-anti-aging-toolkit-2026",
   "botox-men-chefs-guide": "botox-men-chefs-culinary",
   "botox-men-content-creators-guide": "botox-men-content-creators",
+  "botox-day-by-day-results-men": "botox-men-day-by-day",
+  "botox-provider-red-flags-men": "botox-men-red-flags",
+  "botox-longevity-wellness-men": "botox-men-longevity",
+  "botox-natural-looking-men": "botox-men-natural-looking",
+  "botox-pre-appointment-checklist-men": "botox-men-prep-checklist",
+  "botox-lifestyle-results-men": "botox-men-lifestyle-results",
+  "botox-biohacking-men": "botox-men-biohacking",
+  "botox-retinol-combo-men": "botox-men-retinol-combo",
+  "botox-track-results-men": "botox-men-track-results",
+  "botox-confidence-research-men": "botox-men-confidence",
+  "botox-in-office-vs-at-home-men": "botox-men-in-office-vs-at-home",
 };
 
 interface PageProps {
