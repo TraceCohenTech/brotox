@@ -44,7 +44,7 @@ export default function ConsultationForm({
           city,
           region,
           sourceType: "consultation_form",
-          timestamp: new Date().toISOString(),
+          timestamp: new Date().toLocaleString("en-US", { timeZone: "America/New_York" }),
         }),
       });
 

@@ -5,7 +5,7 @@ export async function POST(request: Request) {
     const data = await request.json();
 
     const lead = {
-      timestamp: data.timestamp || new Date().toISOString(),
+      timestamp: data.timestamp || new Date().toLocaleString("en-US", { timeZone: "America/New_York" }),
       zip: data.zip || "",
       age: data.age || "",
       treatment: data.treatment || "",

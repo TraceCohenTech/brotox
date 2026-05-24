@@ -30,7 +30,7 @@ export default function SignUpForm() {
           city: "",
           region: "",
           sourceType: "homepage_form",
-          timestamp: new Date().toISOString(),
+          timestamp: new Date().toLocaleString("en-US", { timeZone: "America/New_York" }),
         }),
       });
 
