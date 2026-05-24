@@ -22,9 +22,10 @@ import { extraArticles22 } from "./articles-extra22";
 import { extraArticles23 } from "./articles-extra23";
 import { extraArticles24 } from "./articles-extra24";
 import { extraArticles25 } from "./articles-extra25";
+import { extraArticles26 } from "./articles-extra26";
 
 export type { Article, ArticleSection };
-export const articles: Article[] = [...baseArticles, ...extraArticles4, ...extraArticles5, ...extraArticles6, ...extraArticles7, ...extraArticles8, ...extraArticles9, ...extraArticles10, ...extraArticles11, ...extraArticles12, ...extraArticles13, ...extraArticles14, ...extraArticles15, ...extraArticles16, ...extraArticles17, ...extraArticles18, ...extraArticles19, ...extraArticles20, ...extraArticles21, ...extraArticles22, ...extraArticles23, ...extraArticles24, ...extraArticles25];
+export const articles: Article[] = [...baseArticles, ...extraArticles4, ...extraArticles5, ...extraArticles6, ...extraArticles7, ...extraArticles8, ...extraArticles9, ...extraArticles10, ...extraArticles11, ...extraArticles12, ...extraArticles13, ...extraArticles14, ...extraArticles15, ...extraArticles16, ...extraArticles17, ...extraArticles18, ...extraArticles19, ...extraArticles20, ...extraArticles21, ...extraArticles22, ...extraArticles23, ...extraArticles24, ...extraArticles25, ...extraArticles26];
 export function getArticleBySlug(slug: string): Article | undefined {
   return articles.find((a) => a.slug === slug);
 }
