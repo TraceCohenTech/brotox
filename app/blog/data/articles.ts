@@ -136,7 +136,7 @@ export const articles: Article[] = [
     slug: "how-much-does-botox-cost-for-men",
     title: "How Much Does Botox Cost for Men? 2026 Pricing Guide",
     metaTitle: "How Much Does Botox Cost for Men? Complete 2026 Pricing Guide",
-    description: "Real Botox pricing for men by city and treatment area. What men actually pay in NYC, LA, Miami, Chicago, and more — no inflated or outdated numbers.",
+    description: "Men pay $300-$1,500 per Botox session depending on city and provider. Men typically need 30-50% more units than women. Here's the real 2026 pricing by city, treatment area, and provider tier — no inflated numbers.",
     publishedDate: "2026-03-28",
     readTime: "7 min read",
     category: "Guide",

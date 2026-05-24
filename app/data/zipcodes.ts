@@ -673,6 +673,59 @@ export const zipCodes: ZipCode[] = [
   { zip: "21230", city: "Baltimore", neighborhood: "Federal Hill / Locust Point", state: "MD", region: "Baltimore" },
   { zip: "21210", city: "Baltimore", neighborhood: "Roland Park", state: "MD", region: "Baltimore" },
   { zip: "21204", city: "Towson", state: "MD", region: "Baltimore" },
+  // ===== HIGH-DEMAND AREAS FROM GSC DATA =====
+  // Beverly Hills / West LA (top query cluster)
+  { zip: "90209", city: "Beverly Hills", neighborhood: "Beverly Hills Post Office", state: "CA", region: "Los Angeles" },
+  { zip: "90213", city: "Beverly Hills", state: "CA", region: "Los Angeles" },
+  { zip: "90035", city: "Los Angeles", neighborhood: "Beverly Grove", state: "CA", region: "Los Angeles" },
+  // Darien CT (3x queries in GSC)
+  { zip: "06810", city: "Danbury", state: "CT", region: "New York Tristate" },
+  { zip: "06870", city: "Old Greenwich", state: "CT", region: "New York Tristate" },
+  { zip: "06807", city: "Cos Cob", state: "CT", region: "New York Tristate" },
+  { zip: "06831", city: "Greenwich", neighborhood: "North Greenwich", state: "CT", region: "New York Tristate" },
+  // McLean VA (high impressions)
+  { zip: "22102", city: "McLean", neighborhood: "Tysons Corner", state: "VA", region: "Washington DC" },
+  { zip: "22043", city: "Falls Church", state: "VA", region: "Washington DC" },
+  { zip: "22046", city: "Falls Church", neighborhood: "City of Falls Church", state: "VA", region: "Washington DC" },
+  { zip: "22030", city: "Fairfax", state: "VA", region: "Washington DC" },
+  { zip: "22031", city: "Fairfax", neighborhood: "Merrifield", state: "VA", region: "Washington DC" },
+  { zip: "22151", city: "Springfield", state: "VA", region: "Washington DC" },
+  // Royal Oak MI (multiple queries)
+  { zip: "48009", city: "Birmingham", state: "MI", region: "Detroit" },
+  { zip: "48073", city: "Royal Oak", neighborhood: "North Royal Oak", state: "MI", region: "Detroit" },
+  { zip: "48030", city: "Hazel Park", state: "MI", region: "Detroit" },
+  { zip: "48071", city: "Madison Heights", state: "MI", region: "Detroit" },
+  { zip: "48237", city: "Oak Park", state: "MI", region: "Detroit" },
+  // Denver (rising queries)
+  { zip: "80222", city: "Denver", neighborhood: "Cherry Creek South", state: "CO", region: "Denver" },
+  { zip: "80230", city: "Denver", neighborhood: "Lowry / Montclair", state: "CO", region: "Denver" },
+  { zip: "80113", city: "Englewood", state: "CO", region: "Denver" },
+  // Marina del Rey (position 8 - almost there)
+  { zip: "90292", city: "Marina del Rey", state: "CA", region: "Los Angeles" },
+  { zip: "90293", city: "Playa del Rey", state: "CA", region: "Los Angeles" },
+  { zip: "90094", city: "Playa Vista", state: "CA", region: "Los Angeles" },
+  // Manhattan (high impressions)
+  { zip: "10031", city: "New York", neighborhood: "Hamilton Heights", state: "NY", region: "New York Tristate" },
+  { zip: "10032", city: "New York", neighborhood: "Washington Heights", state: "NY", region: "New York Tristate" },
+  { zip: "10033", city: "New York", neighborhood: "Washington Heights", state: "NY", region: "New York Tristate" },
+  { zip: "10034", city: "New York", neighborhood: "Inwood", state: "NY", region: "New York Tristate" },
+  { zip: "10037", city: "New York", neighborhood: "Central Harlem", state: "NY", region: "New York Tristate" },
+  { zip: "10038", city: "New York", neighborhood: "Seaport / Civic Center", state: "NY", region: "New York Tristate" },
+  { zip: "10039", city: "New York", neighborhood: "Central Harlem", state: "NY", region: "New York Tristate" },
+  { zip: "10040", city: "New York", neighborhood: "Fort George / Inwood", state: "NY", region: "New York Tristate" },
+  // Rogers Park Chicago (GSC query)
+  { zip: "60645", city: "Chicago", neighborhood: "West Rogers Park", state: "IL", region: "Chicago" },
+  { zip: "60659", city: "Chicago", neighborhood: "West Ridge / Peterson Park", state: "IL", region: "Chicago" },
+  // Nashville (GSC query)
+  { zip: "37214", city: "Nashville", neighborhood: "Donelson", state: "TN", region: "Nashville" },
+  { zip: "37216", city: "Nashville", neighborhood: "Inglewood / East Nashville", state: "TN", region: "Nashville" },
+  { zip: "37218", city: "Nashville", neighborhood: "Bordeaux / Whites Creek", state: "TN", region: "Nashville" },
+  // Stamford CT (GSC queries)
+  { zip: "06901", city: "Stamford", neighborhood: "Downtown Stamford", state: "CT", region: "New York Tristate" },
+  { zip: "06903", city: "Stamford", neighborhood: "North Stamford", state: "CT", region: "New York Tristate" },
+  { zip: "06905", city: "Stamford", neighborhood: "Springdale", state: "CT", region: "New York Tristate" },
+  { zip: "06906", city: "Stamford", neighborhood: "Glenbrook", state: "CT", region: "New York Tristate" },
+  { zip: "06907", city: "Stamford", state: "CT", region: "New York Tristate" },
 ];
 
 export function getZipByCode(zip: string): ZipCode | undefined {

@@ -224,8 +224,28 @@ export default async function ArticlePage({ params }: PageProps) {
               </div>
             )}
 
+            {/* Related Articles — internal linking */}
+            {(() => {
+              const related = articles
+                .filter((a) => a.slug !== slug && a.category === article.category)
+                .slice(0, 3);
+              return related.length > 0 ? (
+                <div className="mt-16">
+                  <h2 className="text-2xl font-bold text-white mb-6">Related Articles</h2>
+                  <div className="grid sm:grid-cols-3 gap-4">
+                    {related.map((r) => (
+                      <Link key={r.slug} href={`/blog/${r.slug}`} className="card p-5 group">
+                        <h3 className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors mb-2 line-clamp-2">{r.title}</h3>
+                        <p className="text-xs text-gray-400">{r.readTime}</p>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : null;
+            })()}
+
             {/* Bottom CTA */}
-            <div className="mt-16 bg-gradient-to-r from-blue-500/10 via-blue-600/10 to-blue-500/10 border border-blue-500/20 rounded-3xl p-10 text-center">
+            <div className="mt-12 bg-gradient-to-r from-blue-500/10 via-blue-600/10 to-blue-500/10 border border-blue-500/20 rounded-3xl p-10 text-center">
               <h2 className="text-3xl font-black text-white mb-3">Find a Provider Near You</h2>
               <p className="text-lg text-blue-200 mb-6">Enter your zip code and get matched with a vetted Botox provider for men.</p>
               <Link href="/find-botox-near-me" className="btn-primary inline-block text-lg">Get Matched Free</Link>
