@@ -24,6 +24,13 @@ export default function AboutPage() {
       sameAs: ["https://x.com/brotoxofficial"],
       areaServed: { "@type": "Country", name: "United States" },
       knowsAbout: ["Botox for men", "Brotox", "Male aesthetics", "Dermal fillers for men"],
+      founder: {
+        "@type": "Person",
+        name: "Trace Cohen",
+        url: "https://x.com/Trace_Cohen",
+        jobTitle: "Founder",
+        sameAs: ["https://x.com/Trace_Cohen"],
+      },
     },
   };
 

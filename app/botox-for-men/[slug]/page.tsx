@@ -337,7 +337,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: article.description,
       type: "article",
       publishedTime: article.publishedDate,
+      modifiedTime: article.publishedDate,
       url: `https://brotoxofficial.com/botox-for-men/${slug}`,
+      authors: ["Brotox Official"],
     },
   };
 }
@@ -349,19 +351,44 @@ export default async function SeoArticlePage({ params }: PageProps) {
   const article = getArticleBySlug(articleSlug);
   if (!article) notFound();
 
+  const lastUpdated = new Date().toISOString().split("T")[0];
+
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: article.title,
     description: article.description,
     datePublished: article.publishedDate,
-    dateModified: article.publishedDate,
+    dateModified: lastUpdated,
     image: "https://brotoxofficial.com/og-image.png",
-    author: { "@type": "Organization", name: "Brotox Official", url: "https://brotoxofficial.com" },
+    author: [
+      {
+        "@type": "Person",
+        name: "Trace Cohen",
+        url: "https://x.com/Trace_Cohen",
+        jobTitle: "Founder",
+        worksFor: { "@type": "Organization", name: "Brotox Official" },
+      },
+      { "@type": "Organization", name: "Brotox Official", url: "https://brotoxofficial.com" },
+    ],
     publisher: { "@type": "Organization", name: "Brotox Official", url: "https://brotoxofficial.com", logo: { "@type": "ImageObject", url: "https://brotoxofficial.com/og-image.png" } },
-    mainEntityOfPage: { "@type": "WebPage", "@id": `https://brotoxofficial.com/botox-for-men/${slug}` },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://brotoxofficial.com/botox-for-men/${slug}`,
+      speakable: { "@type": "SpeakableSpecification", cssSelector: [".quick-answer"] },
+    },
     articleSection: article.category,
+    wordCount: article.sections.reduce((acc, s) => acc + s.content.length + (s.items?.join("").length || 0), 0),
     about: { "@type": "Thing", name: "Botox for Men", sameAs: "https://en.wikipedia.org/wiki/Botulinum_toxin" },
+  };
+
+  const speakableJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: article.title,
+    url: `https://brotoxofficial.com/botox-for-men/${slug}`,
+    speakable: { "@type": "SpeakableSpecification", cssSelector: [".quick-answer"] },
+    abstract: article.description,
   };
 
   const faqJsonLd = {
@@ -379,6 +406,7 @@ export default async function SeoArticlePage({ params }: PageProps) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       <main className="min-h-screen bg-[var(--background)]">
@@ -389,11 +417,14 @@ export default async function SeoArticlePage({ params }: PageProps) {
               { label: "Botox for Men", href: "/blog" },
               { label: article.title },
             ]} />
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex flex-wrap items-center gap-3 mb-4">
               <span className="px-3 py-1 rounded-full bg-blue-500/15 text-blue-300 border border-blue-500/20 text-xs font-semibold">
                 {article.category}
               </span>
               <span className="text-gray-400 text-sm">{article.readTime}</span>
+              <span className="text-gray-500 text-sm">By Trace Cohen</span>
+              <span className="text-gray-500 text-sm">|</span>
+              <span className="text-green-400 text-sm font-medium">Last updated: {lastUpdated}</span>
             </div>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight">
               {article.title}
@@ -404,7 +435,7 @@ export default async function SeoArticlePage({ params }: PageProps) {
         {/* Quick Answer Block */}
         <section className="pt-8 pb-4">
           <div className="container-main max-w-3xl">
-            <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-5">
+            <div className="quick-answer bg-blue-500/10 border border-blue-500/20 rounded-xl p-5">
               <p className="text-xs text-blue-400 font-semibold uppercase tracking-wider mb-2">Quick Answer</p>
               <p className="text-white text-lg leading-relaxed">{article.description}</p>
             </div>

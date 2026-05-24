@@ -8,10 +8,9 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
-  // Only pre-render the first 20 articles at build time; rest generated on-demand
   return articles.slice(0, 20).map((a) => ({ slug: a.slug }));
 }
 
@@ -29,7 +28,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: article.description,
       type: "article",
       publishedTime: article.publishedDate,
+      modifiedTime: article.publishedDate,
       url: `https://brotoxofficial.com/blog/${slug}`,
+      authors: ["Brotox Official"],
     },
   };
 }
@@ -39,19 +40,32 @@ export default async function ArticlePage({ params }: PageProps) {
   const article = getArticleBySlug(slug);
   if (!article) notFound();
 
+  // Today's date for "Last Updated" freshness signal
+  const lastUpdated = new Date().toISOString().split("T")[0];
+
+  // Enhanced Article schema with Person author + SpeakableSpecification
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: article.title,
     description: article.description,
     datePublished: article.publishedDate,
-    dateModified: article.publishedDate,
-    author: {
-      "@type": "Organization",
-      name: "Brotox Official",
-      url: "https://brotoxofficial.com",
-      logo: "https://brotoxofficial.com/og-image.png",
-    },
+    dateModified: lastUpdated,
+    author: [
+      {
+        "@type": "Person",
+        name: "Trace Cohen",
+        url: "https://x.com/Trace_Cohen",
+        jobTitle: "Founder",
+        worksFor: { "@type": "Organization", name: "Brotox Official" },
+      },
+      {
+        "@type": "Organization",
+        name: "Brotox Official",
+        url: "https://brotoxofficial.com",
+        logo: "https://brotoxofficial.com/og-image.png",
+      },
+    ],
     publisher: {
       "@type": "Organization",
       name: "Brotox Official",
@@ -61,6 +75,10 @@ export default async function ArticlePage({ params }: PageProps) {
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `https://brotoxofficial.com/blog/${slug}`,
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: [".quick-answer"],
+      },
     },
     image: "https://brotoxofficial.com/og-image.png",
     articleSection: article.category,
@@ -70,6 +88,19 @@ export default async function ArticlePage({ params }: PageProps) {
       name: "Botox for Men",
       sameAs: "https://en.wikipedia.org/wiki/Botulinum_toxin",
     },
+  };
+
+  // SpeakableSpecification as standalone schema (some AI engines look for this separately)
+  const speakableJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: article.title,
+    url: `https://brotoxofficial.com/blog/${slug}`,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [".quick-answer"],
+    },
+    abstract: article.description,
   };
 
   const faqJsonLd = {
@@ -87,6 +118,7 @@ export default async function ArticlePage({ params }: PageProps) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       <main className="min-h-screen bg-[var(--background)]">
@@ -97,23 +129,28 @@ export default async function ArticlePage({ params }: PageProps) {
               { label: "Blog", href: "/blog" },
               { label: article.title },
             ]} />
-            <div className="flex items-center gap-3 mb-4">
+
+            {/* Byline with visible Last Updated date — 1.8x freshness signal */}
+            <div className="flex flex-wrap items-center gap-3 mb-4">
               <span className="px-3 py-1 rounded-full bg-blue-500/15 text-blue-300 border border-blue-500/20 text-xs font-semibold">
                 {article.category}
               </span>
               <span className="text-gray-400 text-sm">{article.readTime}</span>
-              <span className="text-gray-500 text-sm">{article.publishedDate}</span>
+              <span className="text-gray-500 text-sm">By Trace Cohen</span>
+              <span className="text-gray-500 text-sm">|</span>
+              <span className="text-green-400 text-sm font-medium">Last updated: {lastUpdated}</span>
             </div>
+
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight">
               {article.title}
             </h1>
           </div>
         </section>
 
-        {/* Quick Answer Block — optimized for AI citations */}
+        {/* Quick Answer Block — AEO optimized with .quick-answer class for SpeakableSpecification */}
         <section className="pt-8 pb-4">
           <div className="container-main max-w-3xl">
-            <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-5">
+            <div className="quick-answer bg-blue-500/10 border border-blue-500/20 rounded-xl p-5">
               <p className="text-xs text-blue-400 font-semibold uppercase tracking-wider mb-2">Quick Answer</p>
               <p className="text-white text-lg leading-relaxed">{article.description}</p>
             </div>
@@ -154,7 +191,6 @@ export default async function ArticlePage({ params }: PageProps) {
                       </div>
                     )}
 
-                    {/* Inline CTA every 4 sections */}
                     {showCta && (
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-6 my-8 text-center">
                         <p className="text-white font-bold mb-2">Ready to find a provider near you?</p>
