@@ -3,14 +3,15 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
+const ageRanges = ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"];
+
 export default function SignUpForm() {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    zip: "",
+    age: "",
+    treatment: "",
     email: "",
     phone: "",
-    treatment: "",
-    zip: "",
   });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [copied, setCopied] = useState(false);
@@ -29,6 +30,7 @@ export default function SignUpForm() {
           city: "",
           region: "",
           sourceType: "homepage_form",
+          timestamp: new Date().toISOString(),
         }),
       });
 
@@ -43,8 +45,8 @@ export default function SignUpForm() {
   };
 
   const shareUrl = formData.zip
-    ? `https://brotoxofficial.com/find/${formData.zip}?ref=friend`
-    : "https://brotoxofficial.com/find?ref=friend";
+    ? `https://brotoxofficial.com/find-botox-near-me/${formData.zip}?ref=friend`
+    : "https://brotoxofficial.com/find-botox-near-me?ref=friend";
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(shareUrl);
@@ -66,7 +68,7 @@ export default function SignUpForm() {
         </div>
         <h3 className="text-2xl font-bold text-white mb-2">Request Submitted!</h3>
         <p className="text-green-300 mb-6">
-          We&apos;ll match you with a vetted provider shortly. Check your email for next steps.
+          We&apos;ll match you with a vetted provider shortly.
         </p>
         <div className="border-t border-white/10 pt-5">
           <p className="text-white font-semibold text-sm mb-3">Know someone who&apos;d be interested?</p>
@@ -111,58 +113,9 @@ export default function SignUpForm() {
       <form onSubmit={handleSubmit} className="space-y-3">
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block text-xs text-gray-400 mb-1.5">First Name *</label>
+            <label className="block text-xs text-gray-400 mb-1.5">Zip Code</label>
             <input
               type="text"
-              required
-              placeholder="John"
-              className="w-full text-sm"
-              value={formData.firstName}
-              onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-            />
-          </div>
-          <div>
-            <label className="block text-xs text-gray-400 mb-1.5">Last Name *</label>
-            <input
-              type="text"
-              required
-              placeholder="Smith"
-              className="w-full text-sm"
-              value={formData.lastName}
-              onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-            />
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-xs text-gray-400 mb-1.5">Email *</label>
-          <input
-            type="email"
-            required
-            placeholder="john@email.com"
-            className="w-full text-sm"
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          />
-        </div>
-
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            <label className="block text-xs text-gray-400 mb-1.5">Phone *</label>
-            <input
-              type="tel"
-              required
-              placeholder="(555) 123-4567"
-              className="w-full text-sm"
-              value={formData.phone}
-              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            />
-          </div>
-          <div>
-            <label className="block text-xs text-gray-400 mb-1.5">Zip Code *</label>
-            <input
-              type="text"
-              required
               placeholder="10001"
               maxLength={5}
               className="w-full text-sm"
@@ -170,12 +123,24 @@ export default function SignUpForm() {
               onChange={(e) => setFormData({ ...formData, zip: e.target.value.replace(/\D/g, "") })}
             />
           </div>
+          <div>
+            <label className="block text-xs text-gray-400 mb-1.5">Age Range</label>
+            <select
+              className="w-full text-sm"
+              value={formData.age}
+              onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+            >
+              <option value="">Select...</option>
+              {ageRanges.map((r) => (
+                <option key={r} value={r}>{r}</option>
+              ))}
+            </select>
+          </div>
         </div>
 
         <div>
-          <label className="block text-xs text-gray-400 mb-1.5">What are you interested in? *</label>
+          <label className="block text-xs text-gray-400 mb-1.5">What are you interested in?</label>
           <select
-            required
             className="w-full text-sm"
             value={formData.treatment}
             onChange={(e) => setFormData({ ...formData, treatment: e.target.value })}
@@ -188,6 +153,29 @@ export default function SignUpForm() {
             <option value="Full Face Refresh">Full Face Refresh</option>
             <option value="Not Sure Yet">Not Sure Yet</option>
           </select>
+        </div>
+
+        <div className="grid grid-cols-2 gap-3">
+          <div>
+            <label className="block text-xs text-gray-400 mb-1.5">Email</label>
+            <input
+              type="email"
+              placeholder="john@email.com"
+              className="w-full text-sm"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            />
+          </div>
+          <div>
+            <label className="block text-xs text-gray-400 mb-1.5">Phone</label>
+            <input
+              type="tel"
+              placeholder="(555) 123-4567"
+              className="w-full text-sm"
+              value={formData.phone}
+              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+            />
+          </div>
         </div>
 
         {status === "error" && (
@@ -207,7 +195,7 @@ export default function SignUpForm() {
         </motion.button>
 
         <p className="text-center text-[10px] text-gray-500">
-          Free, no obligation. We&apos;ll connect you with a vetted provider.
+          No spam, ever. We&apos;ll match you with a vetted provider.
         </p>
       </form>
     </motion.div>

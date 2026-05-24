@@ -11,6 +11,8 @@ interface ConsultationFormProps {
   treatments: { name: string }[];
 }
 
+const ageRanges = ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"];
+
 export default function ConsultationForm({
   providerName,
   practiceName,
@@ -20,11 +22,11 @@ export default function ConsultationForm({
   treatments,
 }: ConsultationFormProps) {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    zip: zip || "",
+    age: "",
+    treatment: "",
     email: "",
     phone: "",
-    treatment: "",
   });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
@@ -41,14 +43,14 @@ export default function ConsultationForm({
           provider: providerName,
           city,
           region,
-          zip: zip || "",
           sourceType: "consultation_form",
+          timestamp: new Date().toISOString(),
         }),
       });
 
       if (res.ok) {
         setStatus("success");
-        setFormData({ firstName: "", lastName: "", email: "", phone: "", treatment: "" });
+        setFormData({ zip: zip || "", age: "", treatment: "", email: "", phone: "" });
       } else {
         setStatus("error");
       }
@@ -58,10 +60,9 @@ export default function ConsultationForm({
   };
 
   const [copied, setCopied] = useState(false);
-  const shareUrl = zip
-    ? `https://brotoxofficial.com/find/${zip}?ref=friend`
-    : "https://brotoxofficial.com/find?ref=friend";
-  const shareText = `Check out Brotox — free matching with vetted Botox providers for men near you.`;
+  const shareUrl = formData.zip
+    ? `https://brotoxofficial.com/find-botox-near-me/${formData.zip}?ref=friend`
+    : "https://brotoxofficial.com/find-botox-near-me?ref=friend";
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(shareUrl);
@@ -81,8 +82,6 @@ export default function ConsultationForm({
         <p className="text-green-300 mb-6">
           We&apos;ll connect you with {practiceName} shortly. Check your email for next steps.
         </p>
-
-        {/* Referral */}
         <div className="border-t border-white/10 pt-6">
           <p className="text-white font-semibold mb-3">Know someone who&apos;d be interested?</p>
           <div className="flex flex-col sm:flex-row gap-2">
@@ -93,18 +92,10 @@ export default function ConsultationForm({
               {copied ? "Copied!" : "Copy Link"}
             </button>
             <a
-              href={`sms:?body=${encodeURIComponent(shareText + " " + shareUrl)}`}
+              href={`sms:?body=${encodeURIComponent("Check out Brotox — free matching with vetted Botox providers for men. " + shareUrl)}`}
               className="flex-1 py-3 px-4 rounded-full bg-green-500/20 border border-green-500/30 text-green-300 text-sm font-medium hover:bg-green-500/30 transition-all text-center"
             >
               Share via Text
-            </a>
-            <a
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 py-3 px-4 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-300 text-sm font-medium hover:bg-blue-500/30 transition-all text-center"
-            >
-              Share on X
             </a>
           </div>
         </div>
@@ -113,60 +104,38 @@ export default function ConsultationForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8 md:p-12 text-left">
-      <div className="grid md:grid-cols-2 gap-4 mb-4">
+    <form onSubmit={handleSubmit} className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 md:p-8 text-left">
+      <div className="grid grid-cols-2 gap-4 mb-4">
         <div>
-          <label className="block text-sm text-gray-300 font-medium mb-2">First Name *</label>
+          <label className="block text-sm text-gray-300 font-medium mb-2">Zip Code</label>
           <input
             type="text"
-            required
-            placeholder="John"
+            placeholder="10001"
+            maxLength={5}
             className="w-full"
-            value={formData.firstName}
-            onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+            value={formData.zip}
+            onChange={(e) => setFormData({ ...formData, zip: e.target.value.replace(/\D/g, "") })}
           />
         </div>
         <div>
-          <label className="block text-sm text-gray-300 font-medium mb-2">Last Name *</label>
-          <input
-            type="text"
-            required
-            placeholder="Smith"
+          <label className="block text-sm text-gray-300 font-medium mb-2">Age Range</label>
+          <select
             className="w-full"
-            value={formData.lastName}
-            onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-          />
+            value={formData.age}
+            onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+          >
+            <option value="">Select...</option>
+            {ageRanges.map((r) => (
+              <option key={r} value={r}>{r}</option>
+            ))}
+          </select>
         </div>
       </div>
-      <div className="grid md:grid-cols-2 gap-4 mb-4">
-        <div>
-          <label className="block text-sm text-gray-300 font-medium mb-2">Email *</label>
-          <input
-            type="email"
-            required
-            placeholder="john@email.com"
-            className="w-full"
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          />
-        </div>
-        <div>
-          <label className="block text-sm text-gray-300 font-medium mb-2">Phone *</label>
-          <input
-            type="tel"
-            required
-            placeholder="(555) 123-4567"
-            className="w-full"
-            value={formData.phone}
-            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-          />
-        </div>
-      </div>
-      <div className="mb-6">
-        <label className="block text-sm text-gray-300 font-medium mb-2">What are you interested in? *</label>
+
+      <div className="mb-4">
+        <label className="block text-sm text-gray-300 font-medium mb-2">What are you interested in?</label>
         <select
           className="w-full"
-          required
           value={formData.treatment}
           onChange={(e) => setFormData({ ...formData, treatment: e.target.value })}
         >
@@ -176,6 +145,29 @@ export default function ConsultationForm({
           ))}
           <option value="other">Other / Not Sure</option>
         </select>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4 mb-6">
+        <div>
+          <label className="block text-sm text-gray-300 font-medium mb-2">Email</label>
+          <input
+            type="email"
+            placeholder="john@email.com"
+            className="w-full"
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          />
+        </div>
+        <div>
+          <label className="block text-sm text-gray-300 font-medium mb-2">Phone</label>
+          <input
+            type="tel"
+            placeholder="(555) 123-4567"
+            className="w-full"
+            value={formData.phone}
+            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+          />
+        </div>
       </div>
 
       {status === "error" && (
@@ -189,10 +181,10 @@ export default function ConsultationForm({
         disabled={status === "submitting"}
         className="btn-primary w-full text-center disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {status === "submitting" ? "Submitting..." : "Request Consultation"}
+        {status === "submitting" ? "Submitting..." : "Get Matched Free"}
       </button>
       <p className="text-xs text-gray-400 mt-4 text-center">
-        By submitting, you agree to our privacy policy. We&apos;ll connect you with {practiceName} — no spam, ever.
+        No spam, ever. We&apos;ll match you with a vetted provider.
       </p>
     </form>
   );
