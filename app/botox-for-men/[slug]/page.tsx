@@ -287,6 +287,17 @@ const seoSlugs: Record<string, string> = {
   "botox-track-results-men": "botox-men-track-results",
   "botox-confidence-research-men": "botox-men-confidence",
   "botox-in-office-vs-at-home-men": "botox-men-in-office-vs-at-home",
+  "why-men-look-older-guide": "botox-men-looking-older-than-age",
+  "botox-personal-trainers-guide": "botox-men-personal-trainers",
+  "botox-ceo-executive-guide": "botox-men-ceo-guide",
+  "cold-plunge-ice-bath-botox-guide": "botox-men-cold-therapy-ice-bath",
+  "diet-nutrition-botox-guide": "botox-men-diet-nutrition",
+  "botox-tattoos-men-guide": "botox-men-tattoos",
+  "botox-pilots-aviation-guide": "botox-men-pilots-aviation",
+  "cortisol-facial-aging-guide": "botox-men-cortisol-facial-aging",
+  "botox-dating-over-40-guide": "botox-men-dating-over-40",
+  "botox-coaches-mentors-guide": "botox-men-coaches-trainers",
+  "botox-gym-supplements-guide": "botox-men-creatine-gym-supplements",
 };
 
 interface PageProps {
