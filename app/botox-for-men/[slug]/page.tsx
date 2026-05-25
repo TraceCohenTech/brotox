@@ -319,6 +319,17 @@ const seoSlugs: Record<string, string> = {
   "botox-photogenic-camera-guide": "botox-men-photogenic",
   "botox-acupuncture-comparison-guide": "botox-men-acupuncture-comparison",
   "botox-first-year-experience-guide": "botox-men-first-year-of-treatment",
+  "botox-eye-twitching-men-guide": "botox-men-eye-twitching",
+  "botox-dental-office-men-guide": "botox-men-dental-office",
+  "botox-second-appointment-men-guide": "botox-men-second-appointment",
+  "botox-gamers-streamers-men-guide": "botox-men-gamers-esports",
+  "botox-overdone-frozen-look-men": "botox-men-overdone-look",
+  "botox-tension-headaches-men-guide": "botox-men-tension-headaches",
+  "botox-uneven-eyebrows-men-guide": "botox-men-uneven-eyebrows",
+  "botox-forehead-only-men-guide": "botox-men-forehead-only",
+  "botox-anger-mood-science-men": "botox-men-anger-facial-feedback",
+  "how-often-men-get-botox": "botox-men-how-often",
+  "botox-men-job-search-career": "botox-men-before-job-loss",
 };
 
 interface PageProps {
