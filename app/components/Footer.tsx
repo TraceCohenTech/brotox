@@ -39,6 +39,7 @@ export default function Footer() {
                 { label: "First Appointment", href: "/botox-for-men/first-appointment-guide" },
                 { label: "Botox vs Fillers", href: "/botox-for-men/vs-fillers" },
                 { label: "Side Effects", href: "/botox-for-men/side-effects" },
+                { label: "FAQ", href: "/faq" },
                 { label: "About", href: "/about" },
               ].map((link) => (
                 <li key={link.label}>
