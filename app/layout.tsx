@@ -120,6 +120,7 @@ export default function RootLayout({
               foundingDate: "2026",
               sameAs: [
                 "https://x.com/brotoxofficial",
+                "https://valueaddvc.com/brotox",
               ],
               contactPoint: {
                 "@type": "ContactPoint",

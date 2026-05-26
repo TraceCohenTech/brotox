@@ -98,6 +98,9 @@ export default function Footer() {
               <Link href="/terms" className="text-gray-500 hover:text-white transition-colors">
                 Terms of Service
               </Link>
+              <a href="https://valueaddvc.com/brotox" target="_blank" rel="noopener" className="text-gray-500 hover:text-white transition-colors">
+                Built by Value Add VC
+              </a>
               <Link href="mailto:contact@brotoxofficial.com" className="text-gray-500 hover:text-white transition-colors">
                 Contact
               </Link>

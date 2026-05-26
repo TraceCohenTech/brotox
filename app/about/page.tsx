@@ -110,6 +110,13 @@ export default function AboutPage() {
             </div>
 
             <div>
+              <h2 className="text-2xl font-bold text-white mb-4">Built by Value Add VC</h2>
+              <p className="text-gray-300 text-lg leading-relaxed mb-4">
+                Brotox Official is built by <a href="https://valueaddvc.com/brotox" target="_blank" rel="noopener" className="text-blue-400 hover:text-blue-300 font-semibold">Trace Cohen</a>, serial founder and investor at <a href="https://valueaddvc.com" target="_blank" rel="noopener" className="text-blue-400 hover:text-blue-300 font-semibold">Value Add VC</a>. We build tools that help people make better decisions — from venture capital to personal care.
+              </p>
+            </div>
+
+            <div>
               <h2 className="text-2xl font-bold text-white mb-4">Contact</h2>
               <p className="text-gray-300 text-lg">
                 Email: <a href="mailto:contact@brotoxofficial.com" className="text-blue-400 hover:text-blue-300">contact@brotoxofficial.com</a>
