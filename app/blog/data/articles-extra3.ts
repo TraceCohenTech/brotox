@@ -27,9 +27,10 @@ import { extraArticles27 } from "./articles-extra27";
 import { extraArticles28 } from "./articles-extra28";
 import { extraArticles29 } from "./articles-extra29";
 import { extraArticles30 } from "./articles-extra30";
+import { extraArticles31 } from "./articles-extra31";
 
 export type { Article, ArticleSection };
-export const articles: Article[] = [...baseArticles, ...extraArticles4, ...extraArticles5, ...extraArticles6, ...extraArticles7, ...extraArticles8, ...extraArticles9, ...extraArticles10, ...extraArticles11, ...extraArticles12, ...extraArticles13, ...extraArticles14, ...extraArticles15, ...extraArticles16, ...extraArticles17, ...extraArticles18, ...extraArticles19, ...extraArticles20, ...extraArticles21, ...extraArticles22, ...extraArticles23, ...extraArticles24, ...extraArticles25, ...extraArticles26, ...extraArticles27, ...extraArticles28, ...extraArticles29, ...extraArticles30];
+export const articles: Article[] = [...baseArticles, ...extraArticles4, ...extraArticles5, ...extraArticles6, ...extraArticles7, ...extraArticles8, ...extraArticles9, ...extraArticles10, ...extraArticles11, ...extraArticles12, ...extraArticles13, ...extraArticles14, ...extraArticles15, ...extraArticles16, ...extraArticles17, ...extraArticles18, ...extraArticles19, ...extraArticles20, ...extraArticles21, ...extraArticles22, ...extraArticles23, ...extraArticles24, ...extraArticles25, ...extraArticles26, ...extraArticles27, ...extraArticles28, ...extraArticles29, ...extraArticles30, ...extraArticles31];
 export function getArticleBySlug(slug: string): Article | undefined {
   return articles.find((a) => a.slug === slug);
 }

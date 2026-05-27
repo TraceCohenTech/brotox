@@ -350,6 +350,17 @@ const seoSlugs: Record<string, string> = {
   "botox-or-fillers-first-men-guide": "botox-vs-fillers-sequence-men",
   "botox-group-party-appointments-men": "botox-men-group-appointments",
   "botox-blood-thinners-anticoagulants-men": "botox-men-blood-thinners",
+  "masseter-jaw-slimming-guide": "botox-men-masseter-jaw-slimming",
+  "collagen-supplements-botox-guide": "botox-men-collagen-supplements",
+  "sleep-facial-aging-guide": "botox-men-sleep-facial-aging",
+  "botox-membership-plans-guide": "botox-men-subscription-membership",
+  "gut-health-skin-aging-guide": "botox-men-gut-health-skin",
+  "years-of-botox-results-guide": "botox-men-years-of-treatment",
+  "face-mapping-botox-guide": "botox-men-face-mapping-guide",
+  "vitamin-c-skin-botox-guide": "botox-men-vitamin-c-skin",
+  "daily-spf-botox-guide": "botox-men-spf-daily-guide",
+  "mens-aesthetics-mindset-guide": "botox-men-mindset-aesthetics",
+  "hormones-facial-aging-guide": "botox-men-hormones-facial-aging",
 };
 
 interface PageProps {
