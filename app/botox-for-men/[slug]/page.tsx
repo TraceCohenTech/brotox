@@ -371,6 +371,16 @@ const seoSlugs: Record<string, string> = {
   "eyelid-drooping-ptosis-guide": "botox-men-eyelid-drooping",
   "massage-after-botox-guide": "botox-men-massage-timing",
   "dark-circles-men-guide": "botox-men-dark-circles",
+  "red-light-therapy-vs-botox-guide": "red-light-therapy-vs-botox-men",
+  "microcurrent-facials-vs-botox-guide": "microcurrent-vs-botox-men",
+  "botox-men-bells-palsy-guide": "botox-men-bells-palsy",
+  "botox-men-sobriety-guide": "botox-men-sobriety-recovery",
+  "botox-men-thyroid-guide": "botox-men-thyroid-conditions",
+  "botox-men-resting-tired-face-guide": "botox-men-resting-tired-face",
+  "botox-men-endurance-athletes-guide": "botox-men-triathlon-endurance",
+  "botox-men-glp1-weight-loss-guide": "botox-men-glp1-weight-loss-aesthetics",
+  "complete-jawline-guide-men": "botox-men-jawline-complete-guide",
+  "botox-men-sun-damage-guide": "botox-men-sun-damaged-skin",
 };
 
 interface PageProps {
