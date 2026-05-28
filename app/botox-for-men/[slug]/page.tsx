@@ -381,6 +381,16 @@ const seoSlugs: Record<string, string> = {
   "botox-men-glp1-weight-loss-guide": "botox-men-glp1-weight-loss-aesthetics",
   "complete-jawline-guide-men": "botox-men-jawline-complete-guide",
   "botox-men-sun-damage-guide": "botox-men-sun-damaged-skin",
+  "botox-snoring-treatment-men": "botox-snoring-men",
+  "botox-after-hair-transplant-guide": "botox-after-hair-transplant-men",
+  "botox-keto-diet-men-guide": "botox-keto-carnivore-diet-men",
+  "botox-back-pain-men-guide": "botox-chronic-back-pain-men",
+  "botox-swimming-pool-men-guide": "botox-swimming-men",
+  "botox-posture-men-guide": "botox-posture-men",
+  "botox-vitiligo-skin-men-guide": "botox-vitiligo-men",
+  "botox-men-reviews-community-guide": "botox-men-online-reviews",
+  "botox-single-area-vs-full-face-men": "botox-single-vs-full-face-men",
+  "botox-alternatives-men-guide": "botox-alternatives-non-injection-men",
 };
 
 interface PageProps {
