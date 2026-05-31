@@ -441,6 +441,16 @@ const seoSlugs: Record<string, string> = {
   "botox-minimalist-approach-men-guide": "botox-men-minimalist",
   "botox-workplace-ageism-men-guide": "botox-men-ageism-workplace",
   "botox-second-chapter-men-guide": "botox-men-second-chapter",
+  "dao-mouth-corners-botox-men": "botox-dao-mouth-corners-men",
+  "botox-nose-tip-lift-guide": "botox-nose-tip-lift-men",
+  "botox-foot-sweating-hyperhidrosis-men": "botox-foot-sweating-men",
+  "botox-accutane-isotretinoin-men": "botox-men-accutane",
+  "botox-rogaine-finasteride-men": "botox-men-rogaine-finasteride",
+  "botox-spock-brow-fix-men": "botox-men-spock-brow",
+  "botox-not-working-men-guide": "botox-men-non-responder",
+  "botox-men-65-senior-guide": "botox-men-over-65",
+  "botox-heavy-drooping-brow-men": "botox-men-heavy-brow-arch",
+  "botox-chest-sweating-men": "botox-men-chest-sweating",
 };
 
 interface PageProps {
