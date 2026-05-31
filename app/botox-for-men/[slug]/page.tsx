@@ -431,6 +431,16 @@ const seoSlugs: Record<string, string> = {
   "why-men-wait-too-long-botox": "botox-men-cost-of-waiting",
   "botox-men-age-35-start": "botox-men-35-sweet-spot",
   "botox-men-long-term-research-guide": "botox-men-long-term-research",
+  "botox-gay-lgbtq-men-guide": "botox-men-gay-lgbtq",
+  "botox-midlife-crisis-men-guide": "botox-men-midlife-crisis",
+  "botox-marketing-creative-men-guide": "botox-men-marketing-creative",
+  "botox-veterans-civilian-guide": "botox-men-veterans-civilian",
+  "botox-bald-scalp-dome-guide": "botox-men-bald-scalp-dome",
+  "botox-emergency-medicine-men-guide": "botox-men-emergency-medicine",
+  "botox-sports-broadcasters-men-guide": "botox-men-sports-broadcasters",
+  "botox-minimalist-approach-men-guide": "botox-men-minimalist",
+  "botox-workplace-ageism-men-guide": "botox-men-ageism-workplace",
+  "botox-second-chapter-men-guide": "botox-men-second-chapter",
 };
 
 interface PageProps {

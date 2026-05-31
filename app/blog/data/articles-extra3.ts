@@ -35,9 +35,10 @@ import { extraArticles35 } from "./articles-extra35";
 import { extraArticles36 } from "./articles-extra36";
 import { extraArticles37 } from "./articles-extra37";
 import { extraArticles38 } from "./articles-extra38";
+import { extraArticles39 } from "./articles-extra39";
 
 export type { Article, ArticleSection };
-export const articles: Article[] = [...baseArticles, ...extraArticles4, ...extraArticles5, ...extraArticles6, ...extraArticles7, ...extraArticles8, ...extraArticles9, ...extraArticles10, ...extraArticles11, ...extraArticles12, ...extraArticles13, ...extraArticles14, ...extraArticles15, ...extraArticles16, ...extraArticles17, ...extraArticles18, ...extraArticles19, ...extraArticles20, ...extraArticles21, ...extraArticles22, ...extraArticles23, ...extraArticles24, ...extraArticles25, ...extraArticles26, ...extraArticles27, ...extraArticles28, ...extraArticles29, ...extraArticles30, ...extraArticles31, ...extraArticles32, ...extraArticles33, ...extraArticles34, ...extraArticles35, ...extraArticles36, ...extraArticles37, ...extraArticles38];
+export const articles: Article[] = [...baseArticles, ...extraArticles4, ...extraArticles5, ...extraArticles6, ...extraArticles7, ...extraArticles8, ...extraArticles9, ...extraArticles10, ...extraArticles11, ...extraArticles12, ...extraArticles13, ...extraArticles14, ...extraArticles15, ...extraArticles16, ...extraArticles17, ...extraArticles18, ...extraArticles19, ...extraArticles20, ...extraArticles21, ...extraArticles22, ...extraArticles23, ...extraArticles24, ...extraArticles25, ...extraArticles26, ...extraArticles27, ...extraArticles28, ...extraArticles29, ...extraArticles30, ...extraArticles31, ...extraArticles32, ...extraArticles33, ...extraArticles34, ...extraArticles35, ...extraArticles36, ...extraArticles37, ...extraArticles38, ...extraArticles39];
 export function getArticleBySlug(slug: string): Article | undefined {
   return articles.find((a) => a.slug === slug);
 }
