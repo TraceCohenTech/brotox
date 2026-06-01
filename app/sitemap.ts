@@ -1,7 +1,61 @@
 import { MetadataRoute } from "next";
-import { zipCodes, getAllLocationSlugs } from "@/app/data/zipcodes";
 import { articles } from "@/app/blog/data/articles-extra3";
 import { guides } from "@/app/guide/data/guides";
+
+// IMPORTANT: This sitemap is intentionally focused on high-value pages only.
+// DO NOT add all zip codes or location slugs back — Google flags templated
+// pages as soft 404s. We're focusing crawl budget on unique content.
+// See: https://brotoxofficial.com GSC "crawled but not indexed" issue.
+
+// Top zip codes only — major city centers + GSC demand areas
+const topZips = [
+  // NYC
+  "10001", "10003", "10011", "10012", "10014", "10016", "10019", "10021", "10022", "10028", "10036", "10065",
+  // Brooklyn
+  "11201", "11211", "11215",
+  // Beverly Hills / LA — top GSC query cluster
+  "90210", "90211", "90212", "90069", "90067", "90049", "90291", "90292", "90401",
+  // Miami / South Florida
+  "33129", "33131", "33133", "33134", "33139", "33140", "33160", "33180",
+  // Boca / WPB / Fort Lauderdale
+  "33431", "33432", "33486", "33401", "33480", "33301",
+  // Darien / CT — top GSC query cluster
+  "06820", "06830", "06902", "06880", "06840",
+  // McLean / DC — top GSC demand
+  "22101", "22102", "20007", "20036", "20814", "22201", "22301",
+  // Chicago
+  "60610", "60611", "60614", "60622", "60654", "60657",
+  // Royal Oak / Detroit — GSC queries
+  "48067", "48009", "48301",
+  // Denver
+  "80202", "80206", "80209", "80211",
+  // SF Bay Area
+  "94102", "94105", "94109", "94115", "94123", "94301",
+  // Boston — Newton MA showing at position 5.5!
+  "02108", "02116", "02138", "02446", "02458",
+  // Dallas
+  "75201", "75205", "75219", "75225",
+  // Houston
+  "77006", "77007", "77019", "77027",
+  // Austin
+  "78701", "78703", "78704", "78746",
+  // Atlanta
+  "30305", "30309", "30326",
+  // Seattle
+  "98101", "98109", "98121", "98004",
+  // Nashville
+  "37201", "37203", "37205", "37215",
+  // Scottsdale / Phoenix
+  "85251", "85253", "85255",
+  // San Diego
+  "92101", "92037", "92130",
+  // Las Vegas
+  "89135", "89052",
+  // Florham Park NJ — showing in GSC
+  "07932",
+  // New Orleans
+  "70115", "70116",
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://brotoxofficial.com";
@@ -9,7 +63,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified: new Date(), changeFrequency: "weekly", priority: 1.0 },
     { url: `${baseUrl}/find-botox-near-me`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
-    { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+    { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
     { url: `${baseUrl}/faq`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/treatments/botox-forehead-men`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/treatments/botox-crows-feet-men`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
@@ -21,22 +75,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/terms`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
   ];
 
-  // Zip code pages
-  const zipPages: MetadataRoute.Sitemap = zipCodes.map((z) => ({
-    url: `${baseUrl}/find-botox-near-me/${z.zip}`,
+  // Only top zip codes
+  const zipPages: MetadataRoute.Sitemap = topZips.map((z) => ({
+    url: `${baseUrl}/find-botox-near-me/${z}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
 
-  // City/neighborhood slug pages (e.g., /find-botox-near-me/chelsea-new-york-ny)
-  const locationPages: MetadataRoute.Sitemap = getAllLocationSlugs().map((l) => ({
-    url: `${baseUrl}/find-botox-near-me/${l.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-  }));
-
+  // All blog articles — unique content, high value
   const blogPages: MetadataRoute.Sitemap = articles.map((a) => ({
     url: `${baseUrl}/blog/${a.slug}`,
     lastModified: new Date(),
@@ -44,6 +91,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  // All city guides
   const guidePages: MetadataRoute.Sitemap = guides.map((g) => ({
     url: `${baseUrl}/guide/${g.slug}`,
     lastModified: new Date(),
@@ -51,14 +99,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  // SEO blog routes (/botox-for-men/*)
-  const seoBlogSlugs = ["is-it-worth-it", "first-appointment-guide", "vs-fillers", "cost-guide", "best-age-to-start", "forehead-lines-guide", "side-effects", "jawline-sculpting", "before-and-after", "crows-feet-treatment", "hyperhidrosis-sweating-treatment", "aftercare-guide", "myths-debunked", "athletes-workout-guide", "how-to-find-a-provider", "executives-professionals-guide", "beards-guide", "men-vs-women-differences", "skincare-routine-guide", "frown-lines-guide", "neck-bands-guide", "tmj-jaw-pain-guide", "men-in-their-30s", "men-over-50-guide", "dysport-xeomin-comparison", "baby-botox-guide", "psychology-confidence-guide", "maintenance-schedule-guide", "dating-apps-confidence-guide", "men-in-their-20s", "men-in-their-40s", "men-over-60-guide", "under-eye-wrinkles-guide", "lip-flip-guide", "budget-botox-guide", "botox-alcohol-guide", "daxxify-guide", "botox-vs-retinol-guide", "botox-roi-guide", "chin-filler-guide", "kybella-double-chin-guide", "micro-botox-natural-look-guide", "wedding-prep-botox-guide", "testosterone-trt-botox-guide", "balding-forehead-botox-guide", "botox-men-nyc", "facelift-vs-botox-guide", "stop-botox-guide", "botox-skeptics-guide", "under-eye-filler-guide", "cheek-filler-guide", "sculptra-collagen-guide", "divorce-confidence-botox-guide", "stress-aging-botox-guide", "celebrity-men-botox-guide", "botox-finance-men-guide", "thread-lift-vs-botox-guide", "botox-loyalty-programs-guide", "bad-results-botox-guide", "nose-filler-rhinoplasty-guide", "temple-filler-guide", "microneedling-skin-guide", "chemical-peels-skin-guide", "travel-botox-guide", "botox-tech-men-guide", "botox-law-men-guide", "prp-vampire-facial-guide", "botox-men-miami-guide", "botox-men-la-guide", "laser-skin-resurfacing-guide", "botox-sales-men-guide", "botox-real-estate-men-guide", "needle-anxiety-botox-guide", "acne-scars-botox-men-guide", "botox-military-men-guide", "public-speakers-botox-men-guide", "botox-men-texas-guide", "botox-men-chicago-guide", "botox-men-dc-guide", "partner-conversation-botox-guide", "botox-men-atlanta-guide", "botox-men-san-francisco-guide", "botox-vs-laser-guide", "mens-grooming-botox-guide", "botox-tax-deductible-guide", "botox-provider-questions-guide", "botox-men-boston-guide", "botox-men-seattle-guide", "botox-long-term-results-guide", "botox-men-media-guide", "coolsculpting-vs-lipo-guide", "brow-lift-botox-guide", "botox-men-denver-guide", "botox-men-scottsdale-guide", "botox-touchups-guide", "botox-glossary-guide", "botox-men-dark-skin-guide", "botox-men-nashville-guide", "botox-men-san-diego-guide", "botox-men-rosacea-guide", "gummy-smile-botox-guide", "rf-microneedling-morpheus8-guide", "botox-oily-skin-men-guide", "botox-men-las-vegas-guide", "botox-men-phoenix-guide", "filler-reversal-hyaluronidase-guide", "mens-aesthetics-decade-plan", "botox-skincare-timing-guide", "pdo-thread-lift-men-guide", "botox-units-dosing-guide", "is-botox-painful-for-men", "botox-masculine-results-guide", "how-long-botox-kicks-in", "botox-vs-jeuveau-guide", "med-spa-vs-dermatologist-guide", "botox-migraines-guide", "botox-lunch-break-guide", "botox-deep-wrinkles-guide", "botox-resistance-immunity-guide", "botox-men-houston-guide", "botox-men-dallas-guide", "botox-men-portland-guide", "botox-men-philadelphia-guide", "full-face-rejuvenation-guide", "mens-aesthetics-trends-2026", "botox-face-shape-guide", "botox-smokers-men-guide", "botox-gym-fitness-men-guide", "botox-personal-brand-men-guide", "botox-hooded-eyes-guide", "botox-hsa-fsa-guide", "botox-one-time-guide", "botox-sweaty-palms-guide", "botox-trap-shoulder-guide", "botox-summer-guide", "botox-antidepressants-guide", "botox-groupon-deals-guide", "botox-younger-smoother-guide", "botox-calf-slimming-guide", "ozempic-face-fillers-guide", "nefertiti-lift-men-guide", "botox-partner-perspective-guide", "botox-zoom-calls-guide", "collagen-banking-men-guide", "botox-resting-angry-face-guide", "prp-hair-restoration-guide", "botox-first-year-guide", "injectable-menu-men-guide", "skinbooster-injections-guide", "botox-coffee-before-guide", "botox-blood-pressure-meds-guide", "botox-pore-size-guide", "botox-sunscreen-skin-defense-guide", "botox-winter-guide", "botox-jowls-guide", "botox-financing-guide", "botox-morning-evening-guide", "botox-science-explained-guide", "botox-negotiate-pricing-guide", "botox-vs-chemical-peels-guide", "lip-filler-guide", "marionette-lines-filler-guide", "botox-sensitive-skin-guide", "botox-expressive-face-guide", "botox-event-timing-guide", "botox-scalp-sweating-guide", "mens-skin-aging-science-guide", "botox-supplements-avoid-guide", "botox-men-minneapolis-guide", "botox-men-austin-guide", "tech-neck-botox-guide", "going-gray-botox-guide", "between-botox-sessions-guide", "strong-muscles-botox-guide", "healthcare-workers-botox-guide", "botox-vs-filters-guide", "filler-combo-men-guide", "weight-loss-botox-fillers-guide", "job-interview-botox-guide", "filler-vs-fat-grafting-guide", "botox-vs-face-cream-guide", "botox-pricing-per-unit-vs-area", "botox-cost-by-city-guide", "expensive-vs-cheap-botox-guide", "fathers-day-botox-guide", "new-year-botox-men-guide", "botox-history-science-guide", "botox-headaches-side-effects-guide", "wedding-guest-botox-guide", "botox-vs-facial-men-guide", "entrepreneurs-botox-guide", "professional-headshots-botox-guide", "golfers-botox-guide", "botox-men-tampa-guide", "botox-men-charlotte-guide", "botox-men-salt-lake-city-guide", "botox-men-new-orleans-guide", "filler-migration-men-guide", "botox-men-turning-50-guide", "intermittent-fasting-botox-guide", "botox-wearing-off-guide", "botox-men-need-more-units-guide", "botox-migration-safety-guide", "botox-bunny-lines-guide", "botox-chin-dimpling-guide", "botox-necklace-lines-guide", "botox-perioral-lines-guide", "botox-holiday-party-guide", "botox-thick-skin-men-guide", "botox-facial-asymmetry-guide", "botox-asian-men-guide", "botox-outdoor-workers-guide", "botox-career-promotion-guide", "botox-wish-i-knew-guide", "botox-retired-men-guide", "botox-round-face-men-guide", "botox-men-glasses-guide", "botox-andropause-guide", "botox-blue-collar-men-guide", "botox-post-covid-men-guide", "botox-hairline-men-guide", "preventive-vs-corrective-botox-men", "botox-when-sick-men-guide", "botox-sleep-position-men-guide", "botox-flying-travel-men-guide", "botox-dry-skin-men-guide", "botox-what-not-to-do-men-guide", "botox-mental-health-confidence-men", "botox-who-administers-men-guide", "botox-skin-types-men-guide", "botox-sauna-steam-room-men-guide", "botox-facial-sweating-men-guide", "botox-tanning-sun-exposure-men-guide", "allergan-vs-galderma-men-guide", "botox-neck-muscle-pain-men-guide", "botox-antibodies-immune-men-guide", "botox-food-prep-appointment-men", "botox-eye-area-complete-men-guide", "botox-insurance-coverage-men-guide", "botox-workplace-reactions-men-guide", "botox-men-psoriasis-guide", "botox-men-large-forehead-guide", "botox-competitive-athletes-guide", "botox-men-skin-cancer-guide", "botox-men-autoimmune-guide", "botox-men-latino-guide", "botox-men-70s-guide", "botox-men-facial-scars-guide", "botox-men-music-industry-guide", "botox-men-politics-guide", "botox-men-black-guide", "botox-men-south-asian-guide", "botox-men-middle-eastern-guide", "botox-spring-guide-men", "botox-fall-guide-men", "botox-men-in-their-60s", "botox-men-orlando-guide", "botox-men-raleigh-guide", "botox-combination-skin-men-guide", "botox-annual-cost-men-guide", "reunion-prep-botox-men-guide", "botox-men-crossfit-guide", "hifu-vs-botox-men-guide", "botox-men-teachers-guide", "botox-men-hospitality-guide", "botox-men-career-change-guide", "botox-men-team-sports-guide", "mens-anti-aging-toolkit-guide", "botox-men-chefs-guide", "botox-men-content-creators-guide", "botox-day-by-day-results-men", "botox-provider-red-flags-men", "botox-longevity-wellness-men", "botox-natural-looking-men", "botox-pre-appointment-checklist-men", "botox-lifestyle-results-men", "botox-biohacking-men", "botox-retinol-combo-men", "botox-track-results-men", "botox-confidence-research-men", "botox-in-office-vs-at-home-men", "why-men-look-older-guide", "botox-personal-trainers-guide", "botox-ceo-executive-guide", "cold-plunge-ice-bath-botox-guide", "diet-nutrition-botox-guide", "botox-tattoos-men-guide", "botox-pilots-aviation-guide", "cortisol-facial-aging-guide", "botox-dating-over-40-guide", "botox-coaches-mentors-guide", "botox-gym-supplements-guide", "upper-vs-lower-face-botox-men", "botox-bruxism-teeth-grinding-men", "prevent-botox-bruising-men", "do-you-tip-botox-provider-men", "botox-abroad-medical-tourism-men", "first-botox-consultation-men", "partner-suggested-botox-men", "botox-before-presentation-speech-men", "botox-sweating-complete-guide-men", "botox-black-friday-holiday-deals-men", "botox-new-dad-guide", "what-to-say-got-botox-guide", "botox-construction-trades-guide", "botox-men-academia-guide", "botox-night-shift-workers-guide", "botox-men-over-45-guide", "botox-management-consulting-guide", "botox-cannabis-vaping-guide", "botox-photogenic-camera-guide", "botox-acupuncture-comparison-guide", "botox-first-year-experience-guide", "botox-eye-twitching-men-guide", "botox-dental-office-men-guide", "botox-second-appointment-men-guide", "botox-gamers-streamers-men-guide", "botox-overdone-frozen-look-men", "botox-tension-headaches-men-guide", "botox-uneven-eyebrows-men-guide", "botox-forehead-only-men-guide", "botox-anger-mood-science-men", "how-often-men-get-botox", "botox-men-job-search-career", "botox-bjj-combat-sports-guide", "botox-work-from-home-men-guide", "botox-pharma-sales-men-guide", "botox-5-year-plan-men-guide", "botox-creative-professionals-men-guide", "botox-private-equity-vc-men-guide", "botox-milestone-birthday-men-guide", "botox-dating-after-50-men-guide", "botox-single-fathers-men-guide", "botox-powerlifting-weightlifting-men-guide", "botox-law-enforcement-men-guide", "botox-men-privacy-discretion-guide", "botox-two-week-results-men-guide", "botox-men-small-town-rural-guide", "botox-gift-cards-men-guide", "botox-men-photo-documentation-guide", "botox-men-adhd-guide", "botox-or-fillers-first-men-guide", "botox-group-party-appointments-men", "botox-blood-thinners-anticoagulants-men", "masseter-jaw-slimming-guide", "collagen-supplements-botox-guide", "sleep-facial-aging-guide", "botox-membership-plans-guide", "gut-health-skin-aging-guide", "years-of-botox-results-guide", "face-mapping-botox-guide", "vitamin-c-skin-botox-guide", "daily-spf-botox-guide", "mens-aesthetics-mindset-guide", "hormones-facial-aging-guide", "diabetes-botox-guide", "shaving-after-botox-guide", "allergy-season-botox-guide", "active-acne-botox-guide", "botox-vs-hydrafacial-guide", "hair-loss-botox-guide", "lasik-botox-timing-guide", "eyelid-drooping-ptosis-guide", "massage-after-botox-guide", "dark-circles-men-guide", "red-light-therapy-vs-botox-guide", "microcurrent-facials-vs-botox-guide", "botox-men-bells-palsy-guide", "botox-men-sobriety-guide", "botox-men-thyroid-guide", "botox-men-resting-tired-face-guide", "botox-men-endurance-athletes-guide", "botox-men-glp1-weight-loss-guide", "complete-jawline-guide-men", "botox-men-sun-damage-guide", "botox-snoring-treatment-men", "botox-after-hair-transplant-guide", "botox-keto-diet-men-guide", "botox-back-pain-men-guide", "botox-swimming-pool-men-guide", "botox-posture-men-guide", "botox-vitiligo-skin-men-guide", "botox-men-reviews-community-guide", "botox-single-area-vs-full-face-men", "botox-alternatives-men-guide", "botox-skiers-snowboarders-guide", "botox-surfers-men-guide", "botox-genetic-aging-men-guide", "botox-hot-yoga-men-guide", "botox-architecture-design-men-guide", "botox-wine-spirits-men-guide", "botox-cyclists-men-guide", "botox-hunters-fishermen-men-guide", "botox-poker-players-men-guide", "botox-hikers-backpackers-men-guide", "botox-vs-face-yoga-men-guide", "botox-plastic-surgeon-vs-med-spa-men", "botox-after-rhinoplasty-men-guide", "couples-botox-appointment-men-guide", "botox-men-sunny-climate-uv-guide", "botox-injection-anatomy-men-guide", "botox-pricing-red-flags-men-guide", "hand-rejuvenation-men-botox-guide", "botox-cancer-recovery-men-guide", "botox-firefighters-men-guide", "botox-tennis-men-guide", "botox-vs-tretinoin-retin-a-men", "botox-men-detroit-guide", "botox-men-pittsburgh-guide", "botox-men-sacramento-guide", "botox-motorcyclists-men-guide", "botox-men-first-90-days-guide", "botox-nonprofit-social-sector-men", "botox-men-genetic-father-guide", "botox-men-richmond-guide", "botox-vs-sculptra-men-guide", "best-time-of-year-botox-men", "botox-niacinamide-skincare-men", "botox-permanent-face-changes-men", "botox-men-social-media-truth", "botox-tell-your-doctor-men", "botox-men-multi-area-one-visit", "why-men-wait-too-long-botox", "botox-men-age-35-start", "botox-men-long-term-research-guide", "botox-gay-lgbtq-men-guide", "botox-midlife-crisis-men-guide", "botox-marketing-creative-men-guide", "botox-veterans-civilian-guide", "botox-bald-scalp-dome-guide", "botox-emergency-medicine-men-guide", "botox-sports-broadcasters-men-guide", "botox-minimalist-approach-men-guide", "botox-workplace-ageism-men-guide", "botox-second-chapter-men-guide", "dao-mouth-corners-botox-men", "botox-nose-tip-lift-guide", "botox-foot-sweating-hyperhidrosis-men", "botox-accutane-isotretinoin-men", "botox-rogaine-finasteride-men", "botox-spock-brow-fix-men", "botox-not-working-men-guide", "botox-men-65-senior-guide", "botox-heavy-drooping-brow-men", "botox-chest-sweating-men", "turkey-neck-botox-men-guide", "botox-nasolabial-folds-men-guide", "botox-social-anxiety-men-guide", "botox-digital-nomad-men-guide", "botox-office-workers-men-guide", "dry-needling-vs-botox-men-guide", "microblading-botox-brow-men-guide", "peptide-skincare-botox-men-guide", "platysmal-bands-botox-men-guide", "gua-sha-vs-botox-men-guide"];
-  const seoBlogPages: MetadataRoute.Sitemap = seoBlogSlugs.map((s) => ({
+  // Top SEO blog routes — highest commercial intent only
+  const topSeoSlugs = [
+    "is-it-worth-it", "first-appointment-guide", "vs-fillers", "cost-guide",
+    "best-age-to-start", "forehead-lines-guide", "side-effects", "jawline-sculpting",
+    "before-and-after", "crows-feet-treatment", "dysport-xeomin-comparison",
+    "men-in-their-30s", "men-in-their-40s", "men-over-50-guide",
+    "budget-botox-guide", "how-to-find-a-provider", "maintenance-schedule-guide",
+    "botox-men-nyc", "botox-men-miami-guide", "botox-men-la-guide",
+    "botox-men-chicago-guide", "botox-men-denver-guide", "botox-men-dallas-guide",
+    "med-spa-vs-dermatologist-guide", "botox-lunch-break-guide",
+    "botox-deep-wrinkles-guide", "botox-hsa-fsa-guide", "botox-cost-by-city-guide",
+  ];
+  const seoBlogPages: MetadataRoute.Sitemap = topSeoSlugs.map((s) => ({
     url: `${baseUrl}/botox-for-men/${s}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
 
-  return [...staticPages, ...zipPages, ...locationPages, ...blogPages, ...seoBlogPages, ...guidePages];
+  return [...staticPages, ...zipPages, ...blogPages, ...guidePages, ...seoBlogPages];
 }

@@ -944,6 +944,17 @@ export const zipCodes: ZipCode[] = [
   { zip: "28105", city: "Matthews", neighborhood: "South Matthews", state: "NC", region: "Charlotte" },
   { zip: "28173", city: "Waxhaw", state: "NC", region: "Charlotte" },
   { zip: "28277", city: "Charlotte", neighborhood: "Ballantyne", state: "NC", region: "Charlotte" },
+  // ===== GSC-DISCOVERED DEMAND CITIES =====
+  { zip: "32960", city: "Vero Beach", state: "FL", region: "South Florida" },
+  { zip: "32963", city: "Vero Beach", neighborhood: "Barrier Island", state: "FL", region: "South Florida" },
+  { zip: "02035", city: "Foxborough", state: "MA", region: "Boston" },
+  { zip: "37067", city: "Franklin", neighborhood: "Cool Springs", state: "TN", region: "Nashville" },
+  { zip: "37027", city: "Brentwood", state: "TN", region: "Nashville" },
+  { zip: "80301", city: "Boulder", neighborhood: "North Boulder", state: "CO", region: "Denver" },
+  { zip: "92103", city: "San Diego", neighborhood: "Hillcrest / Bankers Hill", state: "CA", region: "San Diego" },
+  { zip: "77429", city: "Cypress", state: "TX", region: "Houston" },
+  { zip: "30075", city: "Roswell", state: "GA", region: "Atlanta" },
+  { zip: "30067", city: "Marietta", neighborhood: "East Cobb", state: "GA", region: "Atlanta" },
 ];
 
 export function getZipByCode(zip: string): ZipCode | undefined {
