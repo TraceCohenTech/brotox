@@ -114,6 +114,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "profhilo-men-guide", "radiesse-men-filler-guide", "juvederm-vs-restylane-men-guide",
     "botox-men-kansas-city-guide", "exosome-facial-men-guide",
     "botox-men-columbus-ohio-guide", "polynucleotides-pdrn-men-guide",
+    "zinc-botox-results-men-guide", "miradry-vs-botox-sweating-men-guide",
+    "what-botox-cant-fix-men-guide", "botox-sleep-apnea-cpap-men-guide",
+    "botox-groin-sweating-men-guide", "botox-ed-viagra-cialis-men-guide",
+    "botox-aftercare-nutrition-diet-men", "chain-vs-independent-medspa-men-guide",
+    "botox-bodybuilders-physique-men-guide", "botox-parkinsons-disease-men-guide",
   ];
   const seoBlogPages: MetadataRoute.Sitemap = topSeoSlugs.map((s) => ({
     url: `${baseUrl}/botox-for-men/${s}`,
