@@ -110,6 +110,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "botox-men-chicago-guide", "botox-men-denver-guide", "botox-men-dallas-guide",
     "med-spa-vs-dermatologist-guide", "botox-lunch-break-guide",
     "botox-deep-wrinkles-guide", "botox-hsa-fsa-guide", "botox-cost-by-city-guide",
+    "botox-men-new-jersey-guide", "botox-men-baltimore-guide", "botox-men-san-antonio-guide",
+    "profhilo-men-guide", "radiesse-men-filler-guide", "juvederm-vs-restylane-men-guide",
+    "botox-men-kansas-city-guide", "exosome-facial-men-guide",
+    "botox-men-columbus-ohio-guide", "polynucleotides-pdrn-men-guide",
   ];
   const seoBlogPages: MetadataRoute.Sitemap = topSeoSlugs.map((s) => ({
     url: `${baseUrl}/botox-for-men/${s}`,
