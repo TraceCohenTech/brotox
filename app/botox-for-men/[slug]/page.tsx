@@ -491,6 +491,17 @@ const seoSlugs: Record<string, string> = {
   "botox-no-downtime-guide": "botox-men-no-downtime-guide",
   "fatherhood-botox-guide": "botox-men-fatherhood-self-care",
   "botox-psychological-effects-men": "botox-men-psychological-transformation",
+  "does-botox-age-faster-wear-off": "botox-age-faster-wear-off-men",
+  "botox-men-regret-satisfaction-guide": "botox-men-regret-research",
+  "botox-acne-breakouts-men-guide": "botox-acne-breakouts-men",
+  "botox-antibiotics-interaction-men-guide": "botox-antibiotics-men",
+  "botox-essential-tremor-men-guide": "botox-essential-tremor-men",
+  "botox-packages-bundle-deals-men": "botox-packages-deals-men",
+  "botox-heavy-forehead-feeling-men": "botox-heavy-forehead-men",
+  "botox-skip-session-gap-men": "botox-skip-session-men",
+  "botox-dry-eyes-men-guide": "botox-dry-eyes-men",
+  "botox-before-after-photos-guide-men": "botox-read-before-after-photos-men",
+  "botox-chronic-pain-men-guide": "botox-men-chronic-pain-guide",
 };
 
 interface PageProps {

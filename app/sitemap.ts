@@ -123,6 +123,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "mens-facial-aging-guide", "extreme-sports-botox-men", "botox-10-year-cost-guide",
     "facial-volume-loss-men-guide", "botox-no-downtime-guide", "fatherhood-botox-guide",
     "botox-psychological-effects-men",
+    "does-botox-age-faster-wear-off",
+    "botox-men-regret-satisfaction-guide",
+    "botox-acne-breakouts-men-guide",
+    "botox-antibiotics-interaction-men-guide",
+    "botox-essential-tremor-men-guide",
+    "botox-packages-bundle-deals-men",
+    "botox-heavy-forehead-feeling-men",
+    "botox-skip-session-gap-men",
+    "botox-dry-eyes-men-guide",
+    "botox-before-after-photos-guide-men",
+    "botox-chronic-pain-men-guide",
   ];
   const seoBlogPages: MetadataRoute.Sitemap = topSeoSlugs.map((s) => ({
     url: `${baseUrl}/botox-for-men/${s}`,
