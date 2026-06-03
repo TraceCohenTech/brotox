@@ -5,37 +5,26 @@ import { motion } from "framer-motion";
 import SignUpForm from "./SignUpForm";
 
 // High-quality men's faces for the scrolling marquee - all male faces
+// Reduced from 24 → 12 images, smaller size, lower quality for performance
 const topRowFaces = [
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1463453091185-61582044d556?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=300&h=300&fit=crop&crop=face&q=95",
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face&q=75",
+  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face&q=75",
+  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face&q=75",
+  "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=face&q=75",
 ];
 
 const middleRowFaces = [
-  "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1557862921-37829c790f19?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1600486913747-55e5470d6f40?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1599566150163-29194dcabd36?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=300&h=300&fit=crop&crop=face&q=95",
+  "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?w=200&h=200&fit=crop&crop=face&q=75",
+  "https://images.unsplash.com/photo-1557862921-37829c790f19?w=200&h=200&fit=crop&crop=face&q=75",
+  "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=200&h=200&fit=crop&crop=face&q=75",
+  "https://images.unsplash.com/photo-1600486913747-55e5470d6f40?w=200&h=200&fit=crop&crop=face&q=75",
 ];
 
 const bottomRowFaces = [
-  "https://images.unsplash.com/photo-1583195764036-6dc248ac07d9?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1618077360395-f3068be8e001?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1480429370612-2b90d08a0433?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1590086782957-93c06ef21604?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=300&h=300&fit=crop&crop=face&q=95",
-  "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=300&h=300&fit=crop&crop=face&q=95",
+  "https://images.unsplash.com/photo-1583195764036-6dc248ac07d9?w=200&h=200&fit=crop&crop=face&q=75",
+  "https://images.unsplash.com/photo-1618077360395-f3068be8e001?w=200&h=200&fit=crop&crop=face&q=75",
+  "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=200&h=200&fit=crop&crop=face&q=75",
+  "https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=200&h=200&fit=crop&crop=face&q=75",
 ];
 
 export default function Hero() {
@@ -50,7 +39,7 @@ export default function Hero() {
             animate={{ x: [0, -1920] }}
             transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
           >
-            {[...topRowFaces, ...topRowFaces, ...topRowFaces].map((src, i) => (
+            {[...topRowFaces, ...topRowFaces].map((src, i) => (
               <div key={i} className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden">
                 <Image
                   src={src}
@@ -71,7 +60,7 @@ export default function Hero() {
             animate={{ x: [-1920, 0] }}
             transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
           >
-            {[...middleRowFaces, ...middleRowFaces, ...middleRowFaces].map((src, i) => (
+            {[...middleRowFaces, ...middleRowFaces].map((src, i) => (
               <div key={i} className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden">
                 <Image
                   src={src}
@@ -92,7 +81,7 @@ export default function Hero() {
             animate={{ x: [0, -1920] }}
             transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
           >
-            {[...bottomRowFaces, ...bottomRowFaces, ...bottomRowFaces].map((src, i) => (
+            {[...bottomRowFaces, ...bottomRowFaces].map((src, i) => (
               <div key={i} className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden">
                 <Image
                   src={src}

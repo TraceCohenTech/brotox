@@ -244,8 +244,29 @@ export default async function ArticlePage({ params }: PageProps) {
               ) : null;
             })()}
 
+            {/* Strategic internal links — boost page-2 articles */}
+            <div className="mt-12">
+              <h2 className="text-lg font-bold text-white mb-4">Popular Guides for Men</h2>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                {[
+                  { href: "/blog/how-much-does-botox-cost-for-men", label: "Cost Guide" },
+                  { href: "/blog/botox-men-vs-women-differences", label: "Men vs Women" },
+                  { href: "/blog/botox-men-shaving-routine", label: "Shaving & Botox" },
+                  { href: "/blog/botox-men-hair-loss-treatments", label: "Hair Loss" },
+                  { href: "/treatments/botox-forehead-men", label: "Forehead Lines" },
+                  { href: "/treatments/jawline-filler-men", label: "Jawline Filler" },
+                  { href: "/faq", label: "Full FAQ" },
+                  { href: "/find-botox-near-me", label: "Find Provider" },
+                ].filter(l => l.href !== `/blog/${slug}`).slice(0, 8).map((link) => (
+                  <Link key={link.href} href={link.href} className="px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-xs text-gray-300 hover:text-blue-400 hover:border-blue-500/30 transition-all text-center">
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
             {/* Bottom CTA */}
-            <div className="mt-12 bg-gradient-to-r from-blue-500/10 via-blue-600/10 to-blue-500/10 border border-blue-500/20 rounded-3xl p-10 text-center">
+            <div className="mt-8 bg-gradient-to-r from-blue-500/10 via-blue-600/10 to-blue-500/10 border border-blue-500/20 rounded-3xl p-10 text-center">
               <h2 className="text-3xl font-black text-white mb-3">Find a Provider Near You</h2>
               <p className="text-lg text-blue-200 mb-6">Enter your zip code and get matched with a vetted Botox provider for men.</p>
               <Link href="/find-botox-near-me" className="btn-primary inline-block text-lg">Get Matched Free</Link>
