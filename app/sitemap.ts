@@ -119,6 +119,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "botox-groin-sweating-men-guide", "botox-ed-viagra-cialis-men-guide",
     "botox-aftercare-nutrition-diet-men", "chain-vs-independent-medspa-men-guide",
     "botox-bodybuilders-physique-men-guide", "botox-parkinsons-disease-men-guide",
+    "botox-men-southern-us-guide", "botox-introverts-guide", "what-women-notice-botox-men",
+    "mens-facial-aging-guide", "extreme-sports-botox-men", "botox-10-year-cost-guide",
+    "facial-volume-loss-men-guide", "botox-no-downtime-guide", "fatherhood-botox-guide",
+    "botox-psychological-effects-men",
   ];
   const seoBlogPages: MetadataRoute.Sitemap = topSeoSlugs.map((s) => ({
     url: `${baseUrl}/botox-for-men/${s}`,

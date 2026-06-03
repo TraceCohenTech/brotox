@@ -481,6 +481,16 @@ const seoSlugs: Record<string, string> = {
   "chain-vs-independent-medspa-men-guide": "botox-chain-vs-independent-men",
   "botox-bodybuilders-physique-men-guide": "botox-men-bodybuilding-physique",
   "botox-parkinsons-disease-men-guide": "botox-men-parkinsons",
+  "botox-men-southern-us-guide": "botox-men-south-guide",
+  "botox-introverts-guide": "botox-men-introvert-guide",
+  "what-women-notice-botox-men": "botox-men-what-women-notice",
+  "mens-facial-aging-guide": "mens-facial-aging-progression",
+  "extreme-sports-botox-men": "botox-men-adventure-sports",
+  "botox-10-year-cost-guide": "botox-men-decade-cost-analysis",
+  "facial-volume-loss-men-guide": "male-facial-volume-loss-guide",
+  "botox-no-downtime-guide": "botox-men-no-downtime-guide",
+  "fatherhood-botox-guide": "botox-men-fatherhood-self-care",
+  "botox-psychological-effects-men": "botox-men-psychological-transformation",
 };
 
 interface PageProps {
