@@ -134,6 +134,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "botox-dry-eyes-men-guide",
     "botox-before-after-photos-guide-men",
     "botox-chronic-pain-men-guide",
+    "botox-deep-set-eyes-guide",
+    "botox-extreme-weather-jobs-guide",
+    "botox-caregiver-stress-guide",
+    "botox-metabolism-body-type-guide",
+    "botox-upper-face-complete-guide",
+    "botox-widowed-single-again-guide",
+    "botox-healthcare-executives-guide",
+    "botox-construction-redev-guide",
+    "botox-podcasters-video-creators-guide",
+    "botox-fitness-transformation-guide",
   ];
   const seoBlogPages: MetadataRoute.Sitemap = topSeoSlugs.map((s) => ({
     url: `${baseUrl}/botox-for-men/${s}`,
