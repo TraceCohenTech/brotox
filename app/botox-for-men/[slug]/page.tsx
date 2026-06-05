@@ -523,6 +523,16 @@ const seoSlugs: Record<string, string> = {
   "botox-men-stigma-emotional-guide": "botox-men-emotional-wellness-stigma",
   "botox-virtual-consult-men-guide": "botox-men-virtual-consultation",
   "gym-face-botox-men-guide": "botox-men-gym-face",
+  "botox-allergy-guide-men": "botox-allergy-reaction-men",
+  "botox-skin-effects-men-guide": "botox-skin-thinning-myth-men",
+  "botox-muscle-atrophy-guide-men": "botox-muscle-atrophy-men",
+  "botox-steroids-interaction-men": "botox-men-steroids-prednisone",
+  "botox-consent-form-guide-men": "botox-consent-form-men",
+  "botox-hemifacial-spasm-guide-men": "botox-hemifacial-spasm-men",
+  "botox-pacemaker-men-guide": "botox-men-heart-condition-pacemaker",
+  "botox-hidden-fees-pricing-men": "botox-hidden-fees-men",
+  "botox-voice-disorder-men-guide": "botox-men-voice-disorders",
+  "botox-post-stroke-men-guide": "botox-men-post-stroke",
 };
 
 interface PageProps {

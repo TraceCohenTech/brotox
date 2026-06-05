@@ -155,6 +155,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "botox-men-stigma-emotional-guide",
     "botox-virtual-consult-men-guide",
     "gym-face-botox-men-guide",
+    "botox-allergy-guide-men",
+    "botox-skin-effects-men-guide",
+    "botox-muscle-atrophy-guide-men",
+    "botox-steroids-interaction-men",
+    "botox-consent-form-guide-men",
+    "botox-hemifacial-spasm-guide-men",
+    "botox-pacemaker-men-guide",
+    "botox-hidden-fees-pricing-men",
+    "botox-voice-disorder-men-guide",
+    "botox-post-stroke-men-guide",
   ];
   const seoBlogPages: MetadataRoute.Sitemap = topSeoSlugs.map((s) => ({
     url: `${baseUrl}/botox-for-men/${s}`,
