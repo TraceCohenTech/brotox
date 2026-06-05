@@ -144,6 +144,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "botox-dental-work-timing-men",
     "botox-jaw-tension-vs-slimming-men",
     "botox-men-facial-expressions-social",
+    "botox-vegan-men-guide",
+    "botox-natural-looking-fear-guide",
+    "silver-fox-botox-guide",
+    "first-impressions-career-botox-men",
+    "botox-men-networking-guide",
+    "botox-total-grooming-budget-men",
+    "botox-provider-relationship-guide",
+    "botox-integrative-wellness-men",
+    "botox-men-stigma-emotional-guide",
+    "botox-virtual-consult-men-guide",
+    "gym-face-botox-men-guide",
   ];
   const seoBlogPages: MetadataRoute.Sitemap = topSeoSlugs.map((s) => ({
     url: `${baseUrl}/botox-for-men/${s}`,
