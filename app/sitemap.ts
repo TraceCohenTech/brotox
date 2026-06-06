@@ -165,6 +165,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "botox-hidden-fees-pricing-men",
     "botox-voice-disorder-men-guide",
     "botox-post-stroke-men-guide",
+    "botox-men-under-35-guide",
+    "botox-men-55-65-guide",
+    "botox-weekend-warrior-guide",
+    "botox-men-how-young-look-guide",
+    "botox-men-nutrition-protein-guide",
+    "botox-spf-anti-aging-stack-guide",
+    "botox-men-outdoor-sports-guide",
+    "botox-urban-professional-guide",
+    "botox-men-age-gracefully-guide",
+    "botox-men-grooming-system-guide",
   ];
   const seoBlogPages: MetadataRoute.Sitemap = topSeoSlugs.map((s) => ({
     url: `${baseUrl}/botox-for-men/${s}`,

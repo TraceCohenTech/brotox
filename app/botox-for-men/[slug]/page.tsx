@@ -533,6 +533,16 @@ const seoSlugs: Record<string, string> = {
   "botox-hidden-fees-pricing-men": "botox-hidden-fees-men",
   "botox-voice-disorder-men-guide": "botox-men-voice-disorders",
   "botox-post-stroke-men-guide": "botox-men-post-stroke",
+  "botox-men-under-35-guide": "botox-men-under-35",
+  "botox-men-55-65-guide": "botox-men-over-55",
+  "botox-weekend-warrior-guide": "botox-men-weekend-warrior",
+  "botox-men-how-young-look-guide": "botox-men-looking-younger-guide",
+  "botox-men-nutrition-protein-guide": "botox-men-protein-nutrition-skin",
+  "botox-spf-anti-aging-stack-guide": "botox-men-sunscreen-synergy",
+  "botox-men-outdoor-sports-guide": "botox-men-outdoor-lifestyle",
+  "botox-urban-professional-guide": "botox-men-urban-professional-guide",
+  "botox-men-age-gracefully-guide": "botox-men-aging-gracefully",
+  "botox-men-grooming-system-guide": "botox-men-grooming-upgrade",
 };
 
 interface PageProps {
