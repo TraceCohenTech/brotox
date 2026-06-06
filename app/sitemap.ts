@@ -175,6 +175,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "botox-urban-professional-guide",
     "botox-men-age-gracefully-guide",
     "botox-men-grooming-system-guide",
+    "letybo-neurotoxin-men-guide",
+    "botox-vs-radiofrequency-men-guide",
+    "lip-flip-vs-lip-filler-men-guide",
+    "botox-concierge-mobile-men-guide",
+    "juvederm-voluma-men-guide",
+    "botox-men-hollow-thin-face-guide",
+    "botox-men-decade-evolution-guide",
+    "botox-men-teaching-clinic-guide",
+    "daxxify-vs-dysport-men-guide",
+    "sculptra-vs-radiesse-men-guide",
   ];
   const seoBlogPages: MetadataRoute.Sitemap = topSeoSlugs.map((s) => ({
     url: `${baseUrl}/botox-for-men/${s}`,
