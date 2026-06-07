@@ -185,6 +185,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "botox-men-teaching-clinic-guide",
     "daxxify-vs-dysport-men-guide",
     "sculptra-vs-radiesse-men-guide",
+    "botox-cold-sores-men-guide",
+    "botox-numbing-cream-men-guide",
+    "botox-vacation-timing-men-guide",
+    "botox-keloid-scarring-men-guide",
+    "botox-six-month-check-men-guide",
+    "botox-mask-wearers-men-guide",
+    "botox-individual-variation-men-guide",
+    "botox-masculinity-stigma-men-guide",
+    "botox-high-altitude-men-guide",
+    "botox-annual-review-men-guide",
   ];
   const seoBlogPages: MetadataRoute.Sitemap = topSeoSlugs.map((s) => ({
     url: `${baseUrl}/botox-for-men/${s}`,
