@@ -195,6 +195,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "botox-masculinity-stigma-men-guide",
     "botox-high-altitude-men-guide",
     "botox-annual-review-men-guide",
+    "botox-first-session-calibration-men",
+    "all-neurotoxins-2026-men-guide",
+    "botox-vitamin-d-skin-men-guide",
+    "botox-12-month-plan-men-guide",
+    "botox-5-year-face-projection-men",
+    "botox-face-self-assessment-men-guide",
+    "botox-men-40s-boom-guide",
+    "botox-late-starter-over-50-men",
+    "botox-men-strategic-investment-guide",
+    "botox-maximize-consultation-men-guide",
+    "botox-forehead-eyebrow-men-guide",
   ];
   const seoBlogPages: MetadataRoute.Sitemap = topSeoSlugs.map((s) => ({
     url: `${baseUrl}/botox-for-men/${s}`,

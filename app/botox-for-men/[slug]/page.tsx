@@ -563,6 +563,17 @@ const seoSlugs: Record<string, string> = {
   "botox-masculinity-stigma-men-guide": "botox-men-reframe-masculinity",
   "botox-high-altitude-men-guide": "botox-men-high-altitude",
   "botox-annual-review-men-guide": "botox-men-annual-review-guide",
+  "botox-first-session-calibration-men": "botox-men-first-session-not-best",
+  "all-neurotoxins-2026-men-guide": "five-neurotoxins-men-2026-guide",
+  "botox-vitamin-d-skin-men-guide": "botox-men-vitamin-d-connection",
+  "botox-12-month-plan-men-guide": "botox-men-12-month-plan",
+  "botox-5-year-face-projection-men": "botox-men-5year-projection",
+  "botox-face-self-assessment-men-guide": "botox-men-face-self-assessment",
+  "botox-men-40s-boom-guide": "botox-men-40s-surge-guide",
+  "botox-late-starter-over-50-men": "botox-men-start-late-over-50",
+  "botox-men-strategic-investment-guide": "botox-men-strategic-investment",
+  "botox-maximize-consultation-men-guide": "botox-men-maximize-consultation",
+  "botox-forehead-eyebrow-men-guide": "botox-men-forehead-eyebrow-connection",
 };
 
 interface PageProps {
