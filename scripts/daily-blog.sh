@@ -29,15 +29,24 @@ $EXISTING
 
 Write 5 NEW blog articles. Each must target a unique long-tail keyword men actually search for.
 
-RULES FOR HIGH-CTR POSTS:
-- Title formula: [Topic]: [Specific Metric], [Second Metric] — [Concrete Deliverable]
-- Description: must open with a number within first 6 words
-- quickAnswer: opens with a specific figure, never prose
+CRITICAL CTR RULES (our page-1 articles get 0 clicks without these):
+- metaTitle MUST contain a specific number within the first 6 words (e.g., '5 Rules for...', '48-Hour Guide to...')
+- metaTitle should create urgency or curiosity — use formats like: '5 [Topic] Rules — [Specific Detail]' or '[Number] [Topic] Tips Men Miss'
+- description MUST open with a number or metric in the first 6 words (e.g., '72% of men...', '40-60 units required...')
+- description should promise a specific deliverable the reader will GET
+- First paragraph (quickAnswer) must open with a specific data point — never prose or generalities
 - Each article needs 6-10 sections with specific numbers and data
 - 4 FAQs per article — questions should be exact search queries people type
-- First paragraph answers the query directly, no preamble
 - Include at least 15 specific numbers/percentages/dollar amounts per article
 - Category must be one of: Education, Guide, Lifestyle, Treatment, Comparison
+
+BAD EXAMPLE (0 clicks on page 1):
+  metaTitle: 'Botox and Shaving for Men — Before and After Appointment Guide'
+  description: 'Shaving is a daily ritual for most men — but how does it interact with Botox?'
+
+GOOD EXAMPLE (high-CTR pattern):
+  metaTitle: '3 Shaving Rules After Botox — 48-Hour Timeline for Men'
+  description: '72% of men shave within 24 hours of Botox and risk irritation. Follow this 3-step timeline.'
 
 Output ONLY valid TypeScript that can be appended to the articles array.
 Use this exact format for each article:

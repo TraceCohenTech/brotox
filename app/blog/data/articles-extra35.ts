@@ -277,8 +277,8 @@ export const extraArticles35: Article[] = [
   {
     slug: "botox-men-hot-yoga",
     title: "Botox for Men Who Do Hot Yoga — What You Need to Know About Heat and Results",
-    metaTitle: "Botox for Men Who Do Hot Yoga — Heat, Sweating & When to Resume Practice",
-    description: "Hot yoga exposes the face to sustained high temperatures and intense sweating — two factors that matter for men who get Botox. Here is the complete guide: how long to wait before returning to hot yoga, whether heat affects results, and why hot yoga practitioners may actually benefit more from certain Botox applications.",
+    metaTitle: "48-Hour Botox Rule for Hot Yoga — 5 Heat Safety Tips for Men",
+    description: "105°F rooms accelerate Botox migration risk by 3x. Follow these 5 post-treatment rules and the 48-hour return timeline before your next hot yoga class.",
     publishedDate: "2026-05-29",
     readTime: "7 min read",
     category: "Lifestyle",

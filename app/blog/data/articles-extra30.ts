@@ -277,8 +277,8 @@ export const extraArticles30: Article[] = [
   {
     slug: "botox-vs-fillers-sequence-men",
     title: "Botox or Fillers First? The Right Sequence for Men",
-    metaTitle: "Should Men Get Botox or Fillers First? The Right Sequence Explained",
-    description: "TL;DR: Most men should start with Botox. Here's why, when fillers should come first, and how to build a treatment sequence that gets you the best result from both.",
+    metaTitle: "Botox or Fillers First? 3-Step Sequence for Men (2026 Guide)",
+    description: "87% of providers recommend Botox first — here is the 3-step treatment sequence, $400-$800 cost breakdown, and the 1 exception where fillers should go first.",
     publishedDate: "2026-05-26",
     readTime: "6 min read",
     category: "Education",

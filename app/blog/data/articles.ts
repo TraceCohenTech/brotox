@@ -788,8 +788,8 @@ export const articles: Article[] = [
   {
     slug: "botox-men-vs-women-differences",
     title: "Botox for Men vs Women — 6 Key Differences You Need to Know",
-    metaTitle: "Botox for Men vs Women — Key Differences in Dosing, Results & Technique",
-    description: "Men and women respond to Botox differently — in dosing, anatomy, aesthetic goals, and cost. Here's why male Botox isn't just female Botox with more units.",
+    metaTitle: "6 Ways Men's Botox Differs from Women's — Dosing, Cost & Results",
+    description: "40-60 units vs 20-30 units — men need up to 2x the Botox dose. Here are 6 critical differences in technique, anatomy, cost, and results every man should know.",
     publishedDate: "2026-05-01",
     readTime: "6 min read",
     category: "Education",

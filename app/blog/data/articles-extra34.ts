@@ -140,8 +140,8 @@ export const extraArticles34: Article[] = [
   {
     slug: "botox-swimming-men",
     title: "Botox for Men Who Swim — Pool, Ocean, and Sweat Recovery Rules",
-    metaTitle: "Botox for Men Who Swim — Pool, Ocean & Heat Recovery Guide",
-    description: "If swimming is your primary workout, timing your Botox around pool and open-water sessions matters. Chlorine, saltwater, heat, and vigorous facial muscle activity during swimming can all affect Botox recovery. Here is the complete guide for men who swim.",
+    metaTitle: "Botox + Swimming: 48-Hour Pool Rule & 3 Chlorine Safety Tips",
+    description: "48 hours minimum before pool re-entry — chlorine, saltwater, and facial muscle strain each pose distinct risks. 3 recovery rules every swimmer needs post-Botox.",
     publishedDate: "2026-05-28",
     readTime: "6 min read",
     category: "Guide",
@@ -198,8 +198,8 @@ export const extraArticles34: Article[] = [
   {
     slug: "botox-vitiligo-men",
     title: "Botox for Men with Vitiligo — Safety, Skin Considerations, and Provider Tips",
-    metaTitle: "Botox for Men with Vitiligo — Is It Safe? What to Tell Your Provider",
-    description: "Vitiligo affects millions of men and raises legitimate questions about injectable treatments. Botox is safe for men with vitiligo, but there are specific considerations around the Koebner phenomenon, injection technique, and provider expertise that every man with vitiligo should understand before getting treated.",
+    metaTitle: "3 Botox Safety Rules for Men with Vitiligo — Koebner Risk Guide",
+    description: "1-2% of men have vitiligo. Botox is safe, but 3 injection-site rules minimize Koebner response risk. Provider selection tips and technique adjustments inside.",
     publishedDate: "2026-05-28",
     readTime: "6 min read",
     category: "Education",

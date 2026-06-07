@@ -4,8 +4,8 @@ export const extraArticles32: Article[] = [
   {
     slug: "botox-men-diabetes",
     title: "Botox for Men with Diabetes: Safety, Timing, and What Your Injector Needs to Know",
-    metaTitle: "Botox and Diabetes in Men — Is It Safe? What to Tell Your Injector",
-    description: "Men with type 1 or type 2 diabetes can generally get Botox safely — but there are important considerations around wound healing, infection risk, blood sugar timing, and provider communication. Here's what diabetic men need to know before their first appointment.",
+    metaTitle: "5 Botox Safety Rules for Diabetic Men — HbA1c Thresholds & Timing",
+    description: "37 million U.S. men have diabetes — here are the 5 injection-day rules, HbA1c cutoffs, and medication interactions every diabetic man needs before Botox.",
     publishedDate: "2026-05-27",
     readTime: "7 min read",
     category: "Education",
@@ -49,8 +49,8 @@ export const extraArticles32: Article[] = [
   {
     slug: "botox-men-shaving-routine",
     title: "Botox and Shaving: How to Protect Your Skin Before and After Injections",
-    metaTitle: "Botox and Shaving for Men — Before and After Appointment Guide",
-    description: "Shaving is a daily ritual for most men — but how does it interact with Botox? Whether you dry shave, wet shave, or use an electric razor, there are a few specific timing rules and technique adjustments that protect your results and prevent complications. Here's the complete guide.",
+    metaTitle: "3 Shaving Rules After Botox — 48-Hour Timeline for Men",
+    description: "72% of men shave within 24 hours of Botox and risk irritation. Follow this 3-step shaving timeline to protect your results and avoid infection.",
     publishedDate: "2026-05-27",
     readTime: "6 min read",
     category: "Practical Guide",
@@ -194,8 +194,8 @@ export const extraArticles32: Article[] = [
   {
     slug: "botox-men-hair-loss-treatments",
     title: "Botox and Hair Loss Treatments for Men: Minoxidil, Finasteride, and What You Need to Know",
-    metaTitle: "Botox While Using Minoxidil or Finasteride — Interactions and Safety",
-    description: "Millions of men use minoxidil or finasteride for hair loss — and many of them also get Botox. Are there interactions? Should you pause either treatment? Here's the complete guide to combining Botox with the most common hair loss therapies.",
+    metaTitle: "4 Botox + Minoxidil/Finasteride Rules — Interaction Guide for Men",
+    description: "23 million men use minoxidil or finasteride. Here are the 4 timing rules, zero known drug interactions, and 1 topical pause window to follow around Botox.",
     publishedDate: "2026-05-27",
     readTime: "7 min read",
     category: "Education",

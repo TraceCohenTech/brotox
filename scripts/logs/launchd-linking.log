@@ -1,0 +1,14 @@
+=== Internal Linking: Sun Jun  7 08:08:33 EDT 2026 ===
+From https://github.com/TraceCohenTech/brotox
+ * branch            main       -> FETCH_HEAD
+   dc41704..c69194b  main       -> origin/main
+Updating dc41704..c69194b
+Fast-forward
+ app/blog/data/articles-extra3.ts  |   4 +-
+ app/blog/data/articles-extra51.ts | 871 +++++++++++++++++++++++++++++++++
+ app/blog/data/articles-extra52.ts | 981 ++++++++++++++++++++++++++++++++++++++
+ app/botox-for-men/[slug]/page.tsx |  21 +
+ app/sitemap.ts                    |  21 +
+ 5 files changed, 1897 insertions(+), 1 deletion(-)
+ create mode 100644 app/blog/data/articles-extra51.ts
+ create mode 100644 app/blog/data/articles-extra52.ts

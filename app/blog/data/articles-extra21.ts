@@ -76,8 +76,8 @@ export const extraArticles21: Article[] = [
   {
     slug: "botox-competitive-athletes-men",
     title: "Botox for Competitive and Professional Athletes — The Complete Men's Guide",
-    metaTitle: "Botox for Male Competitive Athletes — Drug Testing, Performance & Timing",
-    description: "If you compete seriously — amateur, semi-pro, or professional — Botox raises specific questions: Is it banned? Does it affect performance? Can you train the next day? The complete guide for competitive male athletes.",
+    metaTitle: "Botox for Male Athletes — 0 Banned Substances, 4 Training Rules",
+    description: "0 sports leagues ban Botox, but 4 training timing rules separate safe recovery from wasted units. Drug testing status, 48-hour protocols, and competition scheduling.",
     publishedDate: "2026-05-22",
     readTime: "7 min read",
     category: "Guide",
