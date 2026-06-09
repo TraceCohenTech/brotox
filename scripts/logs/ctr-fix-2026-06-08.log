@@ -1,0 +1,6 @@
+=== CTR Fix: Mon Jun  8 09:00:05 EDT 2026 ===
+error: cannot pull with rebase: You have unstaged changes.
+error: please commit or stash them.
+From https://github.com/TraceCohenTech/brotox
+ * branch            main       -> FETCH_HEAD
+fatal: Cannot fast-forward to multiple branches.

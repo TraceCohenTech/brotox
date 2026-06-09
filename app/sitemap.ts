@@ -3,35 +3,38 @@ import { articles } from "@/app/blog/data/articles-extra3";
 import { guides } from "@/app/guide/data/guides";
 
 // IMPORTANT: This sitemap is intentionally focused on high-value pages only.
-// DO NOT add all zip codes or location slugs back — Google flags templated
-// pages as soft 404s. We're focusing crawl budget on unique content.
-// See: https://brotoxofficial.com GSC "crawled but not indexed" issue.
+// DO NOT add all zip codes, location slugs, or /botox-for-men/ URLs back.
+//
+// /botox-for-men/ pages are noindex with canonical → /blog/ to fix
+// "Duplicate without user-selected canonical" errors in GSC.
+//
+// See GSC "Why pages aren't indexed" report for context.
 
-// Top zip codes only — major city centers + GSC demand areas
+// Top zip codes — major city centers + GSC demand areas
 const topZips = [
   // NYC
   "10001", "10003", "10011", "10012", "10014", "10016", "10019", "10021", "10022", "10028", "10036", "10065",
   // Brooklyn
   "11201", "11211", "11215",
-  // Beverly Hills / LA — top GSC query cluster
+  // Beverly Hills / LA
   "90210", "90211", "90212", "90069", "90067", "90049", "90291", "90292", "90401",
   // Miami / South Florida
   "33129", "33131", "33133", "33134", "33139", "33140", "33160", "33180",
   // Boca / WPB / Fort Lauderdale
   "33431", "33432", "33486", "33401", "33480", "33301",
-  // Darien / CT — top GSC query cluster
+  // Darien / CT
   "06820", "06830", "06902", "06880", "06840",
-  // McLean / DC — top GSC demand
+  // McLean / DC
   "22101", "22102", "20007", "20036", "20814", "22201", "22301",
   // Chicago
   "60610", "60611", "60614", "60622", "60654", "60657",
-  // Royal Oak / Detroit — GSC queries
+  // Royal Oak / Detroit
   "48067", "48009", "48301",
   // Denver
   "80202", "80206", "80209", "80211",
   // SF Bay Area
   "94102", "94105", "94109", "94115", "94123", "94301",
-  // Boston — Newton MA showing at position 5.5!
+  // Boston
   "02108", "02116", "02138", "02446", "02458",
   // Dallas
   "75201", "75205", "75219", "75225",
@@ -41,8 +44,8 @@ const topZips = [
   "78701", "78703", "78704", "78746",
   // Atlanta
   "30305", "30309", "30326",
-  // Seattle
-  "98101", "98109", "98121", "98004",
+  // Seattle / Bellevue (GSC demand)
+  "98101", "98109", "98121", "98004", "98005",
   // Nashville
   "37201", "37203", "37205", "37215",
   // Scottsdale / Phoenix
@@ -51,10 +54,12 @@ const topZips = [
   "92101", "92037", "92130",
   // Las Vegas
   "89135", "89052",
-  // Florham Park NJ — showing in GSC
+  // Florham Park NJ (GSC demand)
   "07932",
-  // New Orleans
-  "70115", "70116",
+  // Havertown PA (GSC demand)
+  "19083",
+  // Grapevine TX (GSC demand)
+  "76051",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -75,7 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/terms`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
   ];
 
-  // Only top zip codes
+  // Top zip codes only
   const zipPages: MetadataRoute.Sitemap = topZips.map((z) => ({
     url: `${baseUrl}/find-botox-near-me/${z}`,
     lastModified: new Date(),
@@ -83,7 +88,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // All blog articles — unique content, high value
+  // All blog articles — unique content (THE canonical URL for all articles)
   const blogPages: MetadataRoute.Sitemap = articles.map((a) => ({
     url: `${baseUrl}/blog/${a.slug}`,
     lastModified: new Date(),
@@ -91,7 +96,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  // All city guides
+  // All city guides — unique content
   const guidePages: MetadataRoute.Sitemap = guides.map((g) => ({
     url: `${baseUrl}/guide/${g.slug}`,
     lastModified: new Date(),
@@ -99,130 +104,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  // Top SEO blog routes — highest commercial intent only
-  const topSeoSlugs = [
-    "is-it-worth-it", "first-appointment-guide", "vs-fillers", "cost-guide",
-    "best-age-to-start", "forehead-lines-guide", "side-effects", "jawline-sculpting",
-    "before-and-after", "crows-feet-treatment", "dysport-xeomin-comparison",
-    "men-in-their-30s", "men-in-their-40s", "men-over-50-guide",
-    "budget-botox-guide", "how-to-find-a-provider", "maintenance-schedule-guide",
-    "botox-men-nyc", "botox-men-miami-guide", "botox-men-la-guide",
-    "botox-men-chicago-guide", "botox-men-denver-guide", "botox-men-dallas-guide",
-    "med-spa-vs-dermatologist-guide", "botox-lunch-break-guide",
-    "botox-deep-wrinkles-guide", "botox-hsa-fsa-guide", "botox-cost-by-city-guide",
-    "botox-men-new-jersey-guide", "botox-men-baltimore-guide", "botox-men-san-antonio-guide",
-    "profhilo-men-guide", "radiesse-men-filler-guide", "juvederm-vs-restylane-men-guide",
-    "botox-men-kansas-city-guide", "exosome-facial-men-guide",
-    "botox-men-columbus-ohio-guide", "polynucleotides-pdrn-men-guide",
-    "zinc-botox-results-men-guide", "miradry-vs-botox-sweating-men-guide",
-    "what-botox-cant-fix-men-guide", "botox-sleep-apnea-cpap-men-guide",
-    "botox-groin-sweating-men-guide", "botox-ed-viagra-cialis-men-guide",
-    "botox-aftercare-nutrition-diet-men", "chain-vs-independent-medspa-men-guide",
-    "botox-bodybuilders-physique-men-guide", "botox-parkinsons-disease-men-guide",
-    "botox-men-southern-us-guide", "botox-introverts-guide", "what-women-notice-botox-men",
-    "mens-facial-aging-guide", "extreme-sports-botox-men", "botox-10-year-cost-guide",
-    "facial-volume-loss-men-guide", "botox-no-downtime-guide", "fatherhood-botox-guide",
-    "botox-psychological-effects-men",
-    "does-botox-age-faster-wear-off",
-    "botox-men-regret-satisfaction-guide",
-    "botox-acne-breakouts-men-guide",
-    "botox-antibiotics-interaction-men-guide",
-    "botox-essential-tremor-men-guide",
-    "botox-packages-bundle-deals-men",
-    "botox-heavy-forehead-feeling-men",
-    "botox-skip-session-gap-men",
-    "botox-dry-eyes-men-guide",
-    "botox-before-after-photos-guide-men",
-    "botox-chronic-pain-men-guide",
-    "botox-men-blushing-guide",
-    "botox-tell-if-someone-had-it-men",
-    "botox-men-annual-calendar",
-    "botox-men-switching-providers",
-    "botox-hyaluronic-acid-men",
-    "botox-post-surgery-safety-men",
-    "botox-men-brow-communication",
-    "botox-dental-work-timing-men",
-    "botox-jaw-tension-vs-slimming-men",
-    "botox-men-facial-expressions-social",
-    "botox-vegan-men-guide",
-    "botox-natural-looking-fear-guide",
-    "silver-fox-botox-guide",
-    "first-impressions-career-botox-men",
-    "botox-men-networking-guide",
-    "botox-total-grooming-budget-men",
-    "botox-provider-relationship-guide",
-    "botox-integrative-wellness-men",
-    "botox-men-stigma-emotional-guide",
-    "botox-virtual-consult-men-guide",
-    "gym-face-botox-men-guide",
-    "botox-allergy-guide-men",
-    "botox-skin-effects-men-guide",
-    "botox-muscle-atrophy-guide-men",
-    "botox-steroids-interaction-men",
-    "botox-consent-form-guide-men",
-    "botox-hemifacial-spasm-guide-men",
-    "botox-pacemaker-men-guide",
-    "botox-hidden-fees-pricing-men",
-    "botox-voice-disorder-men-guide",
-    "botox-post-stroke-men-guide",
-    "botox-men-under-35-guide",
-    "botox-men-55-65-guide",
-    "botox-weekend-warrior-guide",
-    "botox-men-how-young-look-guide",
-    "botox-men-nutrition-protein-guide",
-    "botox-spf-anti-aging-stack-guide",
-    "botox-men-outdoor-sports-guide",
-    "botox-urban-professional-guide",
-    "botox-men-age-gracefully-guide",
-    "botox-men-grooming-system-guide",
-    "letybo-neurotoxin-men-guide",
-    "botox-vs-radiofrequency-men-guide",
-    "lip-flip-vs-lip-filler-men-guide",
-    "botox-concierge-mobile-men-guide",
-    "juvederm-voluma-men-guide",
-    "botox-men-hollow-thin-face-guide",
-    "botox-men-decade-evolution-guide",
-    "botox-men-teaching-clinic-guide",
-    "daxxify-vs-dysport-men-guide",
-    "sculptra-vs-radiesse-men-guide",
-    "botox-cold-sores-men-guide",
-    "botox-numbing-cream-men-guide",
-    "botox-vacation-timing-men-guide",
-    "botox-keloid-scarring-men-guide",
-    "botox-six-month-check-men-guide",
-    "botox-mask-wearers-men-guide",
-    "botox-individual-variation-men-guide",
-    "botox-masculinity-stigma-men-guide",
-    "botox-high-altitude-men-guide",
-    "botox-annual-review-men-guide",
-    "botox-first-session-calibration-men",
-    "all-neurotoxins-2026-men-guide",
-    "botox-vitamin-d-skin-men-guide",
-    "botox-12-month-plan-men-guide",
-    "botox-5-year-face-projection-men",
-    "botox-face-self-assessment-men-guide",
-    "botox-men-40s-boom-guide",
-    "botox-late-starter-over-50-men",
-    "botox-men-strategic-investment-guide",
-    "botox-maximize-consultation-men-guide",
-    "botox-forehead-eyebrow-men-guide",
-    "botox-men-louisville-guide",
-    "botox-men-indianapolis-guide",
-    "botox-men-charleston-sc-guide",
-    "botox-men-jacksonville-guide",
-    "botox-men-boise-guide",
-    "botox-face-after-weight-loss-guide",
-    "botox-after-mohs-surgery-guide",
-    "botox-men-st-louis-guide",
-    "botox-men-memphis-guide",
-    "botox-men-oklahoma-city-guide",
-  ];
-  const seoBlogPages: MetadataRoute.Sitemap = topSeoSlugs.map((s) => ({
-    url: `${baseUrl}/botox-for-men/${s}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  }));
+  // NOTE: /botox-for-men/* URLs are NOT included.
+  // They are noindex with canonical pointing to /blog/* to prevent duplicate content.
 
-  return [...staticPages, ...zipPages, ...blogPages, ...guidePages, ...seoBlogPages];
+  return [...staticPages, ...zipPages, ...blogPages, ...guidePages];
 }

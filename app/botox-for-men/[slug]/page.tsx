@@ -604,17 +604,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const article = getArticleBySlug(articleSlug);
   if (!article) return {};
 
+  // Canonical points to /blog/ version to avoid duplicate content
+  // /botox-for-men/ pages exist for SEO-friendly URLs but /blog/ is the canonical
   return {
     title: article.metaTitle,
     description: article.description,
-    alternates: { canonical: `https://brotoxofficial.com/botox-for-men/${slug}` },
+    alternates: { canonical: `https://brotoxofficial.com/blog/${articleSlug}` },
+    robots: { index: false, follow: true },
     openGraph: {
       title: article.metaTitle,
       description: article.description,
       type: "article",
       publishedTime: article.publishedDate,
       modifiedTime: article.publishedDate,
-      url: `https://brotoxofficial.com/botox-for-men/${slug}`,
+      url: `https://brotoxofficial.com/blog/${articleSlug}`,
       authors: ["Brotox Official"],
     },
   };

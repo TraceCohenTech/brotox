@@ -1,0 +1,6 @@
+=== Internal Linking: Tue Jun  9 08:02:06 EDT 2026 ===
+error: cannot pull with rebase: You have unstaged changes.
+error: please commit or stash them.
+From https://github.com/TraceCohenTech/brotox
+ * branch            main       -> FETCH_HEAD
+Already up to date.

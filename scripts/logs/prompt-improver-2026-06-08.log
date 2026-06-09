@@ -1,0 +1,24 @@
+=== Prompt Improver (--quick): Mon Jun  8 10:30:05 EDT 2026 ===
+error: cannot pull with rebase: You have unstaged changes.
+error: please commit or stash them.
+From https://github.com/TraceCohenTech/brotox
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+Running QUICK mode — scoring recent posts...
+Quality scores:
+
+articles-extra34.ts: nums=7 faqs=10 qa=0
+0 schema=0
+0 words=12336 articles=10
+articles-extra21.ts: nums=3 faqs=10 qa=0
+0 schema=0
+0 words=8573 articles=10
+articles-extra35.ts: nums=10 faqs=10 qa=0
+0 schema=0
+0 words=13705 articles=10
+articles-extra30.ts: nums=5 faqs=10 qa=0
+0 schema=0
+0 words=12948 articles=10
+articles-extra32.ts: nums=5 faqs=10 qa=0
+0 schema=0
+0 words=12731 articles=10
