@@ -206,6 +206,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "botox-men-strategic-investment-guide",
     "botox-maximize-consultation-men-guide",
     "botox-forehead-eyebrow-men-guide",
+    "botox-men-louisville-guide",
+    "botox-men-indianapolis-guide",
+    "botox-men-charleston-sc-guide",
+    "botox-men-jacksonville-guide",
+    "botox-men-boise-guide",
+    "botox-face-after-weight-loss-guide",
+    "botox-after-mohs-surgery-guide",
+    "botox-men-st-louis-guide",
+    "botox-men-memphis-guide",
+    "botox-men-oklahoma-city-guide",
   ];
   const seoBlogPages: MetadataRoute.Sitemap = topSeoSlugs.map((s) => ({
     url: `${baseUrl}/botox-for-men/${s}`,
