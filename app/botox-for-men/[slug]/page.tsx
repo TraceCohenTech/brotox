@@ -604,6 +604,16 @@ const seoSlugs: Record<string, string> = {
   "botox-facial-feedback-mood-men-guide": "botox-men-facial-feedback-mood",
   "botox-chin-masseter-comparison-men-guide": "botox-men-chin-masseter-comparison",
   "botox-second-opinion-men-guide": "botox-men-second-opinion",
+  "botox-counterfeit-guide-men": "botox-counterfeit-diluted-men",
+  "botox-ptsd-men-guide": "botox-men-ptsd",
+  "botox-hiv-men-guide": "botox-men-hiv",
+  "botox-men-cleveland-guide": "botox-men-cleveland",
+  "botox-men-cincinnati-guide": "botox-men-cincinnati",
+  "botox-men-virginia-beach-guide": "botox-men-virginia-beach",
+  "botox-men-fort-worth-guide": "botox-men-fort-worth",
+  "botox-men-albuquerque-guide": "botox-men-albuquerque",
+  "botox-men-pre-retirement-guide": "botox-men-pre-retirement",
+  "botox-caregivers-men-guide": "botox-men-caregivers",
 };
 
 interface PageProps {
