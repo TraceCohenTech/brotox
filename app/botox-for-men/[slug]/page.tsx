@@ -624,6 +624,16 @@ const seoSlugs: Record<string, string> = {
   "negotiate-botox-price-men": "botox-men-price-negotiation",
   "botox-one-time-then-stop-men": "botox-men-one-time-reality",
   "how-botox-works-science-men": "botox-men-neurotoxin-science",
+  "botox-valentines-day-timing-guide": "botox-men-valentines-day",
+  "liquid-facelift-combo-guide": "liquid-facelift-men",
+  "botox-career-gap-reentry-guide": "botox-men-career-gap",
+  "botox-political-candidates-guide": "botox-men-running-for-office",
+  "botox-pandemic-face-guide": "botox-men-pandemic-face",
+  "botox-social-capital-guide": "botox-men-social-capital",
+  "mens-grooming-stack-2026-guide": "botox-men-grooming-stack-2026",
+  "botox-service-industry-guide": "botox-men-service-industry",
+  "botox-medical-skincare-guide": "botox-men-medical-grade-skincare",
+  "botox-career-comeback-50-guide": "botox-men-career-comeback-over-50",
 };
 
 interface PageProps {
