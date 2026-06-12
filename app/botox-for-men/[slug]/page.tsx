@@ -634,6 +634,13 @@ const seoSlugs: Record<string, string> = {
   "botox-service-industry-guide": "botox-men-service-industry",
   "botox-medical-skincare-guide": "botox-men-medical-grade-skincare",
   "botox-career-comeback-50-guide": "botox-men-career-comeback-over-50",
+  "botox-only-once-what-happens": "botox-men-only-once",
+  "per-unit-vs-area-botox-pricing": "botox-pricing-per-unit-vs-area-men",
+  "sweaty-palms-botox-guide-men": "botox-sweaty-palms-men",
+  "trap-shoulder-botox-pain-men": "botox-men-trap-shoulder-pain",
+  "negotiate-botox-cost-men-guide": "botox-pricing-negotiate-men",
+  "groupon-botox-risks-men-guide": "botox-groupon-men",
+  "does-botox-affect-hairline-men": "botox-men-hairline",
 };
 
 interface PageProps {

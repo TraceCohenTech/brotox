@@ -55,6 +55,7 @@ import { extraArticles55 } from "./articles-extra55";
 import { extraArticles56 } from "./articles-extra56";
 import { extraArticles57 } from "./articles-extra57";
 import { extraArticles58 } from "./articles-extra58";
+import { extraArticles59 } from "./articles-extra59";
 
 export type { Article, ArticleSection };
 
@@ -68,7 +69,7 @@ function dedup(arr: Article[]): Article[] {
   });
 }
 
-export const articles: Article[] = dedup([...baseArticles, ...extraArticles4, ...extraArticles5, ...extraArticles6, ...extraArticles7, ...extraArticles8, ...extraArticles9, ...extraArticles10, ...extraArticles11, ...extraArticles12, ...extraArticles13, ...extraArticles14, ...extraArticles15, ...extraArticles16, ...extraArticles17, ...extraArticles18, ...extraArticles19, ...extraArticles20, ...extraArticles21, ...extraArticles22, ...extraArticles23, ...extraArticles24, ...extraArticles25, ...extraArticles26, ...extraArticles27, ...extraArticles28, ...extraArticles29, ...extraArticles30, ...extraArticles31, ...extraArticles32, ...extraArticles33, ...extraArticles34, ...extraArticles35, ...extraArticles36, ...extraArticles37, ...extraArticles38, ...extraArticles39, ...extraArticles40, ...extraArticles41, ...extraArticles42, ...extraArticles43, ...extraArticles44, ...extraArticles45, ...extraArticles46, ...extraArticles47, ...extraArticles48, ...extraArticles49, ...extraArticles50, ...extraArticles51, ...extraArticles52, ...extraArticles53, ...extraArticles54, ...extraArticles55, ...extraArticles56, ...extraArticles57, ...extraArticles58]);
+export const articles: Article[] = dedup([...baseArticles, ...extraArticles4, ...extraArticles5, ...extraArticles6, ...extraArticles7, ...extraArticles8, ...extraArticles9, ...extraArticles10, ...extraArticles11, ...extraArticles12, ...extraArticles13, ...extraArticles14, ...extraArticles15, ...extraArticles16, ...extraArticles17, ...extraArticles18, ...extraArticles19, ...extraArticles20, ...extraArticles21, ...extraArticles22, ...extraArticles23, ...extraArticles24, ...extraArticles25, ...extraArticles26, ...extraArticles27, ...extraArticles28, ...extraArticles29, ...extraArticles30, ...extraArticles31, ...extraArticles32, ...extraArticles33, ...extraArticles34, ...extraArticles35, ...extraArticles36, ...extraArticles37, ...extraArticles38, ...extraArticles39, ...extraArticles40, ...extraArticles41, ...extraArticles42, ...extraArticles43, ...extraArticles44, ...extraArticles45, ...extraArticles46, ...extraArticles47, ...extraArticles48, ...extraArticles49, ...extraArticles50, ...extraArticles51, ...extraArticles52, ...extraArticles53, ...extraArticles54, ...extraArticles55, ...extraArticles56, ...extraArticles57, ...extraArticles58, ...extraArticles59]);
 export function getArticleBySlug(slug: string): Article | undefined {
   return articles.find((a) => a.slug === slug);
 }
