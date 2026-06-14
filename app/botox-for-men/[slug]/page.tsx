@@ -672,6 +672,16 @@ const seoSlugs: Record<string, string> = {
   "peer-influence-botox-men": "botox-men-peer-influence",
   "full-body-botox-men-guide": "botox-men-full-body-guide",
   "retinol-botox-synergy-men": "botox-men-retinol-synergy",
+  "square-face-botox-men": "botox-men-square-face",
+  "botox-testosterone-hormones-men": "botox-men-testosterone-effect",
+  "botox-humid-climate-men": "botox-men-humid-climate",
+  "botox-runners-cardio-men": "botox-men-runners-cardio",
+  "botox-seborrheic-dermatitis-men": "botox-men-seborrheic-dermatitis",
+  "botox-high-cheekbones-men": "botox-men-high-cheekbones",
+  "botox-looking-older-40s-men": "botox-men-looking-older-40s",
+  "botox-lean-thin-face-men": "botox-men-lean-thin-face",
+  "botox-tear-trough-men": "botox-men-tear-trough",
+  "botox-natural-undetectable-men": "botox-men-natural-undetectable",
 };
 
 interface PageProps {
