@@ -11,7 +11,7 @@ interface PageProps {
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
-  return articles.slice(0, 20).map((a) => ({ slug: a.slug }));
+  return articles.map((a) => ({ slug: a.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

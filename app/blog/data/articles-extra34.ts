@@ -41,7 +41,7 @@ export const extraArticles34: Article[] = [
     slug: "botox-after-hair-transplant-men",
     title: "Botox After a Hair Transplant for Men — Timing, Safety, and What to Tell Your Provider",
     metaTitle: "Botox After Hair Transplant for Men — When Is It Safe? Complete Guide",
-    description: "Thousands of men get both hair transplants and Botox — but timing matters. Getting Botox too soon after an FUE or FUT transplant can compromise graft survival and healing. Here is the safe timeline, what to disclose to your providers, and how to coordinate both treatments for the best results.",
+    description: "Too soon = compromised grafts. Wait at least 2-4 weeks after FUE/FUT before Botox. Here's the exact safe timeline, what to tell your surgeon, and how to coordinate both treatments.",
     publishedDate: "2026-05-28",
     readTime: "7 min read",
     category: "Guide",
